@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block default_stylesheets %}
+  <link rel="stylesheet" href="{{ asset('bundles/frontend/css/reset.css') }}" />
+  <link rel="stylesheet" href="{{ asset('bundles/frontend/css/styles.css') }}" />
+  {% block stylesheets %}
+  
+  {% endblock %}
+{% endblock %}
+
+{% block body %}
+
+  {% include 'FrontendBundle::preSocial.html.twig' %}
+
+  <div id="body-wrapper">
+
+    {% include 'FrontendBundle::header.html.twig' %}
+
+    <div id="content-wrapper">
+
+      {% include 'FrontendBundle:'~get_controller_name()~':_submenu.html.twig' ignore missing %}
+
+      <div id="content-body">
+        <div id="content">
+          
+          {% include 'flash.html.twig' %}
+
+          {% block content %}{% endblock %}
+
+        </div>
+
+        {% include 'FrontendBundle::social.html.twig' %}
+
+      </div>
+
+    </div>
+
+    {% include 'FrontendBundle::footer.html.twig' %}
+  </div>
+
+{% endblock %}

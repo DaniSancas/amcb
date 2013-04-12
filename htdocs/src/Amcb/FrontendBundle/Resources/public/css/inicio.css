@@ -1,0 +1,36 @@
+div#content-wrapper div.imagen-inicio{
+  text-align: center;
+  margin: 1em 0em;
+}
+
+div#content-wrapper img{
+  border-radius: 3px;
+  margin: 0.5em;
+  box-shadow: 0 0 3px 2px #CCC;
+}
+
+div#content-wrapper div#contactos{
+  display: inline-block;
+}
+
+div#content-wrapper div.info-contacto{
+  float: left;
+  width: 16.5em;
+  margin: 0.5em;
+  border: 0.1em solid #CCC;
+  border-radius: 0.5em 0.5em 0em 0em;
+}
+
+div#content-wrapper div.info-contacto-head{
+  text-align: center;
+  font-weight: bold;
+  padding: 0.5em 0;
+  width: 100%;
+}
+
+div#content-wrapper div.info-contacto-body{
+  border-top: 0.1em #CCC dashed;
+  background: #EEE;
+  padding: 0.3em 0.5em;
+  line-height: 1.3em;
+}
