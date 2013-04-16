@@ -17,3 +17,7 @@ repertorio:
 docsInteres:
     pattern:  /documentos-interes
     defaults: { _controller: FrontendBundle:Inicio:documentos }
+
+contacto:
+    pattern:  /contacto
+    defaults: { _controller: FrontendBundle:Inicio:contacto }

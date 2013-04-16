@@ -1,0 +1,41 @@
+table#tabla-orquesta, table#tabla-coro{
+  font-size: 110%;
+  margin: 1em 0;
+}
+
+table#tabla-orquesta tr, table#tabla-coro tr{
+  border-bottom: 1px dotted #EEE;
+}
+
+table#tabla-orquesta tr:hover, table#tabla-coro tr:hover{
+  background: #EEE;
+  background: -webkit-linear-gradient(#EEE, #DDD);
+  background: -moz-linear-gradient(#EEE, #DDD);
+  background: -o-linear-gradient(#EEE, #DDD);
+  background: -ms-linear-gradient(#EEE, #DDD);
+  background: linear-gradient(#EEE, #DDD);
+}
+
+table#tabla-orquesta tr td, table#tabla-coro tr td{
+  padding: 0.5em;
+}
+
+div#cuadrado-coro{
+  width: 48em;
+}
+
+div#cuadrado-coro > div{
+  width: 22em;
+  padding: 1em;
+  float: left;
+  display: inline-block;
+}
+
+div#cuadrado-coro div.agudos{
+  height: 11em;
+}
+
+div#cuadrado-coro ul li{
+  font-size: 110%;
+  line-height: 1.5em;
+}

@@ -1,0 +1,62 @@
+---
+Miembro:
+  actAs: 
+    Timestampable:
+      created:  {  name: fecha_creacion,      type: timestamp, format: Y-m-d H:i:s }
+      updated:  {  name: ultima_modificacion, type: timestamp, format: Y-m-d H:i:s }
+  columns:
+    id:           { type: integer, notnull: true, primary: true, autoincrement: true}
+    nombre:       { type: string(50), notnull: true }
+    apellidos:    { type: string(50), notnull: true }
+    email:        { type: string(100) }
+    dni:          { type: string(10) }
+    es_director:  { type: boolean,    notnull: true }
+    es_admin:     { type: boolean,    notnull: true }
+
+
+Concierto:
+  actAs:
+    Timestampable:
+      created:  {  name: fecha_creacion,      type: timestamp, format: Y-m-d H:i:s }
+      updated:  {  name: ultima_modificacion, type: timestamp, format: Y-m-d H:i:s }
+  columns:
+    id:             { type: integer(2), notnull: true, unsigned: true, primary: true, autoincrement: true }
+    titulo:         { type: string(50), notnull: true }
+    tipo:           { type: string(50), notnull: true }
+    lugar:          { type: string(50), notnull: true }
+    fecha:          { type: datetime,   notnull: true, format: Y-m-d H:i:s }
+    maps:           { type: string(10), notnull: true }
+    es_gratis:      { type: boolean,    notnull: true, default: true } 
+    venta_entradas: { type: string(255) }
+    programa:       { type: string(5000) }
+    direccion_id:   { type: integer(2), notnull: true, unsigned: true }
+  relations:
+     Direccion:  { onDelete: CASCADE, local: direccion_id, foreign: miembro_id }
+    
+Critica:
+  columns:
+    id:           { type: integer(2), notnull: true, unsigned: true, primary: true, autoincrement: true}
+    titulo:       { type: string(50), notnull: true }
+    imagen:       { type: string(255) }
+    descripcion:  { type: string(5000) }
+    es_visible:   { type: boolean,    notnull: true, default: true }
+    concierto_id: { type: integer(2), notnull: true, unsigned: true }
+  relations:
+    Concierto: { onDelete: CASCADE, local: concierto_id, foreign: id }
+
+    
+Documento:
+  actAs:
+    Timestampable:
+      created:  {  name: fecha_creacion,      type: timestamp, format: Y-m-d H:i:s }
+      updated:  {  name: ultima_modificacion, type: timestamp, format: Y-m-d H:i:s }
+  columns:
+    id:           { type: integer(2), notnull: true, unsigned: true, primary: true, autoincrement: true}
+    titulo:       { type: string(50), notnull: true }
+    es_partitura: { type: boolean,    notnull: true, default: true }
+    es_visible:   { type: boolean,    notnull: true, default: true }
+    fichero:      { type: string(255) }
+    descripcion:  { type: string(5000) }
+    miembro_id:   { type: integer(2), notnull: true, unsigned: true }
+  relations:
+    Miembro:  { onDelete: CASCADE, local: miembro_id, foreign: id }

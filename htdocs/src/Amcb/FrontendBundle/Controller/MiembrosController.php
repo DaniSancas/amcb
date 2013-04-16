@@ -5,9 +5,9 @@ namespace Amcb\FrontendBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class InicioController extends Controller
+class MiembrosController extends Controller
 {
-    /**
+  /**
      * 
      * @Template()
      */
@@ -20,7 +20,7 @@ class InicioController extends Controller
      * 
      * @Template()
      */
-    public function historiaAction()
+    public function coroAction()
     {
         return array();
     }
@@ -29,7 +29,7 @@ class InicioController extends Controller
      * 
      * @Template()
      */
-    public function escuchanosAction()
+    public function orquestaAction()
     {
         return array();
     }
@@ -38,7 +38,7 @@ class InicioController extends Controller
      * 
      * @Template()
      */
-    public function repertorioAction()
+    public function direccionAction()
     {
         return array();
     }
@@ -47,17 +47,9 @@ class InicioController extends Controller
      * 
      * @Template()
      */
-    public function docsInteresAction()
-    {
-        return array();
-    }
-    
-    /**
-     * 
-     * @Template()
-     */
-    public function contactoAction()
+    public function juntaDirectivaAction()
     {
         return array();
     }
 }
+?>

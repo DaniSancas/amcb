@@ -2,6 +2,7 @@ body{
   font-size: 13.4px;
   font-family: "Palatino Linotype", "Trebuchet MS", Arial, Verdana, Helvetica, sans-serif;
   background: #EEE;
+  color: #111;
 }
 
 html, body, #body-wrapper {

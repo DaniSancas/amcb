@@ -1,0 +1,78 @@
+{% extends "FrontendBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{ asset('bundles/frontend/css/miembros.css') }}" />
+{% endblock %}
+
+{% block content %}
+<h1>Solistas</h1>
+
+<table id="tabla-coro">
+  <tbody>
+    <tr>
+      <td>María Montes</td>
+      <td>Soprano solista y profesora de canto</td>
+    </tr>
+    <tr>
+      <td>Elena Roldán</td>
+      <td>Mezzosoprano solista</td>
+    </tr>
+    <tr>
+      <td>Iker Freire Vivián</td>
+      <td>Solista</td>
+    </tr>
+    <tr>
+      <td>Arantza López</td>
+      <td>Solista</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1>Miembros del coro</h1>
+
+<div id="cuadrado-coro">
+  <div id="mujeres">
+ 
+    <div class="agudos">
+      <h2>Sopranos</h2>
+      <ul>
+        <li>Clara Barcia Pájaro</li>
+        <li>Belén Castelló Zamora</li>
+        <li>Ana González Ugalde</li>
+        <li>Arantza López Santiago</li>
+        <li>María Montes Callejo</li>
+      </ul>
+    </div>
+
+    <h2>Mezzosopranos y contraltos</h2>
+    <ul>
+      <li>Amaia Carrasco Alonso</li>
+      <li>Julia Guridi Ispizua</li>
+      <li>Beatriz Gómez Fernandini</li>
+      <li>Elena Roldán Pérez</li>
+      <li>Carmen Lozón Marcaida</li>
+    </ul> 
+    
+  </div>
+  <div id="hombres">
+    
+    <div class="agudos">
+      <h2>Tenores</h2>
+      <ul>
+        <li>Ignacio Abad Aldecoa</li>
+        <li>Emilio de la Sierra Prada</li>
+        <li>Iker Freire Vivián</li>
+        <li>Sergio Mielgo Turuelo</li>
+      </ul>
+    </div>
+
+    <h2>Barítonos y bajos</h2>
+    <ul>
+      <li>Alberto Robles Simón</li>
+      <li>Juan Carlos Vivián Gómez</li>
+      <li>Juan Manuel Mazpule Ruiz</li>
+    </ul>
+  </div>
+</div>
+
+{% endblock %}
