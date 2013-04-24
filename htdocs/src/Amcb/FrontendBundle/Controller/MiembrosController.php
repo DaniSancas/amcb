@@ -47,7 +47,7 @@ class MiembrosController extends Controller
      * 
      * @Template()
      */
-    public function juntaDirectivaAction()
+    public function juntaAction()
     {
         return array();
     }

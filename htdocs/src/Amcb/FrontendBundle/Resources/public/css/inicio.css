@@ -34,3 +34,37 @@ div#content-wrapper div.info-contacto-body{
   padding: 0.3em 0.5em;
   line-height: 1.3em;
 }
+
+div#contactos{
+  
+}
+
+div#contactos div.div-contacto-wrapper{
+  /*width: 12.5em;*/
+  float: left;
+  display: inline-block;
+  height: 6em;
+  border: 0.1em solid #CCC;
+  margin: 0.3em;
+  padding: 0.5em;
+  border-radius: 0.3em;
+  background: #FAFAFA;
+  background: -webkit-linear-gradient(#EEE, #FFF 35%);
+  background: -moz-linear-gradient(#EEE, #FFF 35%);
+  background: -o-linear-gradient(#EEE, #FFF 35%);
+  background: -ms-linear-gradient(#EEE, #FFF 35%);
+  background: linear-gradient(#EEE, #FFF 35%);
+}
+
+div#contactos div.div-contacto-wrapper div.div-contacto-titulo{
+  text-align: center;
+}
+
+div#contactos div.div-contacto-wrapper div.div-contacto-info{
+  /*font-size: 95%;*/
+  line-height: 1.3em;
+}
+
+div#contactos div.div-contacto-wrapper hr{
+  margin: 0.5em 0em;
+}

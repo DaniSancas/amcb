@@ -15,9 +15,10 @@ direccion:
     defaults: { _controller: FrontendBundle:Miembros:direccion }
 
 juntaDirectiva:
-    pattern:  /documentos-interes
-    defaults: { _controller: FrontendBundle:Miembros:juntaDirectiva }
+    pattern:  /junta-directiva
+    defaults: { _controller: FrontendBundle:Miembros:junta }
 
-miembro:
-    pattern:  /{id}/{slug}
-    defaults: { _controller: FrontendBundle:Miembros:miembro }
+
+ficha_paula:
+    pattern:  /paula-perez
+    defaults: { _controller: FrontendBundle:Miembros:direccionPaula }

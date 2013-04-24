@@ -4,6 +4,7 @@ namespace Amcb\FrontendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use \Amcb\FrontendBundle\Form\ContactoType;
 
 class InicioController extends Controller
 {
@@ -47,7 +48,7 @@ class InicioController extends Controller
      * 
      * @Template()
      */
-    public function docsInteresAction()
+    public function documentosAction()
     {
         return array();
     }
@@ -58,6 +59,11 @@ class InicioController extends Controller
      */
     public function contactoAction()
     {
-        return array();
+        $contacto = new ContactoType();
+
+        $form = $this->createForm(new ContactoType(), $contacto);
+
+        return array('form' => $form->createView());
+
     }
 }

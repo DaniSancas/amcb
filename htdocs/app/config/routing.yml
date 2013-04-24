@@ -1,3 +1,8 @@
+sancas_common:
+    resource: "@SancasCommonBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 frontend_inicio:
     resource: "@FrontendBundle/Resources/config/routing_inicio.yml"
     prefix:   /

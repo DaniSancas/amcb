@@ -1,5 +1,4 @@
 table#tabla-orquesta, table#tabla-coro{
-  font-size: 110%;
   margin: 1em 0;
 }
 
@@ -36,6 +35,10 @@ div#cuadrado-coro div.agudos{
 }
 
 div#cuadrado-coro ul li{
-  font-size: 110%;
+  line-height: 1.5em;
+}
+
+ul.lista-junta{
+  padding: 1em 0em;
   line-height: 1.5em;
 }

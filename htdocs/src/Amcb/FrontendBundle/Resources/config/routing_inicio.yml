@@ -21,3 +21,11 @@ docsInteres:
 contacto:
     pattern:  /contacto
     defaults: { _controller: FrontendBundle:Inicio:contacto }
+    requirements:
+        _method:  GET
+    
+contacto_submit:
+    pattern:  /contacto
+    defaults: { _controller: FrontendBundle:Inicio:contactoSubmit }
+    requirements:
+        _method:  POST

@@ -1,0 +1,30 @@
+{% extends "FrontendBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{ asset('bundles/frontend/css/miembros.css') }}" />
+{% endblock %}
+
+{% block content %}
+<h1>Junta directiva de la AMCB</h1>
+
+<ul class="lista-junta">
+  <li><strong>Presidente:</strong> Dn. José María Herrero</li>
+  <li><strong>Vicepresidenta:</strong> Dña. Arantza López</li>
+  <li><strong>Secretaria:</strong> Dña. Mª Belén Castelló Zamora</li>
+  <li><strong>Tesorero:</strong> Dn. Juan Carlos Vivián</li>
+  <li><strong>Vocal:</strong> Dña. María Montes</li>
+  <li><strong>Vocal:</strong> Dña. Itziar Bizkarralegorra</li>
+  <li><strong>Vocal:</strong> Dña. Elena Roldán</li>
+  <li><strong>Vocal:</strong> Dña. Ana González</li>
+  <li><strong>Vocal:</strong> Dña. Iratxe Celaya</li>
+  <li><strong>Vocal:</strong> Dn. Jesús Fernández</li>
+</ul>
+
+<h2>Miembros de honor</h2>
+
+<ul class="lista-junta">
+  <li><strong>Presidente de Honor:</strong> Dn. Manuel Vicario Negrete</li>
+  <li><strong>Tesorero de Honor:</strong> Don Vicente Rodríguez Moral</li></ul>
+</ul>
+
+{% endblock %}
