@@ -1,0 +1,71 @@
+/* ===========================================================================
+   Formularios
+   ======================================================================== */
+form > div > div {
+    clear: both;
+    padding: 0.5em;
+}
+form label {
+    display: inline-block;
+    font-weight: bold;
+    width: 200px;
+    vertical-align: top;
+    margin-top: 5px;
+}
+form input, form textarea {
+    padding: 3px;
+    margin-bottom: .5em;
+}
+form textarea {
+    height: 100px;
+    width: 300px;
+}
+form textarea.mediana {
+    height: 100px;
+    width: 500px;
+}
+form label + div[id*="fecha"] {
+    display: inline-block;
+    overflow: hidden;
+}
+form label + div[id*="fecha"] > div {
+    float: left;
+    margin-right: 2em;
+}
+
+form p.ayuda {
+    color: #555;
+    font-size: 14px;
+    margin: .5em 0 .5em 200px;
+}
+
+form input[type="submit"] {
+    /*margin: 1em 0;*/
+}
+form input.largo {
+    width: 500px;
+}
+form input.corto {
+    width: 100px;
+}
+
+form > div:first-child > ul:first-child, /* mensajes de error globales */
+form div > * > ul:first-child,           /* mensajes de error de cada campo */
+form label + ul {
+    background: #C00;
+    color: #FFF;
+    list-style: none;
+    margin: 0 0 1em;
+    padding: .2em;
+}
+form > div:first-child > ul:first-child li,
+form div > * > ul:first-child li,
+form label + ul li {
+    margin: 0;
+    padding: .2em;
+}
+form > div:first-child > ul:first-child li + li,
+form div > * > ul:first-child li + li,
+form label + ul li + li {
+    margin-top: .5em;
+}

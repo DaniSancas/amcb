@@ -68,3 +68,17 @@ div#contactos div.div-contacto-wrapper div.div-contacto-info{
 div#contactos div.div-contacto-wrapper hr{
   margin: 0.5em 0em;
 }
+
+div#contenido-inicio{
+  padding-right: 1em;
+  width: 43em;
+  display: inline-block;
+  float: left;
+}
+
+#social-right{
+  padding: 1.5em 0em 1em 0em;
+  width: 20em;
+  display: inline-block;
+  float: right;
+}

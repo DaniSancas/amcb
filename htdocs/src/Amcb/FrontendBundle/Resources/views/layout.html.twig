@@ -1,16 +1,14 @@
 {% extends "base.html.twig" %}
 
-{% block default_stylesheets %}
-  <link rel="stylesheet" href="{{ asset('bundles/frontend/css/reset.css') }}" />
+{% block stylesheets %}
+  {# Cargamos automáticamente el CSS base y el de cada Controller #}
   <link rel="stylesheet" href="{{ asset('bundles/frontend/css/styles.css') }}" />
-  {% block stylesheets %}
-  
-  {% endblock %}
+  <link rel="stylesheet" href="{{ asset('bundles/frontend/css/'~get_controller_name()~'.css') }}" />
 {% endblock %}
 
 {% block body %}
-
-  {% include 'FrontendBundle::preSocial.html.twig' %}
+  
+  {% block pre_body %}{% endblock %} {# Para colocar fragmentos de código necesarios al inicio de la etiqueta body #}
 
   <div id="body-wrapper">
 
@@ -23,13 +21,11 @@
       <div id="content-body">
         <div id="content">
           
-          {% include 'flash.html.twig' %}
+          {% include 'FrontendBundle::flash.html.twig' %}
 
           {% block content %}{% endblock %}
 
         </div>
-
-        {% include 'FrontendBundle::social.html.twig' %}
 
       </div>
 

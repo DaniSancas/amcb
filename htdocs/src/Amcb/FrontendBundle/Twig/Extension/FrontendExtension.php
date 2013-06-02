@@ -58,6 +58,6 @@ class FrontendExtension extends \Twig_Extension
 
   public function getName()
   {
-    return 'amcb_page';
+    return 'amcb_controller_action';
   }
 }
