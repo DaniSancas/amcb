@@ -13,12 +13,9 @@ parameters:
     locale: en
     secret: 918de81b445a334c3328ea794454ce0754c75825
     database_path: null
-    
-    presidente_email:   joherbur@hotmail.com
-    presidente_nombre:  "Presidente y Rel. Públicas"
-    
-    secretaria_email:   info.amcb@gmail.com
-    secretaria_nombre:  "Secretaría de la Asociación"
-    
-    webmaster_email:    amcb@sancas.es
-    webmaster_nombre:   "Webmaster"
+    presidente_email: joherbur@hotmail.com
+    presidente_nombre: 'Presidente y Rel. Públicas'
+    secretaria_email: info.amcb@gmail.com
+    secretaria_nombre: 'Secretaría de la Asociación'
+    webmaster_email: amcb@sancas.es
+    webmaster_nombre: Webmaster
