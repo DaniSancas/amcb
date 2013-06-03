@@ -60,7 +60,10 @@
 <hr />
 
 <h2>...o contacta con nosotros desde nuestro formulario</h2>
-<form action="{{path("contacto_submit")}}" method="post">
+
+<br />
+
+<form action="{{path("contacto_submit")}}" method="post" {{ app.environment == 'dev' ? 'novalidate' : '' }}>
 	{{ form_widget(form) }}
     <div>
       <label></label>

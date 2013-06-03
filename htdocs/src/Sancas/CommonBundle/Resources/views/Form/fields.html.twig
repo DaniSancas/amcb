@@ -11,9 +11,9 @@
 {% block form_row %}
 {% spaceless %}
     <div>
+        {{ form_errors(form) }}
         {{ form_label(form) }}
         {{ form_widget(form) }}
-        {{ form_errors(form) }}
     </div>
 {% endspaceless %}
 {% endblock form_row %}

@@ -26,6 +26,6 @@ contacto:
     
 contacto_submit:
     pattern:  /contacto
-    defaults: { _controller: FrontendBundle:Inicio:contactoSubmit }
+    defaults: { _controller: FrontendBundle:Inicio:contacto }
     requirements:
         _method:  POST

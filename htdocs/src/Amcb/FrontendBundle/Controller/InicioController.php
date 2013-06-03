@@ -59,9 +59,41 @@ class InicioController extends Controller
      */
     public function contactoAction()
     {
-        $contacto = new ContactoType();
+        $form = $this->createForm(new ContactoType());
+        
+        $request = $this->get('request');
+        
+        if ($request->isMethod('POST'))
+        {
+            $form->bind($request);
 
-        $form = $this->createForm(new ContactoType(), $contacto);
+            if ($form->isValid())
+            {
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('[www.amcb.es] Consulta desde la web')
+                    ->setFrom($form->get('email')->getData())
+                    ->setTo(ContactoType::getEmailDestinatario($form->get('destinatario')->getData(), $this->container))
+                    ->setBody(
+                        $this->renderView(
+                            'FrontendBundle:Inicio:emailContacto.txt.twig',
+                            array(
+                                'nombre' => $form->get('nombre')->getData(),
+                                'apellidos' => $form->get('apellidos')->getData(),
+                                'email' => $form->get('email')->getData(),
+                                'telefono' => $form->get('telefono')->getData(),
+                                'consulta' => $form->get('consulta')->getData()
+                            )
+                        )
+                    );
+
+                $this->get('mailer')->send($message);
+
+                $request->getSession()->getFlashBag()->add('ok', 'Se ha enviado su email. Gracias por contactar con nosotros.');
+
+                return $this->redirect($this->generateUrl('contacto'));
+            }
+        }
+
 
         return array('form' => $form->createView());
 

@@ -313,3 +313,38 @@ html > body #body-wrapper{
 
 /*****************************************/
 
+div#flash-wrapper{
+  margin-bottom: 1em;  
+}
+
+div.flash-message{
+  margin-bottom: 0.3em;
+  padding: 1em 0.5em 0em 3.5em;
+  border-radius: 0.3em;
+  height: 2em;
+  font-weight: bold;
+}
+
+div.flash-message.ok{
+  /*border: 0.1em solid #7B5;*/
+  background: /*url(/images/flash-ok.png) no-repeat 0.75em 0.50em */#DFB;
+}
+
+div.flash-message.info{
+  /*border: 0.1em solid #99F;*/
+  background: /*url(/images/flash-info.png) no-repeat 0.75em 0.50em */#EEF;
+}
+
+div.flash-message.warning{
+  /*border: 0.1em solid #FC2;*/
+  background: /*url(/images/flash-warning.png) no-repeat 0.75em 0.50em */#FFB;
+}
+
+div.flash-message.error{
+  /*border: 0.1em solid #D33;*/
+  background: /*url(/images/flash-error.png) no-repeat 0.75em 0.50em */#FFA8A8;
+}
+
+.invisible{
+  display: none;
+}
