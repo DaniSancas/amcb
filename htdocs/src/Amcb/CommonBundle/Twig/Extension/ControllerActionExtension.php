@@ -1,10 +1,10 @@
 <?php
 
-namespace Amcb\FrontendBundle\Twig\Extension;
+namespace Amcb\CommonBundle\Twig\Extension;
 
 use Symfony\Component\HttpFoundation\Request;
 
-class FrontendExtension extends \Twig_Extension
+class ControllerActionExtension extends \Twig_Extension
 {
   protected $request;
   

@@ -1,6 +1,6 @@
 <?php
 
-namespace Amcb\FrontendBundle\Entity;
+namespace Amcb\CommonBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

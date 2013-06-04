@@ -6,9 +6,3 @@ services:
 #    frontend.example:
 #        class: %frontend.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
-
-    amcb.twig.amcb_extension:
-        class: Amcb\FrontendBundle\Twig\Extension\FrontendExtension
-        arguments: ["@request="]
-        tags:
-            - { name: twig.extension }

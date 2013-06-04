@@ -1,5 +1,5 @@
 <?php
-namespace Amcb\FrontendBundle\Form;
+namespace Amcb\CommonBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -105,8 +105,8 @@ class ContactoType extends AbstractType
                 new Length(array(
                     'min' => 3, 
                     'max' => 50, 
-                    'maxMessage' => 'Nombre demasiado corto. Debe contener {{ limit }} caracteres como mínimo.',
-                    'minMessage' => 'Nombre demasiado largo. Debe contener {{ limit }} caracteres como máximo.'
+                    'minMessage' => 'Nombre demasiado corto. Debe contener {{ limit }} caracteres como mínimo.',
+                    'maxMessage' => 'Nombre demasiado largo. Debe contener {{ limit }} caracteres como máximo.'
                 ))
             ),
             'apellidos' => array(),
@@ -116,8 +116,8 @@ class ContactoType extends AbstractType
                 new Length(array(
                     'min' => 25, 
                     'max' => 1000, 
-                    'maxMessage' => 'Texto demasiado corto. Debe contener {{ limit }} caracteres como mínimo.',
-                    'minMessage' => 'Texto demasiado largo. Debe contener {{ limit }} caracteres como máximo.'
+                    'minMessage' => 'Texto demasiado corto. Debe contener {{ limit }} caracteres como mínimo.',
+                    'maxMessage' => 'Texto demasiado largo. Debe contener {{ limit }} caracteres como máximo.'
                 ))
             ),
             'email' => array(

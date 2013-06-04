@@ -4,7 +4,7 @@ namespace Amcb\FrontendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use \Amcb\FrontendBundle\Form\ContactoType;
+use \Amcb\CommonBundle\Form\ContactoType;
 
 class InicioController extends Controller
 {
@@ -93,7 +93,6 @@ class InicioController extends Controller
                 return $this->redirect($this->generateUrl('contacto'));
             }
         }
-
 
         return array('form' => $form->createView());
 

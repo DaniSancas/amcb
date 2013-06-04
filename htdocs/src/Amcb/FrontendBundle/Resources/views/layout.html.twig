@@ -2,8 +2,8 @@
 
 {% block stylesheets %}
   {# Cargamos automáticamente el CSS base y el de cada Controller #}
-  <link rel="stylesheet" href="{{ asset('bundles/frontend/css/styles.css') }}" />
-  <link rel="stylesheet" href="{{ asset('bundles/frontend/css/'~get_controller_name()~'.css') }}" />
+  <link rel="stylesheet" href="{{ asset('bundles/common/css/styles.css') }}" />
+  <link rel="stylesheet" href="{{ asset('bundles/common/css/'~get_controller_name()~'.css') }}" />
 {% endblock %}
 
 {% block body %}
