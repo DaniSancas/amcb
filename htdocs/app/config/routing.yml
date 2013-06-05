@@ -1,5 +1,5 @@
-frontend_inicio:
-    resource: "@FrontendBundle/Resources/config/routing_inicio.yml"
+frontend_general:
+    resource: "@FrontendBundle/Resources/config/routing_general.yml"
     prefix:   /
 
 frontend_miembro:

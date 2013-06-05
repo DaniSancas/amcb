@@ -4,60 +4,77 @@ namespace Amcb\CommonBundle\Twig\Extension;
 
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Extensión de Twig que permite obtener el nombre del Controller y Action en una vista de Twig.
+ * 
+ * El nombre del Controller/Action será devuelto en minúsculas. P.e: 'default' o 'index'
+ * 
+ */
 class ControllerActionExtension extends \Twig_Extension
 {
-  protected $request;
-  
-  /**
-  *
-  * @var \Twig_Environment
-  */
-  protected $environment;
-  
-  public function __construct(Request $request)
-  {
-    $this->request = $request;
-  }
+    /**
+     * @var Request 
+     */
+    protected $request;
 
-  public function initRuntime(\Twig_Environment $environment)
-  {
-    $this->environment = $environment;
-  }
+   /**
+    * @var \Twig_Environment
+    */
+    protected $environment;
+    
+    public function setRequest(Request $request = null)
+    {
+        $this->request = $request;
+    }
 
-  public function getFunctions()
-  {
-    return array(
-      'get_controller_name' => new \Twig_Function_Method($this, 'getControllerName'),
-      'get_action_name' => new \Twig_Function_Method($this, 'getActionName'),
-    );
-  }
+    public function initRuntime(\Twig_Environment $environment)
+    {
+        $this->environment = $environment;
+    }
 
-  /**
-  * Get current controller name
-  */
-  public function getControllerName()
-  {
-    $pattern = "#Controller\\\([a-zA-Z]*)Controller#";
-    $matches = array();
-    preg_match($pattern, $this->request->get('_controller'), $matches);
+    public function getFunctions()
+    {
+        return array(
+            'get_controller_name' => new \Twig_Function_Method($this, 'getControllerName'),
+            'get_action_name' => new \Twig_Function_Method($this, 'getActionName'),
+        );
+    }
 
-    return strtolower($matches[1]);
-  }
+    /**
+    * Get current controller name
+    */
+    public function getControllerName()
+    {
+        if(null !== $this->request)
+        {
+            $pattern = "#Controller\\\([a-zA-Z]*)Controller#";
+            $matches = array();
+            preg_match($pattern, $this->request->get('_controller'), $matches);
 
-  /**
-  * Get current action name
-  */
-  public function getActionName()
-  {
-    $pattern = "#::([a-zA-Z]*)Action#";
-    $matches = array();
-    preg_match($pattern, $this->request->get('_controller'), $matches);
+            return strtolower($matches[1]);
+        }
+        
+    }
 
-    return $matches[1];
-  }
+    /**
+    * Get current action name
+    */
+    public function getActionName()
+    {
+        if(null !== $this->request)
+        {
+            $pattern = "#::([a-zA-Z]*)Action#";
+            $matches = array();
+            preg_match($pattern, $this->request->get('_controller'), $matches);
 
-  public function getName()
-  {
-    return 'amcb_controller_action';
-  }
+            return $matches[1];
+        }
+    }
+
+    public function getName()
+    {
+        return 'amcb_controller_action_twig_extension';
+    }
 }
+
+?>

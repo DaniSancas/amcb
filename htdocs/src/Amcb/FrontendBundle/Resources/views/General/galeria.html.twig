@@ -1,0 +1,42 @@
+{% extends "FrontendBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/common/css/lightbox.css') }}" />
+{% endblock %}
+    
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/common/js/jquery-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/common/js/jquery.lightbox.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<h1>Galería de fotos</h1>
+
+<div id="galeria-wrapper">
+
+  <h2>Concierto en Deusto. Día 13 de noviembre de 2009</h2>
+
+  <p>Sesión de fotos tomada por Álvaro Bueno en la Iglesia de San Pedro de Deusto (Bilbao) durante la actuación.</p>
+
+  <p>Fotografía: Álvaro Bueno <a href="http://www.flickr.com/photos/alvarobueno/" rel="nofollow" target="_blank">http://www.flickr.com/photos/alvarobueno/</a></p>
+  <div class="galeria">
+
+    {# Galería de Deusto 2009, por Álvaro Bueno #}
+    {% for i in 1..14 %}
+    <div class="foto-wrapper">
+      <a href="{{ asset('bundles/common/images/galeria/2009-deusto_'~i~'.jpg') }}" rel="deusto-2009" class="lightbox-1" title="Concierto en Deusto 2009 - AMCB">
+        <img src="{{ asset('bundles/common/images/galeria/th_2009-deusto_'~i~'.jpg') }}" alt="Concierto en Deusto 2009 - AMCB" />
+      </a>
+    </div>
+    {% endfor %}
+
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block documentReady %}
+  {{ parent() }}
+  $('.lightbox-1').lightbox();
+{% endblock documentReady %}

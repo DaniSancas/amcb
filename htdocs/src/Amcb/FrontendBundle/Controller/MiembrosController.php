@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class MiembrosController extends Controller
 {
-  /**
+    /**
      * 
      * @Template()
      */

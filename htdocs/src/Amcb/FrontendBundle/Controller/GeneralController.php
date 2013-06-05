@@ -6,9 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use \Amcb\CommonBundle\Form\ContactoType;
 
-class InicioController extends Controller
+class GeneralController extends Controller
 {
     /**
+     * Acción que muestra la página de inicio.
      * 
      * @Template()
      */
@@ -18,6 +19,7 @@ class InicioController extends Controller
     }
     
     /**
+     * Acción que muestra la página de la historia de la AMCB.
      * 
      * @Template()
      */
@@ -27,6 +29,7 @@ class InicioController extends Controller
     }
     
     /**
+     * Acción que muestra la página donde incrustamos vídeos para que nos vean y oigan.
      * 
      * @Template()
      */
@@ -36,6 +39,7 @@ class InicioController extends Controller
     }
     
     /**
+     * Acción que muestra la página donde se presenta el repertorio.
      * 
      * @Template()
      */
@@ -45,6 +49,7 @@ class InicioController extends Controller
     }
     
     /**
+     * Acción que muestra la página donde se muestran los documentos de interés.
      * 
      * @Template()
      */
@@ -54,6 +59,17 @@ class InicioController extends Controller
     }
     
     /**
+     * Acción que muestra la galería de fotos.
+     * 
+     * @Template()
+     */
+    public function galeriaAction()
+    {
+        return array();
+    }
+    
+    /**
+     * Acción que muestra y procesa el formulario de contacto.
      * 
      * @Template()
      */

@@ -4,17 +4,16 @@
 
     <div id="header-left">
       <div id="logo-left">
-        <a href="{{ url('homepage') }}">
-          <img src="{{ asset('bundles/common/images/logo.png') }}" alt="AMCB" title="Asociación de Música de Cámara de Bilbao" />
-        </a>
+        <img src="{{ asset('bundles/common/images/logo.png') }}" alt="AMCB" title="Asociación de Música de Cámara de Bilbao" />
       </div>
     </div>
 
     <div id="header-menu">
       <ul>
+        <li><a href="{{ path('homepage') }}">Inicio</a></li>
         <li><a href="#">Conciertos</a></li>
         <li><a href="{{ url('miembros') }}">Miembros</a></li>
-        <li><a href="#">Galería de fotos</a></li>
+        <li><a href="{{ url('galeria') }}">Galería de fotos</a></li>
         <li><a href="{{ url('contacto') }}">Contacto</a></li>
       </ul>
     </div>

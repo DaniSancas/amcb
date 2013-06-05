@@ -1,10 +1,18 @@
 {% extends "base.html.twig" %}
 
-{% block stylesheets %}
+{% block default_stylesheets %}
   {# Cargamos automáticamente el CSS base y el de cada Controller #}
   <link rel="stylesheet" href="{{ asset('bundles/common/css/styles.css') }}" />
   <link rel="stylesheet" href="{{ asset('bundles/common/css/'~get_controller_name()~'.css') }}" />
+  {% block stylesheets %}{% endblock %}
 {% endblock %}
+  
+{% block default_javascripts %}
+
+    {% block javascripts %}{% endblock %}
+{% endblock %}
+
+{% block title %}{% endblock %}
 
 {% block body %}
   
@@ -34,4 +42,14 @@
     {% include 'FrontendBundle::footer.html.twig' %}
   </div>
 
+    
+  {% if block('documentReady') %}
+    <script type="text/javascript">
+      $(document).ready(function () {
+        {% block documentReady %}{% endblock documentReady %}
+      });
+    </script>
+  {% endif %}
+    
 {% endblock %}
+    
