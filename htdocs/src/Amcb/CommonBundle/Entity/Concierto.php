@@ -3,11 +3,12 @@
 namespace Amcb\CommonBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Concierto
  *
- * @ORM\Table()
+ * @ORM\Table(name="concierto")
  * @ORM\Entity
  */
 class Concierto
@@ -15,7 +16,7 @@ class Concierto
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -24,67 +25,83 @@ class Concierto
     /**
      * @var string
      *
-     * @ORM\Column(name="titulo", type="string", length=100)
+     * @ORM\Column(name="titulo", type="string", length=100, nullable=false)
+     * @Assert\NotBlank()
      */
     private $titulo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="tipo", type="string", length=50)
+     * @ORM\Column(name="tipo", type="string", length=50, nullable=false)
+     * @Assert\NotBlank()
      */
     private $tipo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lugar", type="string", length=50)
+     * @ORM\Column(name="lugar", type="string", length=50, nullable=false)
+     * @Assert\NotBlank()
      */
     private $lugar;
+    
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha", type="datetime")
+     * @ORM\Column(name="fecha", type="datetime", nullable=false)
+     * @Assert\NotBlank()
      */
     private $fecha;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="noticia", type="string", length=255, nullable=false)
+     * @Assert\NotBlank()
+     */
+    private $noticia;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="maps", type="string", length=25)
+     * @ORM\Column(name="maps", type="string", length=255, nullable=false)
+     * @Assert\NotNull()
      */
     private $maps;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="es_gratis", type="boolean")
+     * @ORM\Column(name="es_gratis", type="boolean", nullable=false)
+     * @Assert\NotNull()
      */
-    private $esGratis;
+    private $es_gratis;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="texto_entradas", type="string", length=255)
+     * @ORM\Column(name="texto_entradas", type="text", length=1000, nullable=false)
+     * @Assert\NotNull()
      */
-    private $textoEntradas;
+    private $entradas;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="programa", type="text")
+     * @ORM\Column(name="programa", type="text", length=5000, nullable=false)
+     * @Assert\NotNull()
      */
     private $programa;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="director", type="string", length=255)
-     * @ORM\ManyToOne(targetEntity="Amcb\FrontendBundle\Entity\Miembro")
+     * @ORM\Column(name="director", type="string", length=255, nullable=false)
+     * @Assert\NotBlank()
      */
     private $director;
-
 
     /**
      * Get id
@@ -100,13 +117,10 @@ class Concierto
      * Set titulo
      *
      * @param string $titulo
-     * @return Concierto
      */
     public function setTitulo($titulo)
     {
         $this->titulo = $titulo;
-    
-        return $this;
     }
 
     /**
@@ -123,13 +137,10 @@ class Concierto
      * Set tipo
      *
      * @param string $tipo
-     * @return Concierto
      */
     public function setTipo($tipo)
     {
         $this->tipo = $tipo;
-    
-        return $this;
     }
 
     /**
@@ -141,18 +152,15 @@ class Concierto
     {
         return $this->tipo;
     }
-
+    
     /**
      * Set lugar
      *
      * @param string $lugar
-     * @return Concierto
      */
     public function setLugar($lugar)
     {
         $this->lugar = $lugar;
-    
-        return $this;
     }
 
     /**
@@ -169,13 +177,10 @@ class Concierto
      * Set fecha
      *
      * @param \DateTime $fecha
-     * @return Concierto
      */
     public function setFecha($fecha)
     {
         $this->fecha = $fecha;
-    
-        return $this;
     }
 
     /**
@@ -189,16 +194,33 @@ class Concierto
     }
 
     /**
+     * Set noticia
+     *
+     * @param string $noticia
+     */
+    public function setNoticia($noticia)
+    {
+        $this->noticia = $noticia;
+    }
+
+    /**
+     * Get noticia
+     *
+     * @return string 
+     */
+    public function getNoticia()
+    {
+        return $this->noticia;
+    }
+
+    /**
      * Set maps
      *
      * @param string $maps
-     * @return Concierto
      */
     public function setMaps($maps)
     {
         $this->maps = $maps;
-    
-        return $this;
     }
 
     /**
@@ -212,62 +234,53 @@ class Concierto
     }
 
     /**
-     * Set esGratis
+     * Set es_gratis
      *
      * @param boolean $esGratis
-     * @return Concierto
      */
     public function setEsGratis($esGratis)
     {
-        $this->esGratis = $esGratis;
-    
-        return $this;
+        $this->es_gratis = $esGratis;
     }
 
     /**
-     * Get esGratis
+     * Get es_gratis
      *
      * @return boolean 
      */
     public function getEsGratis()
     {
-        return $this->esGratis;
+        return $this->es_gratis;
     }
 
     /**
-     * Set textoEntradas
+     * Set entradas
      *
-     * @param string $textoEntradas
-     * @return Concierto
+     * @param string $entradas
      */
-    public function setTextoEntradas($textoEntradas)
+    public function setEntradas($entradas)
     {
-        $this->textoEntradas = $textoEntradas;
-    
-        return $this;
+        $this->entradas = $entradas;
     }
 
     /**
-     * Get textoEntradas
+     * Get entradas
      *
      * @return string 
      */
-    public function getTextoEntradas()
+    public function getEntradas()
     {
-        return $this->textoEntradas;
+        return $this->entradas;
     }
 
     /**
      * Set programa
      *
      * @param string $programa
-     * @return Concierto
      */
     public function setPrograma($programa)
     {
         $this->programa = $programa;
-    
-        return $this;
     }
 
     /**
@@ -283,20 +296,17 @@ class Concierto
     /**
      * Set director
      *
-     * @param \Amcb\FrontendBundle\Entity\Miembro $director
-     * @return Concierto
+     * @param string $director
      */
-    public function setDirector(\Amcb\FrontendBundle\Entity\Miembro $director)
+    public function setDirector($director)
     {
         $this->director = $director;
-    
-        return $this;
     }
 
     /**
      * Get director
      *
-     * @return \Amcb\FrontendBundle\Entity\Miembro Director 
+     * @return string 
      */
     public function getDirector()
     {

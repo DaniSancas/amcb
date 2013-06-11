@@ -5,10 +5,14 @@
 security:
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
+        Amcb\CommonBundle\Entity\Miembro:
+            algorithm: sha512
+            encode_as_base64: true
+            iterations: 10
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_ADMIN:       [ROLE_USUARIO]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN]
 
     providers:
         in_memory:

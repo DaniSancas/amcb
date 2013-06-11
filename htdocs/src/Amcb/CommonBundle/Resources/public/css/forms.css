@@ -40,7 +40,8 @@ form p.ayuda {
 }
 
 form input[type="submit"] {
-    /*margin: 1em 0;*/
+    padding: 5px 10px;
+    margin: 0px 2px;
 }
 form input.largo {
     width: 500px;

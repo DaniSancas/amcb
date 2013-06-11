@@ -30,8 +30,7 @@ Concierto:
     venta_entradas: { type: string(255) }
     programa:       { type: string(5000) }
     direccion_id:   { type: integer(2), notnull: true, unsigned: true }
-  relations:
-     Direccion:  { onDelete: CASCADE, local: direccion_id, foreign: miembro_id }
+    # Un combo con 3 opciones. Fácil y sencillo
     
 Critica:
   columns:
