@@ -1,0 +1,37 @@
+/* FIX GENERAL PARA UTILIZAR CON SONATA ADMIN BUNDLE */
+
+
+/* Editor CKE en vista Edit de Sonata */
+div.cke_chrome{
+  display: inline-block;
+}
+
+/*form > div:first-child > ul:first-child,*/ /* mensajes de error globales */
+.sonata-bc form fieldset div > * > ul:first-child,           /* mensajes de error de cada campo */
+.sonata-bc form fieldset label + ul {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    list-style: none;
+    margin: 0 0 1em;
+    padding: .2em;
+}
+form fieldset > div:first-child > ul:first-child li,
+form fieldset div > * > ul:first-child li,
+form fieldset label + ul li {
+    margin: 0;
+    padding: .2em;
+}
+form fieldset > div:first-child > ul:first-child li + li,
+form fieldset div > * > ul:first-child li + li,
+form fieldset label + ul li + li {
+    margin-top: .5em;
+}
+
+fieldset .sonata-ba-collapsed-fields > div{
+  overflow: auto;
+}
+
+fieldset .sonata-ba-collapsed-fields > div > label{
+  padding-right: 15px;
+}

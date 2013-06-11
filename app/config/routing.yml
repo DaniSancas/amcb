@@ -9,3 +9,16 @@ frontend_miembro:
 common:
     resource: "@CommonBundle/Resources/config/routing.yml"
     prefix:   /
+
+common_admin:
+    resource: "@CommonBundle/Resources/config/sonata_routing.yml"
+    prefix:   /admin
+    
+admin_index:
+    path:     /admin
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: sonata_admin_dashboard, permanent: true }
+    
+admin:
+    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
+    prefix:   /admin
+    

@@ -1,0 +1,11 @@
+services:
+    sonata.admin.concierto:
+        class: Amcb\CommonBundle\Sonata\ConciertoAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "General", label: "Conciertos" }
+        arguments:
+            - ~
+            - Amcb\CommonBundle\Entity\Concierto
+            - 'SonataAdminBundle:CRUD'
+        calls:
+            - [ setTranslationDomain, [Sonata\AdminBundle]]

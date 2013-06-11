@@ -25,14 +25,6 @@ class Concierto
     /**
      * @var string
      *
-     * @ORM\Column(name="titulo", type="string", length=100, nullable=false)
-     * @Assert\NotBlank()
-     */
-    private $titulo;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="tipo", type="string", length=50, nullable=false)
      * @Assert\NotBlank()
      */
@@ -62,12 +54,19 @@ class Concierto
      * @Assert\NotBlank()
      */
     private $noticia;
+    
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="es_visible", type="boolean", nullable=false)
+     * @Assert\NotNull()
+     */
+    private $es_visible;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="maps", type="string", length=255, nullable=false)
-     * @Assert\NotNull()
+     * @ORM\Column(name="maps", type="string", length=255, nullable=true)
      */
     private $maps;
 
@@ -82,26 +81,46 @@ class Concierto
     /**
      * @var string
      *
-     * @ORM\Column(name="texto_entradas", type="text", length=1000, nullable=false)
-     * @Assert\NotNull()
+     * @ORM\Column(name="texto_entradas", type="text", length=1000, nullable=true)
      */
     private $entradas;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="programa", type="text", length=5000, nullable=false)
-     * @Assert\NotNull()
+     * @ORM\Column(name="programa", type="text", length=5000, nullable=true)
      */
     private $programa;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="director", type="string", length=255, nullable=false)
+     * @ORM\Column(name="direccion", type="string", length=255, nullable=false)
      * @Assert\NotBlank()
      */
-    private $director;
+    private $direccion;
+    
+    /**
+     * Object constructor
+     * 
+     */
+    public function __construct()
+    {
+        $this->fecha = new \DateTime('next saturday 20:00');
+        $this->es_visible = true;
+        $this->es_gratis = true;
+        $this->direccion = 'Paula Pérez Bueno';
+    }
+    
+    /**
+     * Get object name
+     *
+     * @return string 
+     */
+    public function __toString()
+    {
+        return ($this->getNoticia()) ? : '';
+    }
 
     /**
      * Get id
@@ -111,26 +130,6 @@ class Concierto
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set titulo
-     *
-     * @param string $titulo
-     */
-    public function setTitulo($titulo)
-    {
-        $this->titulo = $titulo;
-    }
-
-    /**
-     * Get titulo
-     *
-     * @return string 
-     */
-    public function getTitulo()
-    {
-        return $this->titulo;
     }
 
     /**
@@ -211,6 +210,26 @@ class Concierto
     public function getNoticia()
     {
         return $this->noticia;
+    }
+    
+    /**
+     * Set es_visible
+     *
+     * @param boolean $esVisible
+     */
+    public function setEsVisible($esVisible)
+    {
+        $this->es_visible = $esVisible;
+    }
+
+    /**
+     * Get es_visible
+     *
+     * @return boolean 
+     */
+    public function getEsVisible()
+    {
+        return $this->es_visible;
     }
 
     /**
@@ -294,22 +313,22 @@ class Concierto
     }
 
     /**
-     * Set director
+     * Set direccion
      *
-     * @param string $director
+     * @param string $direccion
      */
-    public function setDirector($director)
+    public function setDireccion($direccion)
     {
-        $this->director = $director;
+        $this->direccion = $direccion;
     }
 
     /**
-     * Get director
+     * Get direccion
      *
      * @return string 
      */
-    public function getDirector()
+    public function getDireccion()
     {
-        return $this->director;
+        return $this->direccion;
     }
 }
