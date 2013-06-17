@@ -1,0 +1,24 @@
+miembros:
+    pattern:  /
+    defaults: { _controller: FrontendBundle:Miembro:index }
+
+coro:
+    pattern:  /coro
+    defaults: { _controller: FrontendBundle:Miembro:coro }
+
+orquesta:
+    pattern:  /orquesta
+    defaults: { _controller: FrontendBundle:Miembro:orquesta }
+
+direccion:
+    pattern:  /direccion
+    defaults: { _controller: FrontendBundle:Miembro:direccion }
+
+juntaDirectiva:
+    pattern:  /junta-directiva
+    defaults: { _controller: FrontendBundle:Miembro:junta }
+
+
+ficha_paula:
+    pattern:  /paula-perez
+    defaults: { _controller: FrontendBundle:Miembro:direccionPaula }

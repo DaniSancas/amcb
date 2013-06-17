@@ -1,0 +1,11 @@
+conciertos:
+    pattern:  /conciertos/proximos
+    defaults: { _controller: FrontendBundle:Concierto:index }
+
+archivo_conciertos:
+    pattern:  /conciertos/archivo
+    defaults: { _controller: FrontendBundle:Concierto:archivo }
+
+mostrar_concierto:
+    pattern:  /concierto/{fecha_corta}/{slug}/{id}
+    defaults: { _controller: FrontendBundle:Concierto:mostrar }

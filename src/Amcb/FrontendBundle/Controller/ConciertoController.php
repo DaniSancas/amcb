@@ -5,7 +5,7 @@ namespace Amcb\FrontendBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class MiembrosController extends Controller
+class ConciertoController extends Controller
 {
     /**
      * 
@@ -13,14 +13,16 @@ class MiembrosController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $conciertos = $this->getDoctrine()->getManager()->getRepository('CommonBundle:Concierto')->findUltimos();
+
+        return array('conciertos' => $conciertos);
     }
     
     /**
      * 
      * @Template()
      */
-    public function coroAction()
+    public function archivoAction()
     {
         return array();
     }
@@ -29,25 +31,7 @@ class MiembrosController extends Controller
      * 
      * @Template()
      */
-    public function orquestaAction()
-    {
-        return array();
-    }
-    
-    /**
-     * 
-     * @Template()
-     */
-    public function direccionAction()
-    {
-        return array();
-    }
-    
-    /**
-     * 
-     * @Template()
-     */
-    public function juntaAction()
+    public function mostrarAction()
     {
         return array();
     }

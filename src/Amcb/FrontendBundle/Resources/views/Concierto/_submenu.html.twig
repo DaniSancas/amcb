@@ -1,0 +1,6 @@
+<div id="submenu-wrapper">
+  <ul>
+    <li class="{% if get_action_name() == 'index' %}activo{% endif %}" ><a href="{{ url('conciertos') }}">Próximos conciertos</a></li>
+    <li class="{% if get_action_name() == 'archivo' %}activo{% endif %}" ><a href="{{ url('archivo_conciertos') }}">Archivo de conciertos</a></li>
+  </ul>
+</div>
