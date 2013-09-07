@@ -16,7 +16,7 @@ class ConciertoRepository extends EntityRepository
     public function findUltimos($limit = 10)
     {
         $q = $this->getEntityManager()->createQuery(
-            $this->incFromEntradaWhereVisible().
+            $this->incFromConciertoWhereVisible().
             'AND c.fecha > CURRENT_DATE()'.
             'ORDER BY c.fecha ASC');
         
@@ -24,6 +24,40 @@ class ConciertoRepository extends EntityRepository
         $q->setMaxResults($limit);
             
         return $q->getResult();
+    }
+    
+    
+    
+    //--------------------------------------------------------------------------
+    
+    /**
+     * Incluye el <code>SELECT FROM Concierto WHERE Visible</code> de la DQL.
+     * 
+     * @return string
+     */
+    private function incFromConciertoWhereVisible()
+    {
+        return $this->incFromConcierto().$this->incWhereVisible();
+    }
+    
+    /**
+     * Incluye el <code>SELECT FROM Concierto</code> de la DQL.
+     * 
+     * @return string
+     */
+    private function incFromConcierto()
+    {
+        return 'SELECT c FROM CommonBundle:Concierto c ';
+    }
+    
+    /**
+     * Incluye el <code>WHERE Visible</code> de la DQL
+     * 
+     * @return string
+     */
+    private function incWhereVisible()
+    {
+        return 'WHERE c.es_visible = :es_visible ';
     }
 }
 

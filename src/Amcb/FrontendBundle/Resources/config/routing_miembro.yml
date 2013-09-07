@@ -18,7 +18,14 @@ juntaDirectiva:
     pattern:  /junta-directiva
     defaults: { _controller: FrontendBundle:Miembro:junta }
 
+ficha_maria_montes:
+    pattern:  /maria-montes
+    defaults: { _controller: FrontendBundle:Miembro:mariaMontes }
+    
+ficha_elena_roldan:
+    pattern:  /elena-roldan
+    defaults: { _controller: FrontendBundle:Miembro:elenaRoldan }
 
-ficha_paula:
-    pattern:  /paula-perez
-    defaults: { _controller: FrontendBundle:Miembro:direccionPaula }
+ficha_txaber_fernandez:
+    pattern:  /txaber-fernandez
+    defaults: { _controller: FrontendBundle:Miembro:txaberFernandez }

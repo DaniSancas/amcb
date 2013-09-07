@@ -7,20 +7,38 @@
 {% block content %}
   
 <h1>Asociación de Música de Cámara de Bilbao</h1>
-<div id="contenido-inicio">
-  
 
-  <div class="imagen-inicio">
-    <img src="{{ asset('bundles/common/images/portada.jpg') }}" alt="Asociación de Música de Cámara de Bilbao">
+<div class="overflow">
+  <div id="contenido-inicio">
+
+  
+    
+    <div class="imagen-inicio">
+      <img src="{{ asset('bundles/common/images/portada.jpg') }}" alt="Asociación de Música de Cámara de Bilbao">
+    </div>
+
+    <p><em>La Asociación de Música de Cámara de Bilbao</em> nace en el año 1977 como agrupación coral hasta la consolidación de la orquesta. Desde ese mismo año comienzan las actuaciones de la agrupación, teniendo lugar, sobre todo, en Bilbao y alrededores, por el compromiso con el público de su entorno, pero además, actuando en diferentes comunidades de España.</p>
+
+    <p>La Asociación de Música de Cámara de Bilbao es una organización que, en sus más de treinta años de andadura ha mantenido intacta una de sus cualidades más peculiares, como ha sido aunar en una agrupación <em>un Coro y una Orquesta de Cámara</em> de forma permanente y estable. Esta característica nos diferencia de numerosas agrupaciones que son estrictamente corales y de otras, ya menos numerosas, que son puramente orquestales.</p>
   </div>
 
-  <p><em>La Asociación de Música de Cámara de Bilbao</em> nace en el año 1977 como agrupación coral hasta la consolidación de la orquesta. Desde ese mismo año comienzan las actuaciones de la agrupación, teniendo lugar, sobre todo, en Bilbao y alrededores, por el compromiso con el público de su entorno, pero además, actuando en diferentes comunidades de España.</p>
-
-  <p>La Asociación de Música de Cámara de Bilbao es una organización que, en sus más de treinta años de andadura ha mantenido intacta una de sus cualidades más peculiares, como ha sido aunar en una agrupación <em>un Coro y una Orquesta de Cámara</em> de forma permanente y estable. Esta característica nos diferencia de numerosas agrupaciones que son estrictamente corales y de otras, ya menos numerosas, que son puramente orquestales.</p>
-</div>
+  <div id="social-right">
+    <div class="fb-like-box" data-href="http://www.facebook.com/coro.orquesta.bilbao" data-width="292" data-show-faces="true" data-colorscheme="light" data-stream="true" data-header="true" data-border-color="#900" ></div>
+  </div>
   
-<div id="social-right">
-  <div class="fb-like-box" data-href="http://www.facebook.com/coro.orquesta.bilbao" data-width="292" data-show-faces="true" data-colorscheme="light" data-stream="true" data-header="true" data-border-color="#900" ></div>
+</div>
+
+<hr />
+
+<div class="portada-adds-wrapper">
+  
+  <div>Entra en <a href="{{ path('conciertos') }}" title="Próximos conciertos">Conciertos</a> para ver fechas y lugares de nuestras actuaciones.</div>
+  
+  <div>Pincha en <a href="{{ path('escuchanos') }}" title="Vídeos de actuaciones">Escúchanos</a> para oir nuestras interpretaciones.</div>
+  
+  <div>Para hacerse socio, cantar o tocar en la orquesta <a href="{{ path('contacto') }}" title="Información de contacto">contacta</a> con nosotros.</div>
+  
+  
 </div>
 
 {% endblock %}

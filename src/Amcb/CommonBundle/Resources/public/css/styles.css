@@ -141,7 +141,7 @@ html > body #body-wrapper{
 #body-wrapper hr{
   color: #AAA;
   background: #AAA;
-  margin: 2em 0em;
+  margin: 1em 0em;
 }
 
 
@@ -356,4 +356,9 @@ div.flash-message.error{
 
 .overflow{
   overflow: auto;
+}
+
+img.parrafo-izq{
+  float: left;
+  margin: 0em 1em 0.75em 0em;
 }

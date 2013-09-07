@@ -110,3 +110,20 @@ div.galeria .foto-wrapper a{
 div.galeria .foto-wrapper img{
   
 }
+
+div.portada-adds-wrapper{
+  overflow: auto;
+  text-align: center;
+}
+
+div.portada-adds-wrapper > div{
+  float: left;
+  padding: 0.7em;
+  border-left: 0.1em solid #CCC;
+  width: 19.6em;
+  height: 2.5em;
+}
+
+div.portada-adds-wrapper > div:first-child{
+  border: none;
+}

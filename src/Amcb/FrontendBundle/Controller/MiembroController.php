@@ -51,5 +51,32 @@ class MiembroController extends Controller
     {
         return array();
     }
+    
+    /**
+     * 
+     * @Template()
+     */
+    public function mariaMontesAction()
+    {
+        return array();
+    }
+    
+    /**
+     * 
+     * @Template()
+     */
+    public function elenaRoldanAction()
+    {
+        return array();
+    }
+    
+    /**
+     * 
+     * @Template()
+     */
+    public function txaberFernandezAction()
+    {
+        return array();
+    }
 }
 ?>
