@@ -13,7 +13,7 @@ class ConciertoController extends Controller
      */
     public function indexAction()
     {
-        $conciertos = $this->getDoctrine()->getManager()->getRepository('CommonBundle:Concierto')->findUltimos();
+        $conciertos = $this->getDoctrine()->getManager()->getRepository('CommonBundle:Concierto')->getProximos();
 
         return array('conciertos' => $conciertos);
     }
@@ -24,7 +24,9 @@ class ConciertoController extends Controller
      */
     public function archivoAction()
     {
-        return array();
+        $conciertos = $this->getDoctrine()->getManager()->getRepository('CommonBundle:Concierto')->getPasados();
+
+        return array('conciertos' => $conciertos);
     }
     
     /**

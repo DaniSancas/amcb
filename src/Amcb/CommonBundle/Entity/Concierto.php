@@ -4,6 +4,8 @@ namespace Amcb\CommonBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Amcb\CommonBundle\Library\Util;
+use Amcb\CommonBundle\Twig\Extension\SpanishDateTimeExtension;
 
 /**
  * Concierto
@@ -120,6 +122,38 @@ class Concierto
     public function __toString()
     {
         return ($this->getNoticia()) ? : '';
+    }
+    
+    /**
+     * Devuelve el nombre del concierto en modo 'slug'.
+     * 
+     * @return string
+     */
+    public function getSlug()
+    {
+        if($this->getNoticia())
+            $slug = Util::getSlug($this->getNoticia());
+        elseif($this->getEsGratis())
+            $slug = Util::getSlug($this->getTipo().' gratuito');
+        else
+            $slug = Util::getSlug($this->getTipo());
+        
+        return $slug;
+    }
+    
+    /**
+     * Devuelve la fecha en formato fecha corta.
+     * 
+     * Por defecto se pasa la cadena a slug, para ser utilizada en URLs.
+     * 
+     * @return string
+     */
+    public function getFechaLarga($slugify = true)
+    {
+        $filter = new SpanishDateTimeExtension();
+        $fechaHora = $filter->fechaLargaFilter($this->getFecha());
+        
+        return ($slugify) ? Util::getSlug($fechaHora) : $fechaHora;
     }
 
     /**

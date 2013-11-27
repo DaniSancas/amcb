@@ -7,5 +7,5 @@ archivo_conciertos:
     defaults: { _controller: FrontendBundle:Concierto:archivo }
 
 mostrar_concierto:
-    pattern:  /concierto/{fecha_corta}/{slug}/{id}
+    pattern:  /concierto/{fecha_larga}/{slug}/{id}
     defaults: { _controller: FrontendBundle:Concierto:mostrar }

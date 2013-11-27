@@ -7,3 +7,7 @@ services:
             - [setRequest, ["@?request="]]
         tags:
             - { name: twig.extension }
+    amcb.twig.spanish_datetime_extension:
+        class: Amcb\CommonBundle\Twig\Extension\SpanishDateTimeExtension
+        tags:
+            - { name: twig.extension }

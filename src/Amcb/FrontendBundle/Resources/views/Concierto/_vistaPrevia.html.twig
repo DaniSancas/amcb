@@ -1,0 +1,34 @@
+<div class="vista-previa-concierto">
+  
+  <h2>{{ concierto.noticia }}</h2>
+  
+  <div class="izq">
+    <span>Tipo de evento</span>
+    <span>Fecha</span>
+    <span>Lugar</span>
+    {% if(concierto.maps)%}
+    <span>Mapa</span>    
+    {% endif %}
+    <span>Más información</span>   
+    {% if(concierto.entradas or concierto.programa )%}
+    
+    {% endif %}
+  
+  
+  </div>
+  
+  <div class="dcha">
+    <span>{{ concierto.tipo }}<strong> {{ (concierto.esGratis) ? '(gratuito)' : '' }}</strong></span>
+    <span>{{ concierto.fecha|fechahora_larga() }}</span>
+    <span>{{ concierto.lugar }}</span>
+    {% if(concierto.maps)%}
+    <span><a href="{{ concierto.maps }}" target="_blank" rel="nofollow">Ver en Google Maps&trade;</a></span>    
+    {% endif %}
+    {% if(concierto.entradas or concierto.programa )%}
+    <span><a href="{{ path('mostrar_concierto', {'fecha_larga': concierto.fechaLarga, 'slug': concierto.slug, 'id': concierto.id}) }}">Ver información completa</a></span>
+    {% else %}
+    <span><strong>Próximamente se ampliará más información</strong></span>
+    {% endif %}
+  </div>
+
+</div>
