@@ -12,11 +12,19 @@ class SpanishDateTimeExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
+            new \Twig_SimpleFilter('fecha_muy_corta', array($this, 'fechaMuyCortaFilter')),
             new \Twig_SimpleFilter('fecha_corta', array($this, 'fechaCortaFilter')),
             new \Twig_SimpleFilter('fecha_larga', array($this, 'fechaLargaFilter')),
             new \Twig_SimpleFilter('fechahora_corta', array($this, 'fechaHoraCortaFilter')),
             new \Twig_SimpleFilter('fechahora_larga', array($this, 'fechaHoraLargaFilter'))
         );
+    }
+    
+    public function fechaMuyCortaFilter($d)
+    {
+        $this->formater($d, $semana, $mes);
+        
+        return strftime("%d ".$mes, $d);
     }
 
     public function fechaCortaFilter($d)

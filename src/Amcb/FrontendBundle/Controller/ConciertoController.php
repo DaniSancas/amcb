@@ -33,9 +33,11 @@ class ConciertoController extends Controller
      * 
      * @Template()
      */
-    public function mostrarAction()
+    public function mostrarAction($id)
     {
-        return array();
+        $concierto = $this->getDoctrine()->getManager()->getRepository('CommonBundle:Concierto')->find($id);
+
+        return array('concierto' => $concierto);
     }
 }
 ?>

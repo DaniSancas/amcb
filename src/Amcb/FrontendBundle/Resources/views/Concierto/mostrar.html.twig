@@ -1,0 +1,49 @@
+{% extends "FrontendBundle::layout.html.twig" %}
+
+{% block title %}{{ concierto.tipo }}. {{ concierto.fecha|fecha_larga()|capitalize }} {% endblock %}
+
+{% block content %}
+<h1>{{ concierto.noticia }}</h1>
+
+<div class="vista-concierto">
+  
+  <div class="izq">
+    <span>Tipo de evento</span>
+    <span>Fecha</span>
+    <span>Lugar</span>
+    {% if(concierto.maps)%}
+    <span>Mapa</span>    
+    {% endif %}
+    <span>Dirección</span>
+  
+  
+  </div>
+  
+  <div class="dcha">
+    <span>{{ concierto.tipo }}<strong> {{ (concierto.esGratis) ? '(gratuito)' : '' }}</strong></span>
+    <span>{{ concierto.fecha|fechahora_larga() }}</span>
+    <span>{{ concierto.lugar }}</span>
+    {% if(concierto.maps)%}
+    <span><a href="{{ concierto.maps }}" target="_blank" rel="nofollow">Ver en Google Maps&trade;</a></span>    
+    {% endif %}
+    <span>{{ concierto.direccion }}</span>
+  </div>
+  
+</div>
+
+{% if(concierto.entradas)%}
+  <h2>Entradas</h2> 
+
+  {{ concierto.entradas|raw }}
+{% endif %}
+
+<h2>Programa</h2>
+
+{% if(concierto.programa)%}
+  {{ concierto.programa }}
+{% else %}
+  <p><strong>Todavía no está disponible el programa del concierto. Ampliaremos información lo antes posible. Disculpen las molestias.</strong></p>
+{% endif %}
+
+
+{% endblock %}

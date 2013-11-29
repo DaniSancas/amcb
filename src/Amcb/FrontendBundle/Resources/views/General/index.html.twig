@@ -19,12 +19,21 @@
     
     <h2>Próximos conciertos</h2>
     
+    {% if(conciertos) %}
     
-    <p>...o también puede ver el listado de todos los <a href="{{ path('conciertos') }}">próximos conciertos</a>.</p>
+      <ul class="lista-noticias-conciertos">
+      {% for concierto in conciertos %}
+          <li><a href="{{ path('mostrar_concierto', {'fecha_larga': concierto.fechaLarga, 'slug': concierto.slug, 'id': concierto.id}) }}">{{ concierto.fecha|fecha_muy_corta() }}: {{ concierto.noticia }}</a></li>
+      {% endfor %}
+      </ul>
+      
+      <p>...o también puede ver el listado de todos los <a href="{{ path('conciertos') }}">próximos conciertos</a>.</p>
     
-    {# En caso de no haber conciertos a la vista #}
-    <p><strong>Todavía no hay fechas establecidas a corto plazo para <a href="{{ path('conciertos') }}">próximos conciertos</a>.</strong></p>
-
+    {% else %}
+      {# En caso de no haber conciertos a la vista #}
+      <p><strong>Todavía no hay fechas establecidas a corto plazo para <a href="{{ path('conciertos') }}">próximos conciertos</a>.</strong></p>
+    {% endif %}
+    
   </div>
 
   <div id="social-right">

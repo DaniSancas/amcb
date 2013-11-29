@@ -1,3 +1,7 @@
+rutas_migracion:
+    resource: "@FrontendBundle/Resources/config/routing_migracion.yml"
+    prefix:   /
+
 frontend_general:
     resource: "@FrontendBundle/Resources/config/routing_general.yml"
     prefix:   /

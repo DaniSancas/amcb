@@ -145,3 +145,7 @@ div.video-wrapper{
 div.video-wrapper > iframe{
   padding: 1em 1.5em;
 }
+
+ul.lista-noticias-conciertos li{
+  line-height: 1.5em;
+}

@@ -1,6 +1,6 @@
-<div class="vista-previa-concierto">
+<div class="vista-concierto">
   
-  <h2>{{ concierto.noticia }}</h2>
+  <h2><a href="{{ path('mostrar_concierto', {'fecha_larga': concierto.fechaLarga, 'slug': concierto.slug, 'id': concierto.id}) }}">{{ concierto.noticia }}</a></h2>
   
   <div class="izq">
     <span>Tipo de evento</span>

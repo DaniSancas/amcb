@@ -15,7 +15,9 @@ class GeneralController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $conciertos = $this->getDoctrine()->getManager()->getRepository('CommonBundle:Concierto')->getProximos(5);
+
+        return array('conciertos' => $conciertos);
     }
     
     /**
