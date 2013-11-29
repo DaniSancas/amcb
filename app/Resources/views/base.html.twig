@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="language" content="es" />
-    <title>{% block title %}AMCB - Asociación de Música de Cámara de Bilbao{% endblock %}</title>
+    <title>{% if block('title') %}{% block title %}{% endblock %} - AMCB - Asociación de Música de Cámara de Bilbao{% else %}AMCB - Asociación de Música de Cámara de Bilbao{% endif %}</title>
     {% block default_stylesheets %}{% endblock %}
     {% block default_javascripts %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />

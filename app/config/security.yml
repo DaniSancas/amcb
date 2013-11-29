@@ -28,7 +28,7 @@ security:
             logout:
                 path:   admin_logout
                 target: homepage
-                invalidate_session: true
+                invalidate_session: false
         frontend:
             pattern: ^/*
             anonymous: ~

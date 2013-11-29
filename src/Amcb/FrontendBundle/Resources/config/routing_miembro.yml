@@ -12,7 +12,7 @@ orquesta:
 
 direccion:
     pattern:  /direccion
-    defaults: { _controller: FrontendBundle:Miembro:direccion }
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: ficha_paula_perez }
 
 juntaDirectiva:
     pattern:  /junta-directiva
@@ -25,6 +25,10 @@ ficha_maria_montes:
 ficha_elena_roldan:
     pattern:  /elena-roldan
     defaults: { _controller: FrontendBundle:Miembro:elenaRoldan }
+    
+ficha_paula_perez:
+    pattern:  /paula-perez
+    defaults: { _controller: FrontendBundle:Miembro:paulaPerez }
 
 ficha_txaber_fernandez:
     pattern:  /txaber-fernandez

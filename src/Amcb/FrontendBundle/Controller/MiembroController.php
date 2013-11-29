@@ -38,15 +38,6 @@ class MiembroController extends Controller
      * 
      * @Template()
      */
-    public function direccionAction()
-    {
-        return array();
-    }
-    
-    /**
-     * 
-     * @Template()
-     */
     public function juntaAction()
     {
         return array();
@@ -66,6 +57,15 @@ class MiembroController extends Controller
      * @Template()
      */
     public function elenaRoldanAction()
+    {
+        return array();
+    }
+    
+    /**
+     * 
+     * @Template()
+     */
+    public function paulaPerezAction()
     {
         return array();
     }

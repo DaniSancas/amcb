@@ -1,6 +1,6 @@
 div#content-wrapper div.imagen-inicio{
   text-align: center;
-  margin: 1em 0em;
+  margin: 1.5em 0em;
 }
 
 div#content-wrapper div.imagen-inicio img{
@@ -36,18 +36,21 @@ div#content-wrapper div.info-contacto-body{
 }
 
 div#contactos{
-  
+  overflow: auto;
+  padding: 0.75em 0em;
 }
 
 div#contactos div.div-contacto-wrapper{
   /*width: 12.5em;*/
-  float: left;
+  
+  /*float: left;
   display: inline-block;
   height: 6.5em;
   border: 0.1em solid #CCC;
   margin: 0.3em;
   padding: 0.5em 1em;
-  border-radius: 0.3em;
+  border-radius: 0.3em;*/
+  
   /*background: #FAFAFA;
   background: -webkit-linear-gradient(#EEE, #FFF 35%);
   background: -moz-linear-gradient(#EEE, #FFF 35%);
@@ -65,9 +68,9 @@ div#contactos div.div-contacto-wrapper div.div-contacto-info{
   line-height: 1.5em;
 }
 
-div#contactos div.div-contacto-wrapper hr{
+/*div#contactos div.div-contacto-wrapper hr{
   margin: 0.5em 0em;
-}
+}*/
 
 div#contenido-inicio{
   padding-right: 1em;
@@ -111,7 +114,7 @@ div.galeria .foto-wrapper img{
   
 }
 
-div.portada-adds-wrapper{
+div.portada-adds-wrapper, div#contactos{
   overflow: auto;
   text-align: center;
 }
@@ -124,6 +127,21 @@ div.portada-adds-wrapper > div{
   height: 2.5em;
 }
 
-div.portada-adds-wrapper > div:first-child{
+div#contactos > div{
+  float: left;
+  padding: 0.7em;
+  border-left: 0.1em solid #CCC;
+  width: 19.6em;
+}
+
+div.portada-adds-wrapper > div:first-child, div#contactos > div:first-child{
   border: none;
+}
+
+div.video-wrapper{
+  margin-top: 2em;
+}
+
+div.video-wrapper > iframe{
+  padding: 1em 1.5em;
 }

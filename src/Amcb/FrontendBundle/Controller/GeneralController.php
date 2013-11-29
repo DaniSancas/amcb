@@ -91,7 +91,7 @@ class GeneralController extends Controller
                     ->setTo(ContactoType::getEmailDestinatario($form->get('destinatario')->getData(), $this->container))
                     ->setBody(
                         $this->renderView(
-                            'FrontendBundle:Inicio:emailContacto.txt.twig',
+                            'FrontendBundle:General:emailContacto.txt.twig',
                             array(
                                 'nombre' => $form->get('nombre')->getData(),
                                 'apellidos' => $form->get('apellidos')->getData(),
