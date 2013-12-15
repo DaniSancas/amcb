@@ -33,3 +33,7 @@ ficha_paula_perez:
 ficha_txaber_fernandez:
     pattern:  /txaber-fernandez
     defaults: { _controller: FrontendBundle:Miembro:txaberFernandez }
+
+ficha_alain_sancho:
+    pattern:  /alain-sancho
+    defaults: { _controller: FrontendBundle:Miembro:alainSancho }

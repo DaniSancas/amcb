@@ -42,3 +42,33 @@ ul.lista-junta{
   padding: 1em 0em;
   line-height: 1.5em;
 }
+
+div#miembros-wrapper{
+  overflow: auto;
+}
+
+div#miembros-wrapper div.miembros-opciones-cuadrados{
+  width: 30em;
+  float: left;
+  margin: 1em;
+}
+
+div#miembros-wrapper div.miembros-opciones-cuadrados img{
+  float: left;
+}
+
+div#miembros-wrapper > div.miembros-opciones-cuadrados > div{
+  width: 20em;
+  float: left;
+  overflow: auto;
+}
+
+div#miembros-wrapper div.miembros-opciones-cuadrados h2{
+  margin: 0.5em;
+  font-size: 1.2em;
+}
+
+div#miembros-wrapper div.miembros-opciones-cuadrados p{
+  margin: 0.5em 0em 1em 1em;
+  font-size: 0.9em;
+}
