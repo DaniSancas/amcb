@@ -20,3 +20,16 @@ div.vista-concierto .dcha{
   border-left: 1px solid #CCC;
   padding-left: 20px;
 }
+
+div.paginacion-conciertos{
+  padding: 1em 0em;
+}
+
+div.paginacion-conciertos a{
+  padding: 0.5em;
+}
+
+div.paginacion-conciertos a.seleccionado{
+  background: #F3F3F3;
+  border-radius: 0.3em;
+}

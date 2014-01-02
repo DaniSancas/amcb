@@ -5,6 +5,12 @@
 {% block content %}
 <h1>Archivo de conciertos</h1>
 
+<div class="paginacion-conciertos"> Paginación por años:
+  {% for pagina in paginas %}
+    <a href="{{ path("archivo_conciertos_pag", {'pag': pagina.year}) }}" class="{{ (pagina.year == actual) ? "seleccionado" : "" }}" title="Ver conciertos del año {{ pagina.year }}">{{ pagina.year }}</a>
+  {% endfor %}
+</div>
+
 {% for concierto in conciertos %}
 
 {% include 'FrontendBundle:Concierto:_vistaPrevia.html.twig' %}

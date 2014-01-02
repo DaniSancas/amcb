@@ -66,8 +66,10 @@ migracion_programas:
     pattern:  /programas.php
     defaults: { _controller: FrontendBundle:Migracion:programas }
 
-# No funciona bien
 migracion_pdf:
     pattern:  /pdf/{fichero}
     defaults: { _controller: FrontendBundle:Migracion:pdf }
-    
+
+migracion_miembros:
+    pattern:  /miembros.php
+    defaults: { _controller: FrontendBundle:Migracion:fichaMiembro }

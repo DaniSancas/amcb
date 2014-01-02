@@ -149,3 +149,29 @@ div.video-wrapper > iframe{
 ul.lista-noticias-conciertos li{
   line-height: 1.5em;
 }
+
+table.repertorio-general{
+  margin: 1em 0;
+}
+
+table.repertorio-general tr{
+  border-bottom: 1px dotted #EEE;
+}
+
+table.repertorio-general tr:hover{
+  background: #EEE;
+  background: -webkit-linear-gradient(#EEE, #DDD);
+  background: -moz-linear-gradient(#EEE, #DDD);
+  background: -o-linear-gradient(#EEE, #DDD);
+  background: -ms-linear-gradient(#EEE, #DDD);
+  background: linear-gradient(#EEE, #DDD);
+}
+
+table.repertorio-general th{
+  font-weight: bold;
+  text-align: left;
+}
+
+table.repertorio-general tr td, table.repertorio-general tr th{
+  padding: 0.5em;
+}

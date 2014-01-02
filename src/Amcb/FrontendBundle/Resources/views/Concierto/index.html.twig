@@ -5,10 +5,19 @@
 {% block content %}
 <h1>Calendario de conciertos</h1>
 
-{% for concierto in conciertos %}
+{% if conciertos|length > 0 %}
 
-{% include 'FrontendBundle:Concierto:_vistaPrevia.html.twig' %}
+  {% for concierto in conciertos %}
 
-{% endfor %}
+  {% include 'FrontendBundle:Concierto:_vistaPrevia.html.twig' %}
+
+  {% endfor %}
+
+{% else %}
+
+<p>Todavía no hay fechas establecidas a corto plazo para próximos conciertos.</p>
+<p>Si lo desea puede consultar nuestro <a href="{{ path('archivo_conciertos') }}">archivo de conciertos</a>.</p>
+
+{% endif %}
 
 {% endblock %}

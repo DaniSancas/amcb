@@ -8,6 +8,8 @@ class MigracionController extends Controller
 {
     /**
      * Acción que convierte urls del tipo <code>/programas.php?id=77&tag=concierto-de-camara-en-muskiz</code> en <code>/concierto/sabado-28-de-diciembre-de-2013/concierto-de-camara-en-sondika/77</code>
+     * 
+     * @return redirection Redirección a la acción deseada.
      */
     public function programasAction()
     {
@@ -26,11 +28,52 @@ class MigracionController extends Controller
         }
     }
     
+    /**
+     * Acción que redirige las peticiones de <code>/pdf/*</code> a su nueva ruta.
+     * 
+     * @return PDF File in PDF format.
+     */
     public function pdfAction()
     {
         $request = $this->get('request');
         
         return $this->redirect('/bundles/common/downloads/pdf/'.$request->get('fichero'), 301);
+    }
+    
+    /**
+     * Acción que redirige las urls del tipo <code>/miembros.php=ficha=Maria_Montes</code> en <code>/miembros/maria-montes</code>
+     * 
+     * @return redirection Redirección a la acción deseada.
+     */
+    public function fichaMiembroAction()
+    {
+        $request = $this->get('request');
+        
+        if(null === $request->get('ficha'))
+            return $this->redirect($this->generateUrl('miembros'));
+        
+        #throw new \Exception($request->get('ficha'));
+        switch($request->get('ficha'))
+        {
+            case "Maria_Montes":
+                return $this->redirect($this->generateUrl('ficha_maria_montes'));
+                break;
+            case "Elena_Roldan‎":
+                return $this->redirect($this->generateUrl('ficha_elena_roldan'));
+                break;
+            case "Paula_Perez":
+                return $this->redirect($this->generateUrl('ficha_paula_perez'));
+                break;
+            case "Txaber_Fernandez‎":
+                return $this->redirect($this->generateUrl('ficha_txaber_fernandez'));
+                break;
+            case "Alain_Sancho‎":
+                return $this->redirect($this->generateUrl('ficha_alain_sancho'));
+                break;
+            default:
+                return $this->redirect($this->generateUrl('miembros'));
+                break;
+        }
     }
 }
 ?>
