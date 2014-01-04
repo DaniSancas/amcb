@@ -1,8 +1,8 @@
 <div id="submenu-wrapper">
   <ul>
-    <li class="{% if get_action_name() == 'direccion' %}activo{% endif %}" ><a href="{{ url('direccion') }}">Dirección</a></li>
+    <li class="{% if (get_action_name() == 'direccion') or (get_action_name() == 'paulaPerez') %}activo{% endif %}" ><a href="{{ url('direccion') }}">Dirección</a></li>
     <li class="{% if get_action_name() == 'coro' %}activo{% endif %}" ><a href="{{ url('coro') }}">Coro</a></li>
     <li class="{% if get_action_name() == 'orquesta' %}activo{% endif %}" ><a href="{{ url('orquesta') }}">Orquesta</a></li>
-    <li class="{% if get_action_name() == 'juntaDirectiva' %}activo{% endif %}" ><a href="{{ url('juntaDirectiva') }}">Junta Directiva</a></li>
+    <li class="{% if get_action_name() == 'junta' %}activo{% endif %}" ><a href="{{ url('juntaDirectiva') }}">Junta Directiva</a></li>
   </ul>
 </div>

@@ -11,3 +11,8 @@ services:
         class: Amcb\CommonBundle\Twig\Extension\SpanishDateTimeExtension
         tags:
             - { name: twig.extension }
+    sonata.block.service.custom_buttons:
+        class: Amcb\CommonBundle\Block\CustomButtonsBlockService
+        arguments: [ "sonata.block.service.custom_buttons", "@templating" ]
+        tags:
+            - { name: sonata.block }
