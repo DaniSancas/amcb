@@ -34,16 +34,20 @@
 {% if(concierto.entradas)%}
   <h2>Entradas</h2> 
 
-  {{ concierto.entradas|raw }}
+  <div id="concierto-entradas-content">
+    {{ concierto.entradas|raw }}
+  </div>
 {% endif %}
 
 <h2>Programa</h2>
 
+<div id="concierto-programa-content">
 {% if(concierto.programa)%}
-  {{ concierto.programa }}
+  {{ concierto.programa|raw }}
 {% else %}
-  <p><strong>Todavía no está disponible el programa del concierto. Ampliaremos información lo antes posible. Disculpen las molestias.</strong></p>
+  <p><em>Todavía no está disponible el programa del concierto. Ampliaremos información lo antes posible. Disculpen las molestias.</em></p>
 {% endif %}
 
+  </div>
 
 {% endblock %}

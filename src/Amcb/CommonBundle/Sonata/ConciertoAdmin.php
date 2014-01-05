@@ -14,7 +14,7 @@ class ConciertoAdmin extends Admin
         $formMapper
             ->add('tipo')
             ->add('lugar')
-            ->add('fecha')
+            ->add('fecha', 'datetime', array('years' => range(2008, (date('Y') + 1)), 'minutes' => array(0, 15, 30, 45)))
             ->add('noticia')                
             ->add('es_visible', null,       array('required' => false))
             ->add('maps',       null,       array('required' => false))
@@ -41,7 +41,7 @@ class ConciertoAdmin extends Admin
         $listMapper
             ->addIdentifier('id')
             ->add('lugar')
-            ->add('fecha')
+            ->add('fecha', null, array('format' => 'D, d M y, H:i'))
             ->add('noticia')
             ->add('es_visible')
         ;

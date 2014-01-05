@@ -33,3 +33,31 @@ div.paginacion-conciertos a.seleccionado{
   background: #F3F3F3;
   border-radius: 0.3em;
 }
+
+/* Estilos del programa del concierto */
+#concierto-programa-content, #concierto-entradas-content{
+  margin-top: 1em;
+}
+
+
+#concierto-programa-content ul, #concierto-entradas-content ul{
+  list-style: disc;
+}
+
+#concierto-programa-content li, #concierto-entradas-content li{
+  margin-left: 40px;
+}
+
+#concierto-programa-content strong, #concierto-programa-content b, #concierto-entradas-content strong, #concierto-entradas-content b{
+  font-weight: bold;
+  font-style: normal;
+}
+
+#concierto-programa-content em, #concierto-programa-content i, #concierto-entradas-content em, #concierto-entradas-content i{
+  font-style: italic;
+  font-weight: normal;
+}
+
+#concierto-programa-content p, #concierto-entradas-content p{
+  margin: 1.2em 0em 0.8em 0em;
+}

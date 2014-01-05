@@ -27,7 +27,7 @@ class Concierto
     /**
      * @var string
      *
-     * @ORM\Column(name="tipo", type="string", length=50, nullable=false)
+     * @ORM\Column(name="tipo", type="string", length=100, nullable=false)
      * @Assert\NotBlank()
      */
     private $tipo;
@@ -35,7 +35,7 @@ class Concierto
     /**
      * @var string
      *
-     * @ORM\Column(name="lugar", type="string", length=50, nullable=false)
+     * @ORM\Column(name="lugar", type="string", length=100, nullable=false)
      * @Assert\NotBlank()
      */
     private $lugar;

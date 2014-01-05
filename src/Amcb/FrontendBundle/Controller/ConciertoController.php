@@ -4,7 +4,11 @@ namespace Amcb\FrontendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 
+/**
+ * @Cache(expires="+1 days", maxage="86400", smaxage="86400", public="true")
+ */
 class ConciertoController extends Controller
 {
     /**

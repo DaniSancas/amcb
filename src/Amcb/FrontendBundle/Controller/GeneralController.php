@@ -4,13 +4,19 @@ namespace Amcb\FrontendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use \Amcb\CommonBundle\Form\ContactoType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 
+use Amcb\CommonBundle\Form\ContactoType;
+
+/**
+ * @Cache(expires="+3 days", maxage="259200", smaxage="259200", public="true")
+ */
 class GeneralController extends Controller
 {
     /**
      * Acción que muestra la página de inicio.
      * 
+     * @Cache(maxage="60", smaxage="60", public="true")
      * @Template()
      */
     public function indexAction()
@@ -73,6 +79,7 @@ class GeneralController extends Controller
     /**
      * Acción que muestra y procesa el formulario de contacto.
      * 
+     * @Cache(expires="-1 days", maxage="0", smaxage="0", public="true")
      * @Template()
      */
     public function contactoAction()
