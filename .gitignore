@@ -1,7 +1,6 @@
 /nbproject
 
 /web/bundles/
-/app/bootstrap.php.cache
 /app/config/parameters.*
 /app/cache/*
 /app/logs/*
@@ -9,4 +8,6 @@
 /vendor/
 /bin/
 /composer.phar
+/Capfile
+*deploy.rb
 *.*~

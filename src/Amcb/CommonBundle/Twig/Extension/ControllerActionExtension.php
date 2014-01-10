@@ -51,7 +51,7 @@ class ControllerActionExtension extends \Twig_Extension
             $matches = array();
             preg_match($pattern, $this->request->get('_controller'), $matches);
 
-            return strtolower($matches[1]);
+            return (isset($matches[1])) ? strtolower($matches[1]) : '';
         }
         
     }

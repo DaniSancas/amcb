@@ -1,0 +1,20 @@
+{% extends "FrontendBundle::layout.html.twig" %}
+
+{% block content %}
+
+<div class="peque">
+
+    <h1>Error {{ status_code }} - {{ status_text }}</h1>
+
+    <h2>Error al procesar la página solicitada, no tiene permiso para acceder a ella o no existe.</h2>
+
+
+    <p><em>Descripción del error:</em> {{ exception.message }}</p>
+
+    <p>Intente actualizar la página. Si el problema persiste póngase en contacto con nosotros para comunicarnos el error.</p>
+
+    <p>Puede enviarnos un email a nuestro webmaster <a href="mailto:amcb@sancas.es">amcb@sancas.es</a>. Disculpen las molestias</p>
+
+</div>
+
+{% endblock %}
