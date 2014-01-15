@@ -24,7 +24,7 @@
 
     <div id="content-wrapper">
 
-      {% include 'FrontendBundle:'~get_controller_name()~':_submenu.html.twig' ignore missing %}
+      {% include 'FrontendBundle:'~(get_controller_name()|capitalize)~':_submenu.html.twig' ignore missing %}
 
       <div id="content-body">
         <div id="content">

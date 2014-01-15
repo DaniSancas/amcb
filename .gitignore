@@ -1,7 +1,7 @@
 /nbproject
 
 /web/bundles/
-/app/config/parameters.*
+/app/config/parameters.yml
 /app/cache/*
 /app/logs/*
 /build/
