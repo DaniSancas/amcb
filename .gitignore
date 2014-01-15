@@ -1,4 +1,5 @@
 /nbproject
+/.idea
 
 /web/bundles/
 /app/config/parameters.yml
