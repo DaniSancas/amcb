@@ -18,15 +18,32 @@
 
   <h2>Concierto en Castro-Urdiales. Día 5 de octubre de 2013</h2>
 
-  <p>Sesión de fotos tomada por Merche Sánchez en la la Iglesia de Santa María (Castro-Urdiales) durante la actuación.</p>
+  <p>Sesión de fotos tomada por Merche Sánchez en la Iglesia de Santa María (Castro-Urdiales) durante la actuación.</p>
 
   <div class="galeria">
 
-    {# Galería de Castro 2013, por Álvaro Bueno #}
+    {# Galería de Castro 2013, por Merche Sánchez #}
     {% for i in 1..6 %}
     <div class="foto-wrapper">
       <a href="{{ asset('bundles/common/images/galeria/2013-castro_'~i~'.jpg') }}" rel="castro-2013" class="lightbox-1" title="Concierto en Castro-Urdiales 2013 - AMCB">
         <img src="{{ asset('bundles/common/images/galeria/th_2013-castro_'~i~'.jpg') }}" alt="Concierto en Castro-Urdiales 2013 - AMCB" />
+      </a>
+    </div>
+    {% endfor %}
+
+  </div>
+  
+  <h2>Concierto en Galdakao. Día 20 de abril de 2013</h2>
+
+  <p>Sesión de fotos tomada por Merche Sánchez en Torrezabal (Galdakao) durante la actuación.</p>
+
+  <div class="galeria">
+
+    {# Galería de Galdakao 2013, por Merche Sánchez #}
+    {% for i in 1..10 %}
+    <div class="foto-wrapper">
+      <a href="{{ asset('bundles/common/images/galeria/2013-galdakao_'~i~'.jpg') }}" rel="galdakao-2013" class="lightbox-1" title="Concierto en Galdakao 2013 - AMCB">
+        <img src="{{ asset('bundles/common/images/galeria/th_2013-galdakao_'~i~'.jpg') }}" alt="Concierto en Galdakao 2013 - AMCB" />
       </a>
     </div>
     {% endfor %}
