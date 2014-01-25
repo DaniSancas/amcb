@@ -296,6 +296,10 @@ html > body #body-wrapper{
   box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
 }
 
+#submenu-wrapper ul li img{
+    vertical-align: bottom;
+}
+
 #content-body{
   overflow: auto;
 }

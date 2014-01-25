@@ -29,4 +29,7 @@ admin_index:
 admin:
     resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
     prefix:   /admin
-    
+
+private:
+        resource: "@PrivateBundle/Resources/config/routing.yml"
+        prefix:   /privado
