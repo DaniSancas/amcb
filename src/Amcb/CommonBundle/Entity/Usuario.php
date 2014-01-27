@@ -46,8 +46,8 @@ class Usuario implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", unique=true, length=100)
-     * @Assert\Email(checkMX=true)
+     * @ORM\Column(name="email", type="string", unique=true, length=100, nullable=true)
+     * @Assert\Null(), @Assert\Email(checkMX=true)
      */
     private $email;
 
@@ -67,6 +67,14 @@ class Usuario implements UserInterface
     function __construct()
     {
         $this->rango = 0;
+    }
+
+    /**
+     * @return string
+     */
+    function __toString()
+    {
+        return ($this->usuario) ? : "";
     }
 
     /**
