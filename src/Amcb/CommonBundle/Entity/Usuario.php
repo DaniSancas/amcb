@@ -59,6 +59,13 @@ class Usuario implements UserInterface
      */
     private $rango;
 
+    /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="Fichero", mappedBy="usuario")
+     */
+    private $ficheros;
+
     //--------------------------------------------------------------------------
 
     /**
@@ -226,5 +233,38 @@ class Usuario implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    /**
+     * Add ficheros
+     *
+     * @param \Amcb\CommonBundle\Entity\Fichero $ficheros
+     * @return Usuario
+     */
+    public function addFichero(Fichero $ficheros)
+    {
+        $this->ficheros[] = $ficheros;
+    
+        return $this;
+    }
+
+    /**
+     * Remove ficheros
+     *
+     * @param \Amcb\CommonBundle\Entity\Fichero $ficheros
+     */
+    public function removeFichero(Fichero $ficheros)
+    {
+        $this->ficheros->removeElement($ficheros);
+    }
+
+    /**
+     * Get ficheros
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFicheros()
+    {
+        return $this->ficheros;
     }
 }

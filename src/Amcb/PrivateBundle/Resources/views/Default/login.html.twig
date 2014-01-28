@@ -1,10 +1,26 @@
-{% if error %}
-    <div>{{ error.message }}</div>
-{% endif %}
+{% extends "PrivateBundle::layout.html.twig" %}
 
-<form action="{{ path('private_login_check') }}" method="post">
-    <label for="username">DNI:</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+{% block title %}Login{% endblock %}
 
-    <input type="submit" name="login" />
-</form>
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/common/css/custom-bootstrap.css') }}" />
+{% endblock %}
+
+{% block content %}
+
+
+    <form action="{{ path('private_login_check') }}" method="post" class="form-signin" role="form">
+        <h2>Acceso área privada</h2>
+
+        {% if error %}
+            <div class="alert alert-danger">{{ (error.message == "Bad credentials") ? "DNI erróneo o sin acceso permitido" : error.message }}</div>
+        {% endif %}
+        <label for="username">Número DNI:</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}"  autofocus />
+        <p class="text-warning">DNI con letra. Ejemplo: 12345678A</p>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+    </form>
+
+{% endblock %}

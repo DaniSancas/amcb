@@ -34,6 +34,7 @@ security:
             form_login:
                 login_path: private_login
                 check_path: private_login_check
+                default_target_path: private_homepage
             logout:
                 path:   private_logout
                 target: homepage

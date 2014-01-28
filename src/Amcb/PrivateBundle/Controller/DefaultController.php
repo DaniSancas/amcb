@@ -14,7 +14,9 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $ficheros = $this->getDoctrine()->getManager()->getRepository('CommonBundle:Fichero')->findBy(array(), array('fechaCreacion' => 'DESC'));
+
+        return array('ficheros' => $ficheros);
     }
 
     /**
