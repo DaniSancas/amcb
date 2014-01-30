@@ -2,6 +2,7 @@
 /.idea
 
 /web/bundles/
+/web/uploads/
 /app/config/parameters.yml
 /app/cache/*
 /app/logs/*

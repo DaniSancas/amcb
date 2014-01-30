@@ -60,3 +60,7 @@ body {
 .navbar-brand.no-hover:hover{
     color: #999;
 }
+
+input[type="file"].input-file-inline{
+    display: inline;
+}

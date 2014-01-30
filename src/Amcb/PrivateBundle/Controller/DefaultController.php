@@ -10,16 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Template()
-     */
-    public function indexAction()
-    {
-        $ficheros = $this->getDoctrine()->getManager()->getRepository('CommonBundle:Fichero')->findBy(array(), array('fechaCreacion' => 'DESC'));
-
-        return array('ficheros' => $ficheros);
-    }
-
-    /**
+     * Acción que muestra el formulario de login para acceder al área privada.
+     *
      * @Template()
      */
     public function loginAction(Request $request)

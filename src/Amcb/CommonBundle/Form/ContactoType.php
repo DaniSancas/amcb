@@ -12,51 +12,50 @@ use Symfony\Component\Validator\Constraints\Collection;
 
 class ContactoType extends AbstractType
 {
-  /**
-   * Array() de destinatarios
-   * 
-   * @var array 
-   */
-  private $destinatarios = array(
-      ''        => '-- Elija el destinatario --',
-      'txema'   => 'Txema - Presidente y Rel. Públicas',
-      'belen'   => 'Belén - Secretaría de la Asociación',
-      'dani'    => 'Dani - Webmaster'
-  );
-  
-  /**
-   * Devuelve el array de destinatarios
-   * 
-   * @return array
-   */
-  public function getDestinatarios()
-  {
-      return $this->destinatarios;
-  }
-  
-  /**
-   * 
-   * 
-   * @param string $nombre
-   * @return string|null
-   */
-  public static function getEmailDestinatario($nombre, Container $container)
-  {
-      switch ($nombre) {
-          case 'txema':
-              return $container->getParameter('presidente_email');
-              break;
-          case 'belen':
-              return $container->getParameter('secretaria_email');
-              break;
-          case 'dani':
-              return $container->getParameter('webmaster_email');
-              break;
-          default:
-              return null;
-              break;
-      }
-  }
+    /**
+    * Array() de destinatarios
+    *
+    * @var array
+    */
+    private $destinatarios = array(
+        ''        => '-- Elija el destinatario --',
+        'txema'   => 'Txema - Presidente y Rel. Públicas',
+        'belen'   => 'Belén - Secretaría de la Asociación',
+        'dani'    => 'Dani - Webmaster'
+    );
+
+    /**
+    * Devuelve el array de destinatarios
+    *
+    * @return array
+    */
+    public function getDestinatarios()
+    {
+        return $this->destinatarios;
+    }
+
+    /**
+     * @param string $nombre
+     * @param Container $container
+     * @return string|null
+     */
+    public static function getEmailDestinatario($nombre, Container $container)
+    {
+        switch ($nombre) {
+            case 'txema':
+                return $container->getParameter('presidente_email');
+                break;
+            case 'belen':
+                return $container->getParameter('secretaria_email');
+                break;
+            case 'dani':
+                return $container->getParameter('webmaster_email');
+                break;
+            default:
+                return null;
+                break;
+        }
+    }
 
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -131,9 +130,9 @@ class ContactoType extends AbstractType
         ));
     }
 
-  public function getName()
-  {
-    return 'contacto';
-  }
+    public function getName()
+    {
+        return 'contacto';
+    }
 }
 ?>

@@ -15,7 +15,7 @@
         </div>
         <div class="panel-body">
             {% if is_granted('ROLE_ADMIN') %}
-                <button type="button" class="btn btn-sm btn-default">+ Subir fichero</button>
+                <a href="{{ path('private_fichero_nuevo') }}" class="btn btn btn-default">+ Subir fichero</a>
             {%  endif %}
 
             {% if ficheros|length > 0 %}

@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: "@CommonBundle/Resources/config/sonata_services.yml" }
+    - { resource: doctrine_extensions.yml }
 
 framework:
     #esi:             ~

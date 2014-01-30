@@ -1,13 +1,28 @@
-private_homepage:
-    pattern:  /
-    defaults: { _controller: PrivateBundle:Default:index }
-
 private_login:
-    pattern:     /login
-    defaults: { _controller: PrivateBundle:Default:login }
+    pattern:    /login
+    defaults:   { _controller: PrivateBundle:Default:login }
 
 private_login_check:
-    pattern: /login_check
+    pattern:    /login_check
 
 private_logout:
-    pattern:  /logout
+    pattern:    /logout
+
+private_fichero_listado:
+    pattern:    /
+    defaults:   { _controller: PrivateBundle:Fichero:index }
+
+private_fichero_nuevo:
+    pattern:    /fichero/subir
+    defaults:   { _controller: PrivateBundle:Fichero:nuevo }
+    methods:  [GET]
+
+private_fichero_guardar:
+    pattern:    /fichero/guardar
+    defaults:   { _controller: PrivateBundle:Fichero:guardar }
+    methods:  [POST]
+
+# La última, para evitar una redirección cíclica hacia sí misma
+private_homepage:
+    pattern:    /
+    defaults: {_controller: FrameworkBundle:Redirect:redirect, route: private_fichero_listado, permanent: true }
