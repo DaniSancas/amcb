@@ -87,6 +87,19 @@ class Fichero
     //------------------------------------------------------------------------------------------------------------------
 
     /**
+     * Set id
+     *
+     * @param integer $id
+     * @return Fichero
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -356,10 +369,10 @@ class Fichero
         }
 
         // check if we have an old file
-        if (isset($this->temp)) {
+        if(isset($this->temp)){
             // delete the old file
-            unlink($this->getUploadRootDir().'/'.$this->temp);
-            // clear the temp image path
+            unlink($this->temp);
+            // clear the temp file path
             $this->temp = null;
         }
 

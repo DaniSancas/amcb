@@ -1,39 +1,30 @@
-{% extends "PrivateBundle::layout.html.twig" %}
+{% extends "PrivateBundle:Fichero:_base.html.twig" %}
 
 {% block title %}Área privada{% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('bundles/common/css/custom-bootstrap.css') }}" />
-{% endblock %}
+{% block panel_title %}Depósito de ficheros{% endblock %}
 
-{% block content %}
+{% block panel_content %}
 
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">Depósito de ficheros</h3>
-        </div>
-        <div class="panel-body">
-            {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('private_fichero_nuevo') }}" class="btn btn btn-default">+ Subir fichero</a>
-            {%  endif %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('private_fichero_nuevo') }}" class="btn btn btn-success">+ Subir fichero</a>
+    {%  endif %}
 
-            {% if ficheros|length > 0 %}
+    {% if ficheros|length > 0 %}
 
-            <div class="list-group margin-top no-margin-bottom">
-                {% for fichero in ficheros %}
-                <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">{{ fichero.titulo }}</h4>
-                    <h5 class="list-group-item-heading"><span class="color-grey">Publicado por {{ fichero.usuario }} el {{ fichero.fechaCreacion|fechahora_larga() }}</span></h5>
-                    {% if fichero.fechaCreacion != fichero.fechaModificacion %}
-                        <h5 class="list-group-item-heading"><span class="color-grey">Última modificación el {{ fichero.fechaCreacion|fechahora_larga() }}</span></h5>
-                    {% endif %}
-                    <p class="list-group-item-text">{{ fichero.descripcion }}</p>
-                </a>
-                {% endfor %}
-            </div>
+    <div class="list-group margin-top no-margin-bottom">
+        {% for fichero in ficheros %}
+        <a href="{{ path('private_fichero_ver', { 'id': fichero.id }) }}" class="list-group-item">
+            <h4 class="list-group-item-heading">{{ fichero.titulo }}</h4>
+            <h5 class="list-group-item-heading"><span class="color-grey">Publicado por {{ fichero.usuario }} el {{ fichero.fechaCreacion|fechahora_larga() }}</span></h5>
+            {% if fichero.fechaCreacion != fichero.fechaModificacion %}
+                <h5 class="list-group-item-heading"><span class="color-grey">Última modificación el {{ fichero.fechaCreacion|fechahora_larga() }}</span></h5>
             {% endif %}
-        </div>
+            <p class="list-group-item-text">{{ fichero.descripcion|striptags|raw }}</p>
+        </a>
+        {% endfor %}
     </div>
+    {% endif %}
+
 
 {% endblock %}

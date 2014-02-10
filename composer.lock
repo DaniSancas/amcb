@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "6e91ed84b513969329479f67efb292fb",
+    "hash": "60a19352dd90b9e4cfe4284e2452b265",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -665,6 +665,107 @@
             "time": "2014-01-04 17:39:06"
         },
         {
+            "name": "egeloen/ordered-form",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egeloen/ivory-ordered-form.git",
+                "reference": "e6e3094ab74695170944c6c83eb4c7f3c3d77902"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/egeloen/ivory-ordered-form/zipball/e6e3094ab74695170944c6c83eb4c7f3c3d77902",
+                "reference": "e6e3094ab74695170944c6c83eb4c7f3c3d77902",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/form": ">=2.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Ivory\\OrderedForm": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric GELOEN",
+                    "email": "geloen.eric@gmail.com"
+                }
+            ],
+            "description": "Provides a form ordering support with the Symfony2 form component.",
+            "keywords": [
+                "Symfony2",
+                "form",
+                "order"
+            ],
+            "time": "2013-12-29 17:18:59"
+        },
+        {
+            "name": "egeloen/ordered-form-bundle",
+            "version": "1.0.0",
+            "target-dir": "Ivory/OrderedFormBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egeloen/IvoryOrderedFormBundle.git",
+                "reference": "98e21d5411df5de6bcc72b9b75e96a721cb310dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/egeloen/IvoryOrderedFormBundle/zipball/98e21d5411df5de6bcc72b9b75e96a721cb310dd",
+                "reference": "98e21d5411df5de6bcc72b9b75e96a721cb310dd",
+                "shasum": ""
+            },
+            "require": {
+                "egeloen/ordered-form": "1.0.*",
+                "php": ">=5.3.0",
+                "symfony/framework-bundle": ">=2.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Ivory\\OrderedFormBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric GELOEN",
+                    "email": "geloen.eric@gmail.com"
+                }
+            ],
+            "description": "Provides a form ordering support for your Symfony2 project.",
+            "keywords": [
+                "form",
+                "order"
+            ],
+            "time": "2013-12-29 17:28:41"
+        },
+        {
             "name": "gedmo/doctrine-extensions",
             "version": "v2.3.9",
             "source": {
@@ -1283,12 +1384,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "c0ecacc1fcd6e45e594f4e52e427fd6bcf186ee0"
+                "reference": "7e7245288e0eeb3e5dd8ad336783b8aeea1923df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/c0ecacc1fcd6e45e594f4e52e427fd6bcf186ee0",
-                "reference": "c0ecacc1fcd6e45e594f4e52e427fd6bcf186ee0",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/7e7245288e0eeb3e5dd8ad336783b8aeea1923df",
+                "reference": "7e7245288e0eeb3e5dd8ad336783b8aeea1923df",
                 "shasum": ""
             },
             "require": {
@@ -1355,7 +1456,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2014-01-29 14:33:37"
+            "time": "2014-01-30 08:36:39"
         },
         {
             "name": "sonata-project/block-bundle",

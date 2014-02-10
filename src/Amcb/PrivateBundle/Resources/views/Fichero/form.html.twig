@@ -1,0 +1,16 @@
+{% extends "PrivateBundle:Fichero:_base.html.twig" %}
+
+{% block title %}Subir nuevo fichero{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/common/css/forms.css') }}" />
+{% endblock %}
+
+{% block panel_content %}
+
+    <p><a href="{{ path('private_fichero_listado') }}" class="btn btn btn-default">« Volver</a></p>
+
+    {{ form(formulario) }}
+
+{% endblock %}

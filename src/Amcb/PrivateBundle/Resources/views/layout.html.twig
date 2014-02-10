@@ -5,22 +5,21 @@
 {% endblock %}
 
 {% block default_stylesheets %}
-    <link href="{{ asset('/bootstrap/css/bootstrap.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('/bootstrap/css/bootstrap-theme.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('bootstrap/css/bootstrap.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('bootstrap/css/bootstrap-theme.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('bundles/common/css/custom-bootstrap.css') }}" rel="stylesheet" />
     {% block stylesheets %}{% endblock %}
 {% endblock %}
   
 {% block default_javascripts %}
-    <script src="{{ asset('/bundles/common/js/jquery-min.js') }}"></script>
-    <script src="{{ asset('/bootstrap/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('bundles/common/js/jquery-min.js') }}"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
     {% block javascripts %}{% endblock %}
 {% endblock %}
 
-{% block title %}Bootstrap 101 Template{% endblock %}
-
 {% block body %}
 
-    {% if is_granted('ROLE_USUARIO') %}
+    {% if app.user and is_granted('ROLE_USUARIO') %}
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">

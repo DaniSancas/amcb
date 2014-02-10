@@ -1,0 +1,22 @@
+{% extends "PrivateBundle::layout.html.twig" %}
+
+{% block content %}
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">{% spaceless %}
+                {% if block('panel_title') %}
+                    {% block panel_title %}{% endblock %}
+                {% else %}
+                    {% block title %}{% endblock %}
+                {% endif %}
+            {% endspaceless %}</h3>
+        </div>
+        <div class="panel-body">
+
+    {% block panel_content %}{% endblock %}
+
+        </div>
+    </div>
+
+{% endblock %}

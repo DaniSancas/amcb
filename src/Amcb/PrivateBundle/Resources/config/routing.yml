@@ -12,15 +12,28 @@ private_fichero_listado:
     pattern:    /
     defaults:   { _controller: PrivateBundle:Fichero:index }
 
+private_fichero_ver:
+    pattern:    /fichero/ver/{id}
+    defaults:   { _controller: PrivateBundle:Fichero:ver }
+
 private_fichero_nuevo:
     pattern:    /fichero/subir
-    defaults:   { _controller: PrivateBundle:Fichero:nuevo }
+    defaults:   { _controller: PrivateBundle:Fichero:form }
+    methods:  [GET]
+
+private_fichero_editar:
+    pattern:    /fichero/editar/{id}
+    defaults:   { _controller: PrivateBundle:Fichero:form }
     methods:  [GET]
 
 private_fichero_guardar:
-    pattern:    /fichero/guardar
-    defaults:   { _controller: PrivateBundle:Fichero:guardar }
+    pattern:    /fichero/guardar/{id}
+    defaults:   { _controller: PrivateBundle:Fichero:form, id: ~ }
     methods:  [POST]
+
+private_fichero_eliminar:
+    pattern:    /eliminar/{id}
+    defaults:   { _controller: PrivateBundle:Fichero:eliminar }
 
 # La última, para evitar una redirección cíclica hacia sí misma
 private_homepage:
