@@ -5,6 +5,10 @@
 # to each configured DirectoryIndex file (e.g. index.php, index.html, index.pl).
 DirectoryIndex app.php
 
+php_value upload_max_filesize 12M
+php_value post_max_size 12M
+php_value max_execution_time 600
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
 

@@ -47,7 +47,7 @@ class Usuario implements UserInterface
      * @var string
      *
      * @ORM\Column(name="email", type="string", unique=true, length=100, nullable=true)
-     * @Assert\Null(), @Assert\Email(checkMX=true)
+     * @Assert\Email(checkMX=true)
      */
     private $email;
 
