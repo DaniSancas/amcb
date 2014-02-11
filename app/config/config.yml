@@ -20,7 +20,9 @@ framework:
     #    assets_version_format: %%s?v%%s
     default_locale:  "%locale%"
     trusted_proxies: ~
-    session:         ~
+    session:
+        handler_id: session.handler.native_file
+        save_path: "%kernel.root_dir%/sessions"
     fragments:       ~
    
 # Más información en http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.toolbar_Full

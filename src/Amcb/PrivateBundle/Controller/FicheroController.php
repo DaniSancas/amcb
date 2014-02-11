@@ -52,7 +52,7 @@ class FicheroController extends Controller
         $fichero = (null === $id) ? new Fichero() : $em->getRepository('CommonBundle:Fichero')->find($id);
 
         // Si no existe el registro ni (el usuario logeado es el autor o ni tiene permiso de ROLE_SUPER_ADMIN)
-        if(!$fichero || ($fichero->getUsuario() != $this->getUser() && $this->getUser()->getRango() < 3))
+        if(($this->getUser()->getRango() < 2) || ((null !== $id) && (!$fichero || ($fichero->getUsuario() != $this->getUser() && $this->getUser()->getRango() < 3))))
             throw new NotFoundHttpException('El fichero requerido no existe o no tiene permiso para acceder a él.');
 
         $params = (null === $id) ? array() : array('id' => $id);

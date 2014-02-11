@@ -80,7 +80,7 @@ class Fichero
     /**
      * @var string
      *
-     * @Assert\File(maxSize="6000000")
+     * @Assert\File(maxSize="12582912")
      */
     private $file;
 
@@ -312,6 +312,22 @@ class Fichero
         return null === $this->fichero
             ? null
             : $this->getUploadDir().'/'.$this->id."_".$this->fichero;
+    }
+
+    /**
+     * Devuelve el tamaño del fichero almacenado.
+     *
+     * Si se elije el modo "enMegaBytes" se proporcionará el texto formateado.
+     *
+     * De lo contrario, se mostrará el número de bytes tal cual.
+     *
+     * @param bool $enMegaBytes Mostrar el texto formateado a MB o en crudo
+     * @return int|string
+     */
+    public function getFicheroSize($enMegaBytes = true)
+    {
+        $size = @filesize($this->getUploadRootDir().'/'.$this->id."_".$this->fichero);
+        return ($enMegaBytes) ? ((!$size) ? "(Desconocido) ~0MB" : round($size/(1024*1024), 2)."MB") : $size;
     }
 
     /**

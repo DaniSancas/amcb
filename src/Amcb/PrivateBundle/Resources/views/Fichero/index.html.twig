@@ -7,7 +7,7 @@
 {% block panel_content %}
 
     {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('private_fichero_nuevo') }}" class="btn btn btn-success">+ Subir fichero</a>
+        <a href="{{ path('private_fichero_nuevo') }}" class="btn btn-success">Subir fichero</a>
     {%  endif %}
 
     {% if ficheros|length > 0 %}
@@ -18,7 +18,7 @@
             <h4 class="list-group-item-heading">{{ fichero.titulo }}</h4>
             <h5 class="list-group-item-heading"><span class="color-grey">Publicado por {{ fichero.usuario }} el {{ fichero.fechaCreacion|fechahora_larga() }}</span></h5>
             {% if fichero.fechaCreacion != fichero.fechaModificacion %}
-                <h5 class="list-group-item-heading"><span class="color-grey">Última modificación el {{ fichero.fechaCreacion|fechahora_larga() }}</span></h5>
+                <h6 class="list-group-item-heading"><span class="color-grey">Última modificación el {{ fichero.fechaModificacion|fechahora_larga() }}</span></h6>
             {% endif %}
             <p class="list-group-item-text">{{ fichero.descripcion|striptags|raw }}</p>
         </a>
