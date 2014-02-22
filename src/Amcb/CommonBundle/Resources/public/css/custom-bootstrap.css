@@ -49,6 +49,18 @@ body {
     margin-top: 20px;
 }
 
+.margin-top-peque{
+    margin-top: 10px;
+}
+
+.margin-bottom-peque{
+    margin-bottom: 10px;
+}
+
+.overflow{
+    overflow: auto;
+}
+
 .no-margin-bottom{
     margin-bottom: 0px;
 }

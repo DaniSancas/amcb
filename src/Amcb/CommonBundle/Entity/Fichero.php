@@ -45,6 +45,14 @@ class Fichero
     /**
      * @var string
      *
+     * @ORM\Column(name="categoria", type="integer", nullable=false)
+     * @Assert\NotNull()
+     */
+    private $categoria;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="descripcion", type="text", nullable=true)
      */
     private $descripcion;
@@ -156,6 +164,26 @@ class Fichero
     }
 
     /**
+     * Set categoria
+     *
+     * @param string $categoria
+     */
+    public function setCategoria($categoria)
+    {
+        $this->categoria = $categoria;
+    }
+
+    /**
+     * Get categoria
+     *
+     * @return string
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+
+    /**
      * Set descripcion
      *
      * @param string $descripcion
@@ -245,6 +273,29 @@ class Fichero
     public function getFechaModificacion()
     {
         return $this->fechaModificacion;
+    }
+
+    /**
+     * Devuelve el array de categorías, obviando el primer elemento (para filtros)
+     *
+     * @return array Categorías
+     */
+    public function getCategorias()
+    {
+        return Util::getCategorias(false);
+    }
+
+    /**
+     * Devuelve el nombre de la categoría elegida.
+     *
+     * Si no tiene ninguna elegida, evitamos que se lance un error. (Posible problema durante migración)
+     *
+     * @return string Categoría elegida
+     */
+    public function getCategoriaElegida()
+    {
+        $cat = Util::getCategorias();
+        return ($this->categoria >= 1) ? $cat[$this->categoria] : "";
     }
 
     //------------------------------------------------------------------------------------------------------------------

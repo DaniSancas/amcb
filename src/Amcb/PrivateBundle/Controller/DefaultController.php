@@ -12,10 +12,17 @@ class DefaultController extends Controller
     /**
      * Acción que muestra el formulario de login para acceder al área privada.
      *
+     * Si el usuario ya está logeado y dispone de los permisos mínimos, nos saltamos el login.
+     *
      * @Template()
      */
     public function loginAction(Request $request)
     {
+        $securityContext = $this->container->get('security.context');
+        $user = $this->getUser();
+        if($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') && $user && $user->getRango() >= 1)
+            return $this->redirect($this->generateUrl('private_fichero_listado'));
+
         $session = $request->getSession();
 
         // get the login error if there is one

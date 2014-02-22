@@ -9,6 +9,17 @@ use Symfony\Component\HttpFoundation\Request;
 class Util
 {
     /**
+     * Listado de categorías necesarias para la clasificación de ficheros.
+     *
+     * @var array
+     */
+    static private $categorias = array(
+        0 => "--",
+        1 => "Partitura",
+        9 => "Otros"
+    );
+
+    /**
      * Devuelve el slug de la cadena dada.
      *
      * @param string $cadena Cadena original
@@ -17,6 +28,7 @@ class Util
      */
     static public function getSlug($cadena, $separador = '-')
     {
+        setlocale(LC_CTYPE, 'es_ES');
         // Código copiado de http://cubiq.org/the-perfect-php-clean-url-generator
         $slug = iconv('UTF-8', 'ASCII//TRANSLIT', $cadena);
         $slug = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $slug);
@@ -78,6 +90,26 @@ class Util
         preg_match($pattern, $request->get('_controller'), $matches);
 
         return (count($matches)) ? $matches[1] : null;
+    }
+
+    /**
+     * Devuelve el array de categorías.
+     *
+     * Se eliminará el primer elemento (para filtros) si así se requiere.
+     *
+     * @param bool $filtro
+     * @return array Categorías
+     */
+    static public function getCategorias($filtro = false)
+    {
+        if(!$filtro)
+        {
+            $catSinFiltro = self::$categorias;
+            unset($catSinFiltro[0]);
+
+            return $catSinFiltro;
+        }else
+            return self::$categorias;
     }
 }
 ?>

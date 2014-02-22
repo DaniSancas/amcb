@@ -4,6 +4,7 @@ namespace Amcb\PrivateBundle\Controller;
 
 use Amcb\CommonBundle\Entity\Fichero;
 use Amcb\CommonBundle\Form\FicheroType;
+use Amcb\CommonBundle\Library\Util;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,9 +19,17 @@ class FicheroController extends Controller
      */
     public function indexAction()
     {
-        $ficheros = $this->getDoctrine()->getManager()->getRepository('CommonBundle:Fichero')->findBy(array(), array('fechaCreacion' => 'DESC'));
+        $filtro = $this->getRequest()->get("filtro");
+        if(null !== $filtro)
+        {
+            $findBy = array("categoria" => $this->getRequest()->get("filtro"));
+        }else{
+            $findBy = array();
+        }
 
-        return array('ficheros' => $ficheros);
+        $ficheros = $this->getDoctrine()->getManager()->getRepository('CommonBundle:Fichero')->findBy($findBy, array('fechaCreacion' => 'DESC'));
+
+        return array('ficheros' => $ficheros, 'categorias' => Util::getCategorias(true), 'filtro' => $filtro);
     }
 
     /**

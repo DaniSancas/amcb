@@ -9,6 +9,17 @@ use Sonata\AdminBundle\Form\FormMapper;
 
 class ConciertoAdmin extends Admin
 {
+    /**
+     * Overriden values to the datagrid
+     *
+     * @var array
+     */
+    protected $datagridValues = array(
+        #'_page'       => 1,
+        '_sort_order' => 'DESC',
+        #'_per_page'   => 25,
+    );
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper

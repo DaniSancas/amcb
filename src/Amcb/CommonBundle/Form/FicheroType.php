@@ -2,6 +2,7 @@
 
 namespace Amcb\CommonBundle\Form;
 
+use Amcb\CommonBundle\Library\Util;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
@@ -20,6 +21,7 @@ class FicheroType extends AbstractType
         $builder
             ->add('id', 'hidden')
             ->add('titulo', null, array('label' => 'Título'))
+            ->add('categoria', 'choice', array('choices' => Util::getCategorias(), 'label' => 'Categoría'))
             ->add('descripcion','ckeditor', array('label' => 'Descripción', 'config_name' => 'mini', 'required' => false))
             ->add('guardar', 'submit', array('attr' => array('class' => 'btn btn btn-success')))
         ;
@@ -28,7 +30,7 @@ class FicheroType extends AbstractType
             $fichero = $event->getData();
             $form = $event->getForm();
 
-            // Si es nuevo, que sea obligatorio
+            // Si es nuevo, que el Fichero sea obligatorio.
             $required = (!$fichero || null === $fichero->getId());
             $form->add('file', 'file', array('required' => $required, 'position' => array('before' => 'guardar'), 'label' => 'Fichero', 'attr' => array('class' => 'input-file-inline')));
         });
