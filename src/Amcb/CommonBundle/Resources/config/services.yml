@@ -7,10 +7,14 @@ services:
             - [setRequest, ["@?request="]]
         tags:
             - { name: twig.extension }
-    amcb.twig.spanish_datetime_extension:
-        class: Amcb\CommonBundle\Twig\Extension\SpanishDateTimeExtension
+    amcb.twig.extra_filter_extension:
+        class: Amcb\CommonBundle\Twig\Extension\ExtraFilterExtension
         tags:
             - { name: twig.extension }
+    amcb.twig.spanish_datetime_extension:
+            class: Amcb\CommonBundle\Twig\Extension\SpanishDateTimeExtension
+            tags:
+                - { name: twig.extension }
     sonata.block.service.custom_buttons:
         class: Amcb\CommonBundle\Block\CustomButtonsBlockService
         arguments: [ "sonata.block.service.custom_buttons", "@templating" ]

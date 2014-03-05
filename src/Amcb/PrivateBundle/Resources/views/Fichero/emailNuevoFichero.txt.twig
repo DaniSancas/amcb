@@ -1,0 +1,7 @@
+{{ autor }} ha subido un nuevo fichero al Área Privada de la web.
+
+Título: {{ titulo }}
+Categoría: {{ categoria }}
+Descripción: {{ (descripcion|length > 50) ? descripcion|striptags|decode|slice(0, 50) ~ '...' : descripcion|striptags|decode }}
+
+Pincha en el siguiente enlace o cópialo y pégalo en tu navegador para acceder al contenido: {{ enlace }}

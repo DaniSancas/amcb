@@ -11,6 +11,24 @@ use Doctrine\ORM\NoResultException;
 
 class UsuarioRepository extends EntityRepository implements UserProviderInterface
 {
+    /**
+     * Devuelve todos aquellos usuarios con email y con el rango mínimo para acceder al área privada.
+     *
+     * @return array Usuarios
+     */
+    public function getWithEmail()
+    {
+        $q = $this
+            ->createQueryBuilder('u')
+            ->where('u.email != :email')
+            ->andWhere('u.email IS NOT NULL')
+            ->andWhere('u.rango > 2')
+            ->setParameter('email', "")
+            ->getQuery();
+
+        return $q->getResult();
+    }
+
     public function loadUserByUsername($dni)
     {
         $q = $this

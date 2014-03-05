@@ -77,9 +77,12 @@ class FicheroController extends Controller
             // Si es nuevo
             if(null === $fichero->getId())
             {
+                $esNuevo = true;
                 $fichero->setUsuario($this->getUser());
+
                 $em->persist($fichero); // Insert
             }else{
+                $esNuevo = false;
                 // Necesario si lo único que se cambia es el fichero,
                 // en caso contrario no guarda nada al creer que nada ha sido modificado.
                 $fichero->preUpload();
@@ -88,6 +91,39 @@ class FicheroController extends Controller
             }
 
             $em->flush();
+
+            if($esNuevo)
+            {
+                // Mandamos email de alerta a los usuarios
+                $usuarios = $em->getRepository('CommonBundle:Usuario')->getWithEmail();
+
+                if(count($usuarios) && (null !== $usuarios))
+                {
+                    $url = $this->generateUrl('private_fichero_ver', array('id' => $fichero->getId()), true);
+
+                    foreach($usuarios as $usuario)
+                    {
+                        $message = \Swift_Message::newInstance()
+                            ->setSubject('[www.amcb.es] Nuevo fichero subido')
+                            ->setFrom("no-reply@amcb.es", "AMCB")
+                            ->setTo($usuario->getEmail(), $usuario->getUsuario())
+                            ->setBody(
+                                $this->renderView(
+                                    'PrivateBundle:Fichero:emailNuevoFichero.txt.twig',
+                                    array(
+                                        'autor' => $fichero->getUsuario(),
+                                        'titulo' => $fichero->getTitulo(),
+                                        'descripcion' => $fichero->getDescripcion(),
+                                        'categoria' => $fichero->getCategoriaElegida(),
+                                        'enlace' => $url
+                                    )
+                                )
+                            );
+
+                        $this->get('mailer')->send($message);
+                    }
+                }
+            }
 
             $this->get('session')->getFlashBag()->add('ok', 'Fichero guardado con éxito.');
 

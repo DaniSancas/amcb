@@ -15,7 +15,9 @@ class Util
      */
     static private $categorias = array(
         0 => "--",
-        1 => "Partitura",
+        1 => "Partituras",
+        2 => "Documentos técnicos",
+        3 => "Nuestra asociación",
         9 => "Otros"
     );
 
