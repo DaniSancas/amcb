@@ -175,3 +175,17 @@ table.repertorio-general th{
 table.repertorio-general tr td, table.repertorio-general tr th{
   padding: 0.5em;
 }
+
+div#cartas-agradecimiento{
+    overflow: auto;
+}
+
+div#cartas-agradecimiento div.imagen-carta{
+    float: left;
+    border: 1px solid #CCC;
+    margin: 5px;
+}
+
+div#cartas-agradecimiento div.imagen-carta a{
+    display: block;
+}

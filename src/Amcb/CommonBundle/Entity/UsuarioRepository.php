@@ -22,7 +22,7 @@ class UsuarioRepository extends EntityRepository implements UserProviderInterfac
             ->createQueryBuilder('u')
             ->where('u.email != :email')
             ->andWhere('u.email IS NOT NULL')
-            ->andWhere('u.rango > 2')
+            ->andWhere('u.rango > 0')
             ->setParameter('email', "")
             ->getQuery();
 

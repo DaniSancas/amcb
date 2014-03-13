@@ -2,16 +2,45 @@
 
 {% block title %}Documentos de interés{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/common/css/lightbox.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/common/js/jquery-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/common/js/jquery.lightbox.js') }}"></script>
+{% endblock %}
+
 {% block content %}
 <h1>Documentos de interés</h1>
+
+<h2>Cartas de agradecimiento</h2>
+    
+<div id="cartas-agradecimiento">
+    <div class="imagen-carta">
+        <a href="{{ asset('bundles/common/images/misc/carta-agradecimiento-telefono-esperanza-bizkaia-2014.jpg') }}" rel="cartas" class="lightbox-2" title="Carta de agradecimiento del Teléfono de la Esperanza de Bizkaia (marzo de 2014)">
+            <img src="{{ asset('bundles/common/images/misc/th_carta-agradecimiento-telefono-esperanza-bizkaia-2014.jpg') }}" alt="Carta de agradecimiento del Teléfono de la Esperanza de Bizkaia (marzo de 2014)">
+        </a>
+    </div>
+
+    <div class="imagen-carta">
+        <a href="{{ asset('bundles/common/images/misc/carta-agradecimiento-caritas-2013.jpg') }}" rel="cartas" class="lightbox-2" title="Carta de agradecimiento de Cáritas (mayo de 2013)">
+            <img src="{{ asset('bundles/common/images/misc/th_carta-agradecimiento-caritas-2013.jpg') }}" alt="Carta de agradecimiento de Cáritas (mayo de 2013)">
+        </a>
+    </div>
+</div>
 
 <h2>PDF del Homenaje a Guridi</h2>
 
 <p>Ponemos a su disposición en PDF y de forma <em>totalmente gratuita</em> el libro que hemos publicado en homenaje a Jesús Guridi, disponible tanto en castellano como en euskera.</p>
-
 <p><a href="{{ asset('bundles/common/downloads/pdf/Homenaje_Guridi_2011_CAS.pdf') }}" title="Descargar PDF del Homenaje a Guridi en castellano" target="_blank"><img src="{{ asset('bundles/common/images/misc/acrobat.png') }}" alt="PDF" class="img_plana"> Descargar versión en castellano.</a> (612 KB)</p>
-
 <p><a href="{{ asset('bundles/common/downloads/pdf/Homenaje_Guridi_2011_EUS.pdf') }}" title="Descargar PDF del Homenaje a Guridi en euskera" target="_blank"><img src="{{ asset('bundles/common/images/misc/acrobat.png') }}" alt="PDF" class="img_plana"> Descargar versión en euskera.</a> (582 KB)</p>
 
 
 {% endblock %}
+
+
+{% block documentReady %}
+    {{ parent() }}
+    $('.lightbox-2').lightbox();
+{% endblock documentReady %}
