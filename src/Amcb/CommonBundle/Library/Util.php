@@ -18,6 +18,7 @@ class Util
         1 => "Partituras",
         2 => "Documentos técnicos",
         3 => "Nuestra asociación",
+        4 => "Archivos de audio",
         9 => "Otros"
     );
 

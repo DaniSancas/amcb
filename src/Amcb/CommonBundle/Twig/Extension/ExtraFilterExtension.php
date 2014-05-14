@@ -13,7 +13,7 @@ class ExtraFilterExtension extends \Twig_Extension
 
     public function decode($string)
     {
-        return html_entity_decode($string);
+        return html_entity_decode($string, null, "UTF-8");
     }
 
     public function getName()
