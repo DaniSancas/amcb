@@ -71,3 +71,7 @@ form div > * > ul:first-child li + li,
 form label + ul li + li {
     margin-top: .5em;
 }
+
+form span.asterisco-requerido {
+    color: #C00;
+}
