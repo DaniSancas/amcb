@@ -19,7 +19,7 @@ class AppKernel extends Kernel
             new Amcb\FrontendBundle\FrontendBundle(),
             new Amcb\CommonBundle\CommonBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
-            new Sonata\jQueryBundle\SonatajQueryBundle(),
+            //new Sonata\jQueryBundle\SonatajQueryBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Sonata\CoreBundle\SonataCoreBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),

@@ -114,5 +114,35 @@ class Util
         }else
             return self::$categorias;
     }
+
+    /**
+     * Devuelve una cadena dada con el siguiente formato:
+     * * Minúsculas
+     * * Eliminando las palabras comunes (parámetro por defecto)
+     * * Cada palabra separada por una coma
+     *
+     * @param $cadena
+     * @param array $wordsToDelete
+     * @return mixed|string
+     */
+    static public function getComaSeparatedString($cadena, $wordsToDelete = array(" a "," al ", " los ", " de ", " del ", " con ", " en ", " la ", " las ", " el ", " y ", ".", ",", "(", ")"))
+    {
+        $cadena = strtolower($cadena); // Minúsculas
+        $cadena = $cadena = str_replace(array("á", "é", "í", "ó", "ú", "ñ"), array("a", "e", "i", "o", "u", "n"), $cadena); // Tildes
+
+        if(count($wordsToDelete))
+        {
+            $cadena = str_replace($wordsToDelete, " ", $cadena); // Palabras a eliminar (parámetro por defecto)
+        }
+
+        //$cadena = mb_convert_encoding($cadena, "UTF-8", mb_check_encoding()); // No parece ser necesario al final
+        $cadena = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $cadena);
+        $cadena = strtolower(trim($cadena, ","));
+        $cadena = preg_replace("/[\/_|+ -]+/", ", ", $cadena);
+
+        $cadena = implode(',',array_unique(explode(',', $cadena))); //Palabras duplicadas
+
+        return $cadena;
+    }
 }
 ?>
