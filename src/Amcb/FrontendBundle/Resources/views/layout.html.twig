@@ -7,15 +7,15 @@
     {% else %}
         El Coro y Orquesta de Cámara de Bilbao, de la AMCB, es una agrupación musical que ofrece conciertos en Bilbao y alrededores desde hace casi 40 años.
     {% endif %}
-    {% endspaceless %}">
+    {% endspaceless %}" />
     <meta name="keywords" content="{% spaceless %}
     {% if block('keywords_metatag') %}
         {% block keywords_metatag %}{% endblock %}
     {% else %}
         Amcb, coro, orquesta, bilbao, música, cámara, conciertos, clásica, repertorio, asociación, contratar, benéfico, director, solista, miembros, socios, bizkaia
     {% endif %}
-    {% endspaceless %}">
-    <meta name="author" content="Dani Sancas">
+    {% endspaceless %}" />
+    <meta name="author" content="Dani Sancas" />
 {% endblock %}
 
 {% block default_stylesheets %}
@@ -33,7 +33,7 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-  
+  {% if app.environment == 'prod' %}
   {# Analytics #}
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -46,6 +46,7 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
+  {% endif %}
   
   {% block pre_body %}{% endblock %} {# Para colocar fragmentos de código necesarios al inicio de la etiqueta body #}
 
