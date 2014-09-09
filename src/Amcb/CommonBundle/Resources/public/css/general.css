@@ -189,3 +189,11 @@ div#cartas-agradecimiento div.imagen-carta{
 div#cartas-agradecimiento div.imagen-carta a{
     display: block;
 }
+
+div.patrocinadores{
+    float: left;
+}
+
+div.patrocinadores > img{
+    padding: 5px;
+}

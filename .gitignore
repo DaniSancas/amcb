@@ -12,5 +12,6 @@
 /bin/
 /composer.phar
 /Capfile
-*deploy.rb
+.rsync*
+*.rb
 *.*~
