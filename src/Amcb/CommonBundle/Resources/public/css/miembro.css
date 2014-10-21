@@ -43,6 +43,16 @@ ul.lista-junta{
   line-height: 1.5em;
 }
 
+ul.lista-puntos{
+    list-style: disc;
+    margin-bottom: 20px;
+}
+
+ul.lista-puntos > li{
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
 div#miembros-wrapper{
   overflow: auto;
 }

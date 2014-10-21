@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
@@ -58,7 +57,7 @@
         <priority>0.64</priority>
     </url>
     <url>
-        <loc>http://www.amcb.es/miembros/paula-perez</loc>
+        <loc>http://www.amcb.es/miembros/hilario-extremiana</loc>
         <changefreq>monthly</changefreq>
         <priority>0.64</priority>
     </url>
@@ -123,6 +122,11 @@
         <priority>0.51</priority>
     </url>
     <url>
+        <loc>http://www.amcb.es/concierto/sabado-18-de-octubre-de-2014/concierto-homenaje-a-arturo-duo-vital-en-castro-urdiales/86</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.51</priority>
+    </url>
+    <url>
         <loc>http://www.amcb.es/concierto/viernes-13-de-junio-de-2014/concierto-solidario-en-la-iglesia-de-la-encarnacion-bilbao-a-beneficio-de-los-ninos-bilbainos-con-el-sindrome-de-sanfilippo/85</loc>
         <changefreq>monthly</changefreq>
         <priority>0.51</priority>
@@ -138,7 +142,7 @@
         <priority>0.51</priority>
     </url>
     <url>
-        <loc>http://www.amcb.es/miembros/txaber-fernandez</loc>
+        <loc>http://www.amcb.es/miembros/paula-perez</loc>
         <changefreq>monthly</changefreq>
         <priority>0.51</priority>
     </url>
@@ -543,8 +547,13 @@
         <priority>0.41</priority>
     </url>
     <url>
-        <loc>http://www.amcb.es/miembros/alain-sancho</loc>
+        <loc>http://www.amcb.es/miembros/txaber-fernandez</loc>
         <changefreq>monthly</changefreq>
         <priority>0.41</priority>
+    </url>
+    <url>
+        <loc>http://www.amcb.es/miembros/alain-sancho</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.33</priority>
     </url>
 </urlset>

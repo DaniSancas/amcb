@@ -64,6 +64,15 @@ class MiembroController extends Controller
     {
         return array();
     }
+
+    /**
+     *
+     * @Template()
+     */
+    public function hilarioExtremianaAction()
+    {
+        return array();
+    }
     
     /**
      * 
