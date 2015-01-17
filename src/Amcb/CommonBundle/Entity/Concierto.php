@@ -111,7 +111,7 @@ class Concierto
         $this->fecha = new \DateTime('next saturday 20:00');
         $this->es_visible = true;
         $this->es_gratis = true;
-        $this->direccion = 'Paula Pérez Bueno';
+        $this->direccion = 'Hilario Extremiana';
     }
     
     /**
