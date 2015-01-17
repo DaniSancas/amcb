@@ -1,6 +1,6 @@
 <?php
 
-namespace Amcb\CommonBundle\Form;
+namespace Amcb\CommonBundle\Form\Type;
 
 use Amcb\CommonBundle\Library\Util;
 use Symfony\Component\Form\AbstractType;

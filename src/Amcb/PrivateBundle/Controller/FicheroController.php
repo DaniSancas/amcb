@@ -3,7 +3,7 @@
 namespace Amcb\PrivateBundle\Controller;
 
 use Amcb\CommonBundle\Entity\Fichero;
-use Amcb\CommonBundle\Form\FicheroType;
+use Amcb\CommonBundle\Form\Type\FicheroType;
 use Amcb\CommonBundle\Library\Util;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;

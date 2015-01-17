@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 
-use Amcb\CommonBundle\Form\ContactoType;
+use Amcb\CommonBundle\Form\Type\ContactoType;
 
 /**
  * @Cache(expires="+3 days", maxage="259200", smaxage="259200", public="true")
