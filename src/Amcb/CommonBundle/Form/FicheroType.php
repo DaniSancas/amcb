@@ -7,7 +7,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Ivory\OrderedForm\Extension\OrderedExtension;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class FicheroType extends AbstractType

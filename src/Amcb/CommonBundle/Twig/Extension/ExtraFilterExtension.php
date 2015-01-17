@@ -10,7 +10,7 @@ class ExtraFilterExtension extends \Twig_Extension
     {
         return array(
             'decode' => new \Twig_Filter_Method($this, 'decode'),
-            'coma_separated_string' => new \Twig_Filter_Method($this, 'coma_separated_string')
+            'coma_separated_string' => new \Twig_Filter_Method($this, 'comaSeparatedString')
         );
     }
 
@@ -25,7 +25,7 @@ class ExtraFilterExtension extends \Twig_Extension
      * @param $string
      * @return mixed|string
      */
-    public function coma_separated_string($string)
+    public function comaSeparatedString($string)
     {
         return Util::getComaSeparatedString($string);
     }

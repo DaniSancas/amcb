@@ -377,7 +377,7 @@ class Fichero
      */
     public function getFicheroSize($enMegaBytes = true)
     {
-        $size = @filesize($this->getUploadRootDir().'/'.$this->id."_".$this->fichero);
+        $size = filesize($this->getUploadRootDir().'/'.$this->id."_".$this->fichero);
         return ($enMegaBytes) ? ((!$size) ? "(Desconocido) ~0MB" : round($size/(1024*1024), 2)."MB") : $size;
     }
 

@@ -199,7 +199,7 @@ class Usuario implements UserInterface
      */
     public function getPassword()
     {
-        // TODO: Implement getPassword() method.
+        // Empty...
     }
 
     /**
@@ -211,7 +211,7 @@ class Usuario implements UserInterface
      */
     public function getSalt()
     {
-        // TODO: Implement getSalt() method.
+        // Empty...
     }
 
     /**
@@ -232,7 +232,7 @@ class Usuario implements UserInterface
      */
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
+        // Empty...
     }
 
     /**

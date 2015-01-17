@@ -13,19 +13,22 @@
         "doctrine/doctrine-bundle": "1.2.*",
         "twig/extensions": "1.0.*",
         "symfony/assetic-bundle": "2.3.*",
-        "symfony/swiftmailer-bundle": "2.3.*",
+        "symfony/swiftmailer-bundle": "2.3.7",
         "symfony/monolog-bundle": "2.3.*",
         "sensio/distribution-bundle": "2.3.*",
         "sensio/framework-extra-bundle": "2.3.*",
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
         "egeloen/ckeditor-bundle": "2.1.*",
-        "sonata-project/admin-bundle": "dev-master",
-        "sonata-project/intl-bundle": "2.1.*",
-        "sonata-project/doctrine-orm-admin-bundle": "2.2.*@dev",
-        "sonata-project/core-bundle": "~2.2@dev",
+        "sonata-project/admin-bundle": "2.3.*",
+        "sonata-project/intl-bundle": "2.2.*",
+        "sonata-project/doctrine-orm-admin-bundle": "2.3.*",
+        "sonata-project/core-bundle": "2.3.*",
         "gedmo/doctrine-extensions": "2.3.*",
         "egeloen/ordered-form-bundle": "~1.0"
+    },
+    "require-dev": {
+        "andres-montanez/magallanes": "~1.0.3"
     },
     "scripts": {
         "post-install-cmd": [

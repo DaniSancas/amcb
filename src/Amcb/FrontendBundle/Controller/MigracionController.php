@@ -52,7 +52,6 @@ class MigracionController extends Controller
         if(null === $request->get('ficha'))
             return $this->redirect($this->generateUrl('miembros'));
         
-        #throw new \Exception($request->get('ficha'));
         switch($request->get('ficha'))
         {
             case "Maria_Montes":

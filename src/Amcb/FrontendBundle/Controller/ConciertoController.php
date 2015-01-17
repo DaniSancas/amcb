@@ -39,7 +39,8 @@ class ConciertoController extends Controller
         $actual = null;
         if(null !== $request->get('pag'))
         {
-            for($i = 0; $i < count($paginas); $i++)
+            $countPags = count($paginas);
+            for($i = 0; $i < $countPags; $i++)
             {
                 if($paginas[$i]['year'] == $request->get('pag'))
                 {
