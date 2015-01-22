@@ -35,30 +35,6 @@ class ContactoType extends AbstractType
         return $this->destinatarios;
     }
 
-    /**
-     * @param string $nombre
-     * @param Container $container
-     * @return string|null
-     */
-    public static function getEmailDestinatario($nombre, Container $container)
-    {
-        switch ($nombre) {
-            case 'txema':
-                return $container->getParameter('presidente_email');
-                break;
-            case 'belen':
-                return $container->getParameter('secretaria_email');
-                break;
-            case 'dani':
-                return $container->getParameter('webmaster_email');
-                break;
-            default:
-                return null;
-                break;
-        }
-    }
-
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

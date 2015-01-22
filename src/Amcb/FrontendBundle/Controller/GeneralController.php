@@ -90,14 +90,14 @@ class GeneralController extends Controller
         
         if ($request->isMethod('POST'))
         {
-            $form->bind($request);
+            $form->submit($request);
 
             if ($form->isValid())
             {
                 $message = \Swift_Message::newInstance()
                     ->setSubject('[www.amcb.es] Consulta desde la web')
                     ->setFrom($form->get('email')->getData())
-                    ->setTo(ContactoType::getEmailDestinatario($form->get('destinatario')->getData(), $this->container))
+                    ->setTo($this->getEmailDestinatario($form->get('destinatario')->getData()))
                     ->setBody(
                         $this->renderView(
                             'FrontendBundle:General:emailContacto.txt.twig',
@@ -121,5 +121,30 @@ class GeneralController extends Controller
 
         return array('form' => $form->createView());
 
+    }
+
+    /**
+     * Devuelve el email correspondiente a la persona de contacto elegida.
+     *
+     * @param string $nombre
+     * @return string|null
+     */
+    private function getEmailDestinatario($nombre) {
+        switch ($nombre) {
+            case 'txema':
+                $email = 'presidente_email';
+                break;
+            case 'belen':
+                $email = 'secretaria_email';
+                break;
+            case 'dani':
+                $email = 'webmaster_email';
+                break;
+            default:
+                return null;
+                break;
+        }
+
+        return $this->container->getParameter($email);
     }
 }
