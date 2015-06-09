@@ -9,6 +9,9 @@ use Sonata\AdminBundle\Form\FormMapper;
 
 class UsuarioAdmin extends Admin
 {
+    /**
+     * {@inheritDoc}
+     */
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -19,6 +22,9 @@ class UsuarioAdmin extends Admin
         ;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
@@ -29,6 +35,9 @@ class UsuarioAdmin extends Admin
         ;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper

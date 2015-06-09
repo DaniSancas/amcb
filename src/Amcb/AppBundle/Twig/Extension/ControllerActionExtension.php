@@ -27,11 +27,17 @@ class ControllerActionExtension extends \Twig_Extension
         $this->request = $request;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function initRuntime(\Twig_Environment $environment)
     {
         $this->environment = $environment;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getFunctions()
     {
         return array(
@@ -53,7 +59,8 @@ class ControllerActionExtension extends \Twig_Extension
 
             return (isset($matches[1])) ? strtolower($matches[1]) : '';
         }
-        
+
+        return null;
     }
 
     /**
@@ -69,8 +76,13 @@ class ControllerActionExtension extends \Twig_Extension
 
             return $matches[1];
         }
+
+        return null;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getName()
     {
         return 'amcb_controller_action_twig_extension';

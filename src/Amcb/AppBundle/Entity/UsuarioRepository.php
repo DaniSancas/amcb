@@ -29,6 +29,9 @@ class UsuarioRepository extends EntityRepository implements UserProviderInterfac
         return $q->getResult();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function loadUserByUsername($dni)
     {
         $q = $this
@@ -42,31 +45,31 @@ class UsuarioRepository extends EntityRepository implements UserProviderInterfac
             // if there is no record matching the criteria.
             $user = $q->getSingleResult();
         } catch (NoResultException $e) {
-            $message = sprintf(
-                'Unable to find an active admin AcmeUserBundle:User object identified by "%s".',
-                $dni
-            );
+            $message = sprintf('Unable to find an active admin AcmeUserBundle:User object identified by "%s".', $dni);
             throw new UsernameNotFoundException($message, 0, $e);
         }
 
         return $user;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function refreshUser(UserInterface $user)
     {
         $class = get_class($user);
         if (!$this->supportsClass($class)) {
             throw new UnsupportedUserException(
-                sprintf(
-                    'Instances of "%s" are not supported.',
-                    $class
-                )
+                sprintf('Instances of "%s" are not supported.', $class)
             );
         }
 
         return $this->find($user->getId());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function supportsClass($class)
     {
         return $this->getEntityName() === $class

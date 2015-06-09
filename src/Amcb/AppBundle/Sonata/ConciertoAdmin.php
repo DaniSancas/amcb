@@ -20,6 +20,9 @@ class ConciertoAdmin extends Admin
         #'_per_page'   => 25,
     );
 
+    /**
+     * {@inheritDoc}
+     */
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -36,6 +39,9 @@ class ConciertoAdmin extends Admin
         ;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
@@ -47,6 +53,9 @@ class ConciertoAdmin extends Admin
         ;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper

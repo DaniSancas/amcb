@@ -146,7 +146,8 @@ class Concierto
      * 
      * Por defecto se pasa la cadena a slug, para ser utilizada en URLs.
      * 
-     * @return string
+     * @param bool $slugify
+     * @return mixed|string
      */
     public function getFechaLarga($slugify = true)
     {

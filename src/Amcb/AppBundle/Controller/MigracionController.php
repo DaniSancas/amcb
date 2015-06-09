@@ -8,8 +8,10 @@ class MigracionController extends Controller
 {
     /**
      * Acción que convierte urls del tipo <code>/programas.php?id=77&tag=concierto-de-camara-en-muskiz</code> en <code>/concierto/sabado-28-de-diciembre-de-2013/concierto-de-camara-en-sondika/77</code>
-     * 
-     * @return redirection Redirección a la acción deseada.
+     *
+     * Redirecciona a la acción deseada.
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function programasAction()
     {
@@ -31,7 +33,9 @@ class MigracionController extends Controller
     /**
      * Acción que redirige las peticiones de <code>/pdf/*</code> a su nueva ruta.
      * 
-     * @return PDF File in PDF format.
+     * Devuelve ficheros PDF.
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function pdfAction()
     {
@@ -43,7 +47,7 @@ class MigracionController extends Controller
     /**
      * Acción que redirige las urls del tipo <code>/miembros.php=ficha=Maria_Montes</code> en <code>/miembros/maria-montes</code>
      * 
-     * @return redirection Redirección a la acción deseada.
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function fichaMiembroAction()
     {

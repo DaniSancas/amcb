@@ -12,8 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class FicheroType extends AbstractType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
+     * {@inheritDoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -34,9 +33,9 @@ class FicheroType extends AbstractType
             $form->add('file', 'file', array('required' => $required, 'position' => array('before' => 'guardar'), 'label' => 'Fichero', 'attr' => array('class' => 'input-file-inline')));
         });
     }
-    
+
     /**
-     * @param OptionsResolverInterface $resolver
+     * {@inheritDoc}
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {

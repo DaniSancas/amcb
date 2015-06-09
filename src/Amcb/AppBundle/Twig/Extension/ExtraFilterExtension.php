@@ -6,6 +6,9 @@ use Amcb\AppBundle\Library\Util;
 
 class ExtraFilterExtension extends \Twig_Extension
 {
+    /**
+     * {@inheritDoc}
+     */
     public function getFilters()
     {
         return array(
@@ -30,6 +33,9 @@ class ExtraFilterExtension extends \Twig_Extension
         return Util::getComaSeparatedString($string);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getName()
     {
         return 'extra_filter_twig_extension';

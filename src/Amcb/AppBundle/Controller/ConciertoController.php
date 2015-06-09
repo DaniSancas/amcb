@@ -60,7 +60,10 @@ class ConciertoController extends Controller
     
     /**
      * Acción que muestra la página de un concierto con toda su información al completo.
-     * 
+     *
+     * @param $id
+     * @return array
+     *
      * @Template()
      */
     public function mostrarAction($id)

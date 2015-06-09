@@ -1,6 +1,6 @@
 private_login:
     pattern:    /login
-    defaults:   { _controller: AppBundle:Default:login }
+    defaults:   { _controller: AppBundle:Fichero:login }
 
 private_login_check:
     pattern:    /login_check

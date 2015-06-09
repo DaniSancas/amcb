@@ -34,6 +34,9 @@ class ContactoType extends AbstractType
         return $this->destinatarios;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -68,7 +71,10 @@ class ContactoType extends AbstractType
             ))
         ;
     }
-  
+
+    /**
+     * {@inheritDoc}
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $collectionConstraint = new Collection(array(
@@ -106,6 +112,9 @@ class ContactoType extends AbstractType
         ));
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return 'contacto';

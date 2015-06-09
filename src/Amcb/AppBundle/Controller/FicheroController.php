@@ -9,9 +9,46 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\SecurityContext;
 
 class FicheroController extends Controller
 {
+    /**
+     * Acción que muestra el formulario de login para acceder al área privada.
+     *
+     * Si el usuario ya está logeado y dispone de los permisos mínimos, nos saltamos el login.
+     *
+     * @param Request $request
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
+     *
+     * @Template()
+     */
+    public function loginAction(Request $request)
+    {
+        $securityContext = $this->container->get('security.context');
+        $user = $this->getUser();
+        if($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') && $user && $user->getRango() >= 1)
+            return $this->redirect($this->generateUrl('private_fichero_listado'));
+
+        $session = $request->getSession();
+
+        // get the login error if there is one
+        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
+            $error = $request->attributes->get(
+                SecurityContext::AUTHENTICATION_ERROR
+            );
+        } else {
+            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
+            $session->remove(SecurityContext::AUTHENTICATION_ERROR);
+        }
+
+        return array(
+            // last username entered by the user
+            'last_username' => $session->get(SecurityContext::LAST_USERNAME),
+            'error'         => $error,
+        );
+    }
+
     /**
      * Ácción que muestra el listado de Ficheros.
      *
@@ -35,6 +72,9 @@ class FicheroController extends Controller
     /**
      * Acción que muestra el Fichero y permite descargar el archivo asociado.
      *
+     * @param $id
+     * @return array
+     *
      * @Template()
      */
     public function verAction($id)
@@ -51,6 +91,10 @@ class FicheroController extends Controller
      * Acción que muestra y procesa el formulario para las rutas nuevo, editar y guardar un Fichero.
      *
      * Para editar y guardar un Fichero, solo lo podrán hacer el autor o un SUPER_ADMIN.
+     *
+     * @param Request $request
+     * @param null $id
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      *
      * @Template()
      */
@@ -109,7 +153,7 @@ class FicheroController extends Controller
                             ->setTo($usuario->getEmail(), $usuario->getUsuario())
                             ->setBody(
                                 $this->renderView(
-                                    'PrivateBundle:Fichero:emailNuevoFichero.txt.twig',
+                                    'AppBundle:Fichero:emailNuevoFichero.txt.twig',
                                     array(
                                         'autor' => $fichero->getUsuario(),
                                         'titulo' => $fichero->getTitulo(),
@@ -137,6 +181,9 @@ class FicheroController extends Controller
      * Acción que elimina un Fichero.
      *
      * Solo lo podrán eliminar el autor o un SUPER_ADMIN.
+     *
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function eliminarAction($id)
     {
