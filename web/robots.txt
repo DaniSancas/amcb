@@ -7,4 +7,4 @@ Disallow: /admin/*
 Disallow: /privado
 Disallow: /privado/*
 Disallow: /uploads/
-Disallow: /bundles/common/downloads/doc/
+Disallow: /bundles/app/downloads/doc/

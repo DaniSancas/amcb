@@ -1,0 +1,29 @@
+{% extends "AppBundle:Fichero:_base.html.twig" %}
+
+{% block title %}Ver fichero{% endblock %}
+
+{% block panel_content %}
+
+    <a href="{{ path('private_fichero_listado') }}" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+    {# Solo los Super Administradores o el autor del post pueden editarlo y eliminarlo #}
+    {% if app.user and (is_granted('ROLE_SUPER_ADMIN') or (app.user.id == fichero.usuario.id)) %}
+        <a href="{{ path('private_fichero_editar', { 'id': fichero.id }) }}" class="btn btn-primary">Editar</a>
+        <a href="{{ path('private_fichero_eliminar', { 'id': fichero.id }) }}" class="btn btn-danger" onclick='return confirm("¿Seguro que desea eliminar este fichero?\n\nLos cambios no se podrán deshacer, ¿desea continuar?");'>Eliminar</a>
+    {% endif %}
+    <br /><br />
+
+    <h2 class="list-group-item-heading">{{ fichero.titulo }}</h2>
+
+    <h5 class="list-group-item-heading"><span class="color-grey">Publicado por {{ fichero.usuario }} el {{ fichero.fechaCreacion|fechahora_larga() }}</span></h5>
+    {% if fichero.fechaCreacion != fichero.fechaModificacion %}
+        <h6 class="list-group-item-heading"><span class="color-grey">Última modificación el {{ fichero.fechaModificacion|fechahora_larga() }}</span></h6>
+    {% endif %}
+
+    <h5 class="list-group-item-heading"><strong>Categoría:</strong> {{ fichero.categoriaElegida }}</h5>
+
+    <br />
+    {{ fichero.descripcion|raw }}
+
+    <p><a href="{{ asset(fichero.ficheroWeb) }}" class="btn btn-lg btn-success" target="_blank"><span class="glyphicon glyphicon-download-alt"></span>  <span class="">Descargar fichero</span><br><span class="btn-xs">{{ fichero.ficheroSize }}</span></a></p>
+
+{% endblock %}

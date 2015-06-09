@@ -77,11 +77,11 @@
         <priority>0.64</priority>
     </url>
     <url>
-        <loc>http://www.amcb.es/bundles/common/downloads/pdf/Homenaje_Guridi_2011_CAS.pdf</loc>
+        <loc>http://www.amcb.es/bundles/app/downloads/pdf/Homenaje_Guridi_2011_CAS.pdf</loc>
         <xhtml:link
             rel="alternate"
             hreflang="eu"
-            href="http://www.amcb.es/bundles/common/downloads/pdf/Homenaje_Guridi_2011_EUS.pdf" />
+            href="http://www.amcb.es/bundles/app/downloads/pdf/Homenaje_Guridi_2011_EUS.pdf" />
         <lastmod>2014-07-16T23:47:38+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.51</priority>

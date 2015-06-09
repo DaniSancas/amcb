@@ -1,0 +1,28 @@
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block title %}Archivo de conciertos{% endblock %}
+
+{% block description_metatag %}
+    Archivo de conciertos del Coro y Orquesta de Cámara de Bilbao. Eventos y actuaciones antiguas agrupadas por años.
+{% endblock %}
+
+{% block keywords_metatag %}
+    Archivo, conciertos, calendario, eventos, actuaciones, {{ actual }}, años, información, noticias, programa, repertorio, coro, orquesta, cámara, bilbao
+{% endblock %}
+
+{% block content %}
+<h1>Archivo de conciertos</h1>
+
+<div class="paginacion-conciertos"> Paginación por años:
+  {% for pagina in paginas %}
+    <a href="{{ path("archivo_conciertos_pag", {'pag': pagina.year}) }}" class="{{ (pagina.year == actual) ? "seleccionado" : "" }}" title="Ver conciertos del año {{ pagina.year }}">{{ pagina.year }}</a>
+  {% endfor %}
+</div>
+
+{% for concierto in conciertos %}
+
+{% include 'AppBundle:Concierto:_vistaPrevia.html.twig' %}
+
+{% endfor %}
+
+{% endblock %}

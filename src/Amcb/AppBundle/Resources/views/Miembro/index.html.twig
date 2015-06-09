@@ -1,0 +1,50 @@
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block title %}Miembros{% endblock %}
+
+{% block description_metatag %}
+    Listado de miembros del Coro y Orquesta de Cámara de Bilbao, directora actual, solistas, antiguos directores y miembros de la junta directiva de la AMCB.
+{% endblock %}
+
+{% block keywords_metatag %}
+    Miembros, coro, orquesta, cámara, bilbao, directora, solistas, dirección, antiguos directores, junta directiva
+{% endblock %}
+
+{% block content %}
+<h1>Miembros del Coro y Orquesta de Cámara de Bilbao</h1>
+
+<p>La Asociación de Música de Cámara de Bilbao está formada por el Coro de Cámara de Bilbao y la Orquesta de Cámara de Bilbao.</p>
+
+<div id="miembros-wrapper">
+  <div class="miembros-opciones-cuadrados">
+    <img src="{{ asset('bundles/app/images/direccion_thumb.jpg') }}" alt="Dirección" />
+    <div>
+      <a href="{{ url('direccion') }}"><h2>Dirección del Coro y Orquesta</h2></a>
+      <p>Dirección del Coro y Orquesta de Cámara de Bilbao a cargo de Hilario Extremiana.</p>
+    </div>
+  </div>
+  <div class="miembros-opciones-cuadrados">
+    <img src="{{ asset('bundles/app/images/coro_thumb.jpg') }}" alt="Coro" />
+    <div>
+      <a href="{{ url('coro') }}"><h2>Miembros del Coro</h2></a>
+      <p>Miembros y solistas del Coro de Cámara de Bilbao.</p>
+    </div>
+  </div>
+  <div class="miembros-opciones-cuadrados">
+    <img src="{{ asset('bundles/app/images/orquesta_thumb.jpg') }}" alt="Orquesta" />
+    <div>
+      <a href="{{ url('orquesta') }}"><h2>Miembros de la Orquesta</h2></a>
+      <p>Miembros de la Orquesta de Cámara de Bilbao.</p>
+    </div>
+  </div>
+  <div class="miembros-opciones-cuadrados">
+    <img src="{{ asset('bundles/app/images/junta_thumb.jpg') }}" alt="Junta directiva" />
+    <div>
+      <a href="{{ url('juntaDirectiva') }}"><h2>Junta directiva de la AMCB</h2></a>
+      <p>Junta directiva del Coro y Orquesta de Cámara de Bilbao.</p>
+    </div>
+  </div>
+  
+</div>
+
+{% endblock %}

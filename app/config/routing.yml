@@ -1,25 +1,25 @@
 rutas_migracion:
-    resource: "@FrontendBundle/Resources/config/routing_migracion.yml"
+    resource: "@AppBundle/Resources/config/routing_migracion.yml"
     prefix:   /
 
 frontend_general:
-    resource: "@FrontendBundle/Resources/config/routing_general.yml"
+    resource: "@AppBundle/Resources/config/routing_general.yml"
     prefix:   /
 
 frontend_miembro:
-    resource: "@FrontendBundle/Resources/config/routing_miembro.yml"
+    resource: "@AppBundle/Resources/config/routing_miembro.yml"
     prefix:   /miembros
     
 frontend_concierto:
-    resource: "@FrontendBundle/Resources/config/routing_concierto.yml"
+    resource: "@AppBundle/Resources/config/routing_concierto.yml"
     prefix:   /
 
 common:
-    resource: "@CommonBundle/Resources/config/routing.yml"
+    resource: "@AppBundle/Resources/config/routing.yml"
     prefix:   /
 
 common_admin:
-    resource: "@CommonBundle/Resources/config/sonata_routing.yml"
+    resource: "@AppBundle/Resources/config/sonata_routing.yml"
     prefix:   /admin
     
 admin_index:
@@ -31,5 +31,5 @@ admin:
     prefix:   /admin
 
 private:
-        resource: "@PrivateBundle/Resources/config/routing.yml"
+        resource: "@AppBundle/Resources/config/routing.yml"
         prefix:   /privado

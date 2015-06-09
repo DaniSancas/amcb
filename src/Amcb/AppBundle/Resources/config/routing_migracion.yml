@@ -1,0 +1,75 @@
+migracion_homepage:
+    pattern:  /inicio.php
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: homepage, permanent: true }
+
+migracion_historia:
+    pattern:  /historia.php
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: historia, permanent: true }
+
+migracion_contacto:
+    pattern:  /contacto.php
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: contacto, permanent: true }
+
+migracion_repertorio:
+    pattern:  /repertorio.php
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: repertorio, permanent: true }
+
+migracion_escuchanos:
+    pattern:  /escuchanos.php
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: escuchanos, permanent: true }
+
+migracion_galeria:
+    pattern:  /galeria.php
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: galeria, permanent: true }
+
+migracion_criticas:
+    pattern:  /criticas.php
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: docsInteres, permanent: true }
+    
+migracion_homenaje_jesus_guridi:
+    pattern:  /homenaje-jesus-guridi.php
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: docsInteres, permanent: true }
+
+
+migracion_conciertos:
+    pattern:  /eventos.php
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: conciertos, permanent: true }
+    
+migracion_archivo:
+    pattern:  /archivo.php
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: archivo_conciertos, permanent: true }
+
+
+migracion_miembros:
+    pattern:  /miembros.php
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: miembros, permanent: true }
+
+migracion_coro:
+    pattern:  /coro.php
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: coro, permanent: true }
+
+migracion_orquesta:
+    pattern:  /orquesta.php
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: orquesta, permanent: true }
+
+migracion_junta:
+    pattern:  /junta.php
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: juntaDirectiva, permanent: true }
+
+migracion_director:
+    pattern:  /director.php
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: direccion, permanent: true }
+
+
+# Con controller
+migracion_programas:
+    pattern:  /programas.php
+    defaults: { _controller: AppBundle:Migracion:programas }
+
+migracion_pdf:
+    pattern:  /pdf/{fichero}
+    defaults: { _controller: AppBundle:Migracion:pdf }
+
+migracion_miembro_concreto:
+    pattern:  /miembros.php
+    defaults: { _controller: AppBundle:Migracion:fichaMiembro }

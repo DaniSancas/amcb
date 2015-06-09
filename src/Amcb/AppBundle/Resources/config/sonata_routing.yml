@@ -1,0 +1,10 @@
+admin_logout:
+    pattern:  /logout
+    
+admin_cache_clear:
+    pattern:  /cache-clear
+    defaults: { _controller: AppBundle:Admin:cacheClear }
+    
+_sonata_admin:
+    resource: .
+    type:     sonata_admin

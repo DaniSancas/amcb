@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: "@CommonBundle/Resources/config/sonata_services.yml" }
+    - { resource: "@AppBundle/Resources/config/sonata_services.yml" }
     - { resource: doctrine_extensions.yml }
 
 framework:
@@ -39,7 +39,7 @@ twig:
     strict_variables: %kernel.debug%
     form:
         resources:
-            - 'CommonBundle:Form:fields.html.twig'
+            - 'AppBundle:Form:fields.html.twig'
 
 # Assetic Configuration
 assetic:
@@ -98,7 +98,7 @@ sonata_admin:
     title_logo: /bundles/sonataadmin/logo_title.png
     templates:
         # default actions templates, should extend a global templates
-        edit:    CommonBundle:Sonata:edit.html.twig
+        edit:    AppBundle:Sonata:edit.html.twig
     dashboard:
         blocks:
             # display a dashboard block

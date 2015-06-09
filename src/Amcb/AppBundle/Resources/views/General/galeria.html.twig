@@ -1,0 +1,87 @@
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block title %}Galería de fotos{% endblock %}
+
+{% block description_metatag %}
+    Galería de sesiones de fotos de conciertos y actuaciones más recientes del Coro y Orquesta de Cámara de Bilbao.
+{% endblock %}
+
+{% block keywords_metatag %}
+    Galería, fotos, sesiones, conciertos, actuaciones, música clásica, folkore, imágenes, teatro, iglesia
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/lightbox.css') }}" />
+{% endblock %}
+    
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/app/js/jquery-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/app/js/jquery.lightbox.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<h1>Galería de fotos</h1>
+
+<div id="galeria-wrapper">
+
+  <h2>Concierto en Castro-Urdiales. Día 5 de octubre de 2013</h2>
+
+  <p>Sesión de fotos tomada por Merche Sánchez en la Iglesia de Santa María (Castro-Urdiales) durante la actuación.</p>
+
+  <div class="galeria">
+
+    {# Galería de Castro 2013, por Merche Sánchez #}
+    {% for i in 1..6 %}
+    <div class="foto-wrapper">
+      <a href="{{ asset('bundles/app/images/galeria/2013-castro_'~i~'.jpg') }}" rel="castro-2013" class="lightbox-1" title="Concierto en Castro-Urdiales 2013 - AMCB">
+        <img src="{{ asset('bundles/app/images/galeria/th_2013-castro_'~i~'.jpg') }}" alt="Concierto en Castro-Urdiales 2013 - AMCB" />
+      </a>
+    </div>
+    {% endfor %}
+
+  </div>
+  
+  <h2>Concierto en Galdakao. Día 20 de abril de 2013</h2>
+
+  <p>Sesión de fotos tomada por Merche Sánchez en Torrezabal (Galdakao) durante la actuación.</p>
+
+  <div class="galeria">
+
+    {# Galería de Galdakao 2013, por Merche Sánchez #}
+    {% for i in 1..10 %}
+    <div class="foto-wrapper">
+      <a href="{{ asset('bundles/app/images/galeria/2013-galdakao_'~i~'.jpg') }}" rel="galdakao-2013" class="lightbox-1" title="Concierto en Galdakao 2013 - AMCB">
+        <img src="{{ asset('bundles/app/images/galeria/th_2013-galdakao_'~i~'.jpg') }}" alt="Concierto en Galdakao 2013 - AMCB" />
+      </a>
+    </div>
+    {% endfor %}
+
+  </div>
+  
+  
+  <h2>Concierto en Deusto. Día 13 de noviembre de 2009</h2>
+
+  <p>Sesión de fotos tomada por Álvaro Bueno en la Iglesia de San Pedro de Deusto (Bilbao) durante la actuación.</p>
+
+  <p>Fotografía: Álvaro Bueno <a href="http://www.flickr.com/photos/alvarobueno/" rel="nofollow" target="_blank">http://www.flickr.com/photos/alvarobueno/</a></p>
+  <div class="galeria">
+
+    {# Galería de Deusto 2009, por Álvaro Bueno #}
+    {% for i in 1..14 %}
+    <div class="foto-wrapper">
+      <a href="{{ asset('bundles/app/images/galeria/2009-deusto_'~i~'.jpg') }}" rel="deusto-2009" class="lightbox-1" title="Concierto en Deusto 2009 - AMCB">
+        <img src="{{ asset('bundles/app/images/galeria/th_2009-deusto_'~i~'.jpg') }}" alt="Concierto en Deusto 2009 - AMCB" />
+      </a>
+    </div>
+    {% endfor %}
+
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block documentReady %}
+  {{ parent() }}
+  $('.lightbox-1').lightbox();
+{% endblock documentReady %}

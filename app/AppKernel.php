@@ -16,16 +16,13 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new Amcb\FrontendBundle\FrontendBundle(),
-            new Amcb\CommonBundle\CommonBundle(),
+            new Amcb\AppBundle\AppBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
-            //new Sonata\jQueryBundle\SonatajQueryBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Sonata\CoreBundle\SonataCoreBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new Amcb\PrivateBundle\PrivateBundle(),
             new Ivory\OrderedFormBundle\IvoryOrderedFormBundle()
         );
 
