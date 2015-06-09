@@ -1,10 +1,12 @@
+{% set actionName = getActionName() %}
+
 <div id="submenu-wrapper">
   <ul>
-    <li class="{% if get_action_name() == 'index' %}activo{% endif %}" ><a href="{{ url('homepage') }}">Principal</a></li>
-    <li class="{% if get_action_name() == 'historia' %}activo{% endif %}" ><a href="{{ url('historia') }}">Historia</a></li>
-    <li class="{% if get_action_name() == 'escuchanos' %}activo{% endif %}" ><a href="{{ url('escuchanos') }}">Escúchanos</a></li>
-    <li class="{% if get_action_name() == 'repertorio' %}activo{% endif %}" ><a href="{{ url('repertorio') }}">Repertorio</a></li>
-    <li class="{% if get_action_name() == 'documentos' %}activo{% endif %}" ><a href="{{ url('docsInteres') }}">Documentos de interés</a></li>
+    <li class="{% if actionName == 'index' %}activo{% endif %}" ><a href="{{ url('homepage') }}">Principal</a></li>
+    <li class="{% if actionName == 'historia' %}activo{% endif %}" ><a href="{{ url('historia') }}">Historia</a></li>
+    <li class="{% if actionName == 'escuchanos' %}activo{% endif %}" ><a href="{{ url('escuchanos') }}">Escúchanos</a></li>
+    <li class="{% if actionName == 'repertorio' %}activo{% endif %}" ><a href="{{ url('repertorio') }}">Repertorio</a></li>
+    <li class="{% if actionName == 'documentos' %}activo{% endif %}" ><a href="{{ url('docsInteres') }}">Documentos de interés</a></li>
     <li class="" ><a href="{{ url('private_homepage') }}"><img src="{{ asset('bundles/app/images/icons/lock_16.png') }}" alt="Área privada" title="Área privada" /> Área privada</a></li>
   </ul>
 </div>
