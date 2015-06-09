@@ -8,6 +8,9 @@ DirectoryIndex app.php
 php_value upload_max_filesize 12M
 php_value post_max_size 12M
 php_value max_execution_time 600
+php_value date.timezone Europe/Madrid
+
+AddHandler application/x-httpd-php56 php
 
 <IfModule mod_rewrite.c>
     RewriteEngine On

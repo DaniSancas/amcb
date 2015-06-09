@@ -15,8 +15,11 @@ require_once __DIR__.'/../app/AppCache.php';
 
 $kernel = new AppKernel('prod', false);
 $kernel->loadClassCache();
-$kernel = new AppCache($kernel);
+
 $request = Request::createFromGlobals();
+if (!$request->headers->has('X-Blackfire-Query')) {
+    $kernel = new AppCache($kernel);
+}
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
