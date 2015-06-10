@@ -5,12 +5,11 @@ namespace Amcb\AppBundle\Controller;
 use Amcb\AppBundle\Entity\Fichero;
 use Amcb\AppBundle\Form\Type\FicheroType;
 use Amcb\AppBundle\Library\Util;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * Class FicheroController
@@ -34,26 +33,30 @@ class FicheroController extends Controller
      */
     public function loginAction(Request $request)
     {
-        $securityContext = $this->container->get('security.context');
+        // Obtenemos el servicio de seguridad y el usuario logeado en la aplicación.
+        $securityContext = $this->container->get('security.authorization_checker');
         $user = $this->getUser();
-        if($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') && $user && $user->getRango() >= 1)
-            return $this->redirect($this->generateUrl('private_fichero_listado'));
+
+        // Si el usuario logeado está autenticado y tiene rango suficiente, redirigimos a la página de inicio privado.
+        if($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') && $user && $user->getRango() >= 1) {
+            return $this->redirect($this->generateUrl('private_homepage'));
+        }
 
         $session = $request->getSession();
 
         // get the login error if there is one
-        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
+        if ($request->attributes->has(Security::AUTHENTICATION_ERROR)) {
             $error = $request->attributes->get(
-                SecurityContext::AUTHENTICATION_ERROR
+                Security::AUTHENTICATION_ERROR
             );
         } else {
-            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
-            $session->remove(SecurityContext::AUTHENTICATION_ERROR);
+            $error = $session->get(Security::AUTHENTICATION_ERROR);
+            $session->remove(Security::AUTHENTICATION_ERROR);
         }
 
         return array(
             // last username entered by the user
-            'last_username' => $session->get(SecurityContext::LAST_USERNAME),
+            'last_username' => $session->get(Security::LAST_USERNAME),
             'error'         => $error,
         );
     }
@@ -61,20 +64,19 @@ class FicheroController extends Controller
     /**
      * Ácción que muestra el listado de Ficheros.
      *
+     * @param Request $request
+     * @return array
+     *
      * @Route("/", name="private_fichero_listado", methods={"GET"})
      * @Template()
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $filtro = $this->getRequest()->get("filtro");
-        if(null !== $filtro)
-        {
-            $findBy = array("categoria" => $this->getRequest()->get("filtro"));
-        }else{
-            $findBy = array();
-        }
+        $filtro = $request->get("filtro");
 
-        $ficheros = $this->getDoctrine()->getManager()->getRepository('AppBundle:Fichero')->findBy($findBy, array('fechaCreacion' => 'DESC'));
+        $findBy = (null !== $filtro) ? array("categoria" => $filtro) : array();
+
+        $ficheros = $this->getDoctrine()->getRepository('AppBundle:Fichero')->findBy($findBy, array('fechaCreacion' => 'DESC'));
 
         return array('ficheros' => $ficheros, 'categorias' => Util::getCategorias(true), 'filtro' => $filtro);
     }
@@ -82,19 +84,14 @@ class FicheroController extends Controller
     /**
      * Acción que muestra el Fichero y permite descargar el archivo asociado.
      *
-     * @param $id
+     * @param Fichero $fichero
      * @return array
      *
      * @Route("/fichero/ver/{id}", name="private_fichero_ver", requirements={"id"="\d+"}, methods={"GET"})
      * @Template()
      */
-    public function verAction($id)
+    public function verAction(Fichero $fichero)
     {
-        $fichero = $this->getDoctrine()->getManager()->getRepository('AppBundle:Fichero')->find($id);
-
-        if(!$fichero)
-            throw new NotFoundHttpException('El fichero requerido no existe o no tiene permiso para acceder a él.');
-
         return array('fichero' => $fichero);
     }
 
@@ -117,13 +114,17 @@ class FicheroController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        // Se se ha especificado una ID, recuperamos el fichero. En caso contrario creamos uno nuevo.
         $fichero = (null === $id) ? new Fichero() : $em->getRepository('AppBundle:Fichero')->find($id);
 
         // Si no existe el registro ni (el usuario logeado es el autor o ni tiene permiso de ROLE_SUPER_ADMIN)
-        if(($this->getUser()->getRango() < 2) || ((null !== $id) && (!$fichero || ($fichero->getUsuario() != $this->getUser() && $this->getUser()->getRango() < 3))))
-            throw new NotFoundHttpException('El fichero requerido no existe o no tiene permiso para acceder a él.');
+        if(($this->getUser()->getRango() < 2) ||
+            ((null !== $fichero) && ($fichero->getUsuario() != $this->getUser() && $this->getUser()->getRango() < 3))) {
+            throw $this->createNotFoundException('El fichero requerido no existe o no tiene permiso para acceder a él.');
+        }
 
-        $params = (null === $id) ? array() : array('id' => $id);
+        // Creamos el formulario
+        $params = (null === $fichero) ? array() : array('id' => $fichero->getId());
         $formulario = $this->createForm(new FicheroType(), $fichero, array(
             'action' => $this->generateUrl('private_fichero_guardar', $params),
             'method' => 'POST',
@@ -197,20 +198,19 @@ class FicheroController extends Controller
      *
      * Solo lo podrán eliminar el autor o un SUPER_ADMIN.
      *
-     * @param $id
+     * @param Fichero $fichero
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      *
      * @Route("/fichero/eliminar/{id}", name="private_fichero_eliminar", requirements={"id"="\d+"}, methods={"GET"})
      */
-    public function eliminarAction($id)
+    public function eliminarAction(Fichero $fichero)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $fichero = $em->getRepository('AppBundle:Fichero')->find($id);
-
-        // Si no existe el registro ni (el usuario logeado es el autor o ni tiene permiso de ROLE_SUPER_ADMIN)
-        if(!$fichero || ($fichero->getUsuario() != $this->getUser() && $this->getUser()->getRango() < 3))
-            throw new NotFoundHttpException('El fichero requerido no existe o no tiene permiso para acceder a él.');
+        // Si el usuario logeado no es el autor o no tiene permiso de ROLE_SUPER_ADMIN
+        if($fichero->getUsuario() != $this->getUser() && $this->getUser()->getRango() < 3) {
+            throw $this->createNotFoundException('El fichero requerido no existe o no tiene permiso para acceder a él.');
+        }
 
         $em->remove($fichero);
         $em->flush();

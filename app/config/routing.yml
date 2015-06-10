@@ -2,6 +2,12 @@ app:
     resource: "@AppBundle/Controller"
     type:     annotation
 
+# Ruta dinámica que apuntará al director en activo
+direccion:
+    path:  /miembros/direccion
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: ficha_hilario_extremiana }
+    methods:  [GET]
+
 common_admin:
     resource: "@AppBundle/Resources/config/sonata_routing.yml"
     prefix:   /admin

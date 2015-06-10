@@ -11,41 +11,41 @@ class ConciertoRepository extends EntityRepository
      * Devuelve, de más próximo a más lejano, el listado de próximos conciertos.
      * 
      * @param int $limit Límite de conciertos a mostrar.
-     * @return Array Conciertos
+     * @return array Concierto
      */
-    public function getProximos($limit = 10)
+    public function getProximos($limit = Concierto::MAX_PROXIMOS)
     {
-        $q = $this->getEntityManager()->createQuery(
-            'SELECT c FROM AppBundle:Concierto c '.
-            'WHERE c.es_visible = :es_visible '.
-            'AND c.fecha >= CURRENT_DATE()'.
-            'ORDER BY c.fecha ASC');
-        
+        $q = $this
+            ->createQueryBuilder('c')
+            ->where('c.es_visible = :es_visible')
+            ->andWhere('c.fecha >= CURRENT_DATE()')
+            ->orderBy('c.fecha');
+
         $q->setParameter('es_visible', true);
         $q->setMaxResults($limit);
-            
-        return $q->getResult();
+
+        return $q->getQuery()->getResult();
     }
     
     /**
      * Devuelve, de más próximo a más lejano, el listado de conciertos ya pasados.
      * 
      * @param int $year Año de los conciertos a mostrar (funciona como paginación)
-     * @return Array Conciertos
+     * @return array Concierto
      */
     public function getPasados($year)
     {
-        $q = $this->getEntityManager()->createQuery(
-            'SELECT c FROM AppBundle:Concierto c '.
-            'WHERE c.es_visible = :es_visible '.
-            'AND c.fecha < CURRENT_DATE() '.
-            'AND SUBSTRING(c.fecha, 1, 4) = :year '.
-            'ORDER BY c.fecha DESC');
-        
+        $q = $this
+            ->createQueryBuilder('c')
+            ->where('c.es_visible = :es_visible')
+            ->andWhere('c.fecha < CURRENT_DATE()')
+            ->andWhere('SUBSTRING(c.fecha, 1, 4) = :year')
+            ->orderBy('c.fecha', 'DESC');
+
         $q->setParameter('es_visible', true);
         $q->setParameter('year', $year);
-            
-        return $q->getResult();
+
+        return $q->getQuery()->getResult();
     }
     
     /**
@@ -53,15 +53,21 @@ class ConciertoRepository extends EntityRepository
      * 
      * Se utilizará para paginar resultados del archivo de conciertos.
      * 
-     * @return Array Años
+     * @return array int Años
      */
     public function getPeriodosPaginacion()
     {
-        $q = $this->getEntityManager()->createQuery(
-            'SELECT DISTINCT SUBSTRING(c.fecha, 1, 4) as year FROM AppBundle:Concierto c WHERE c.fecha < CURRENT_DATE() ORDER BY c.fecha DESC'
-        );
-      
-        return $q->getResult();
+        $q = $this
+            ->createQueryBuilder('c')
+            ->select('SUBSTRING(c.fecha, 1, 4) as year')
+            ->where('c.es_visible = :es_visible')
+            ->andWhere('c.fecha < CURRENT_DATE()')
+            ->orderBy('c.fecha', 'DESC')
+            ->distinct();
+
+        $q->setParameter('es_visible', true);
+
+        return $q->getQuery()->getResult();
     }
 }
 

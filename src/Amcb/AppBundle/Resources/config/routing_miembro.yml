@@ -1,5 +1,0 @@
-# Ruta dinámica que apuntará al director en activo
-direccion:
-    path:  /direccion
-    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: ficha_hilario_extremiana }
-    methods:  [GET]

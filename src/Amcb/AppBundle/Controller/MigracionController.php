@@ -4,6 +4,7 @@ namespace Amcb\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class MigracionController extends Controller
 {
@@ -12,23 +13,25 @@ class MigracionController extends Controller
      *
      * Redirecciona a la acción deseada.
      *
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      *
      * @Route("/programas.php", name="migracion_programas", methods={"GET"})
      */
-    public function programasAction()
+    public function programasAction(Request $request)
     {
-        $request = $this->get('request');
-        
-        if(null === $request->get('id'))
+        if(null === $request->get('id')) {
             return $this->redirect($this->generateUrl('archivo_conciertos'));
+        }
+
+        $concierto = $this->getDoctrine()->getRepository('AppBundle:Concierto')->find($request->get('id'));
         
-        $concierto = $this->getDoctrine()->getManager()->getRepository('AppBundle:Concierto')->find($request->get('id'));
-        
-        if($concierto)
-        {
-            return $this->redirect($this->generateUrl('mostrar_concierto', array('id' => $concierto->getId(), 'fecha_larga' => $concierto->getFechaLarga(), 'slug' => $concierto->getSlug())), 301);
-        }else{
+        if($concierto) {
+            return $this->redirect($this->generateUrl('mostrar_concierto',
+                array('id' => $concierto->getId(), 'fecha_larga' => $concierto->getFechaLarga(),
+                    'slug' => $concierto->getSlug()
+                )), 301);
+        } else {
             return $this->redirect($this->generateUrl('archivo_conciertos'));
         }
     }
@@ -42,10 +45,8 @@ class MigracionController extends Controller
      *
      * @Route("/pdf/{fichero}", name="migracion_pdf", methods={"GET"})
      */
-    public function pdfAction()
+    public function pdfAction(Request $request)
     {
-        $request = $this->get('request');
-        
         return $this->redirect('/bundles/app/downloads/pdf/'.$request->get('fichero'), 301);
     }
     
@@ -56,10 +57,8 @@ class MigracionController extends Controller
      *
      * @Route("/miembros.php", name="migracion_miembro_concreto", methods={"GET"})
      */
-    public function fichaMiembroAction()
+    public function fichaMiembroAction(Request $request)
     {
-        $request = $this->get('request');
-        
         if(null === $request->get('ficha'))
             return $this->redirect($this->generateUrl('miembros'));
         

@@ -8,6 +8,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 
 use Amcb\AppBundle\Form\Type\ContactoType;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * @Cache(expires="+3 days", maxage="259200", smaxage="259200", public="true")
@@ -23,7 +25,7 @@ class GeneralController extends Controller
      */
     public function indexAction()
     {
-        $conciertos = $this->getDoctrine()->getManager()->getRepository('AppBundle:Concierto')->getProximos(5);
+        $conciertos = $this->getDoctrine()->getRepository('AppBundle:Concierto')->getProximos(5);
 
         return array('conciertos' => $conciertos);
     }
@@ -82,24 +84,25 @@ class GeneralController extends Controller
     {
         return array();
     }
-    
+
     /**
      * Acción que muestra y procesa el formulario de contacto.
+     *
+     * @param Request $request
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      *
      * @Route("/contacto", name="contacto", methods={"GET"})
      * @Route("/contacto", name="contacto_submit", methods={"POST"})
      * @Cache(expires="-1 days", maxage="0", smaxage="0", public="true")
      * @Template()
      */
-    public function contactoAction()
+    public function contactoAction(Request $request)
     {
         $form = $this->createForm(new ContactoType());
-        
-        $request = $this->get('request');
-        
+
         if ($request->isMethod('POST'))
         {
-            $form->submit($request);
+            $form->handleRequest($request);
 
             if ($form->isValid())
             {

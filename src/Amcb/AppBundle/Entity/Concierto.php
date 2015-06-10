@@ -16,6 +16,11 @@ use Amcb\AppBundle\Twig\Extension\SpanishDateTimeExtension;
 class Concierto
 {
     /**
+     * Límite máximo por defecto a la hora de mostrar resultados de próximos conciertos.
+     */
+    const MAX_PROXIMOS = 20;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false)

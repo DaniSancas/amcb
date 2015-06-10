@@ -45,7 +45,7 @@ class UsuarioRepository extends EntityRepository implements UserProviderInterfac
             // if there is no record matching the criteria.
             $user = $q->getSingleResult();
         } catch (NoResultException $e) {
-            $message = sprintf('Unable to find an active admin AcmeUserBundle:User object identified by "%s".', $dni);
+            $message = sprintf('Unable to find an active AppBundle:Usuario object identified by "%s".', $dni);
             throw new UsernameNotFoundException($message, 0, $e);
         }
 

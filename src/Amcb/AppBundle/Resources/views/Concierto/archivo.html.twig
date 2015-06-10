@@ -15,7 +15,7 @@
 
 <div class="paginacion-conciertos"> Paginación por años:
   {% for pagina in paginas %}
-    <a href="{{ path("archivo_conciertos_pag", {'pag': pagina.year}) }}" class="{{ (pagina.year == actual) ? "seleccionado" : "" }}" title="Ver conciertos del año {{ pagina.year }}">{{ pagina.year }}</a>
+    <a href="{{ path("archivo_conciertos_pag", {'year': pagina.year}) }}" class="{{ (pagina.year == actual) ? "seleccionado" : "" }}" title="Ver conciertos del año {{ pagina.year }}">{{ pagina.year }}</a>
   {% endfor %}
 </div>
 
