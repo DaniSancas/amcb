@@ -1,43 +1,5 @@
-miembros:
-    pattern:  /
-    defaults: { _controller: AppBundle:Miembro:index }
-
-coro:
-    pattern:  /coro
-    defaults: { _controller: AppBundle:Miembro:coro }
-
-orquesta:
-    pattern:  /orquesta
-    defaults: { _controller: AppBundle:Miembro:orquesta }
-
+# Ruta dinámica que apuntará al director en activo
 direccion:
-    pattern:  /direccion
+    path:  /direccion
     defaults: { _controller: FrameworkBundle:Redirect:redirect, route: ficha_hilario_extremiana }
-
-juntaDirectiva:
-    pattern:  /junta-directiva
-    defaults: { _controller: AppBundle:Miembro:junta }
-
-ficha_maria_montes:
-    pattern:  /maria-montes
-    defaults: { _controller: AppBundle:Miembro:mariaMontes }
-    
-ficha_elena_roldan:
-    pattern:  /elena-roldan
-    defaults: { _controller: AppBundle:Miembro:elenaRoldan }
-    
-ficha_hilario_extremiana:
-    pattern:  /hilario-extremiana
-    defaults: { _controller: AppBundle:Miembro:hilarioExtremiana }
-
-ficha_paula_perez:
-    pattern:  /paula-perez
-    defaults: { _controller: AppBundle:Miembro:paulaPerez }
-
-ficha_txaber_fernandez:
-    pattern:  /txaber-fernandez
-    defaults: { _controller: AppBundle:Miembro:txaberFernandez }
-
-ficha_alain_sancho:
-    pattern:  /alain-sancho
-    defaults: { _controller: AppBundle:Miembro:alainSancho }
+    methods:  [GET]

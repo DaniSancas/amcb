@@ -3,6 +3,7 @@
 namespace Amcb\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class MigracionController extends Controller
 {
@@ -12,6 +13,8 @@ class MigracionController extends Controller
      * Redirecciona a la acción deseada.
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     *
+     * @Route("/programas.php", name="migracion_programas", methods={"GET"})
      */
     public function programasAction()
     {
@@ -36,6 +39,8 @@ class MigracionController extends Controller
      * Devuelve ficheros PDF.
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     *
+     * @Route("/pdf/{fichero}", name="migracion_pdf", methods={"GET"})
      */
     public function pdfAction()
     {
@@ -48,6 +53,8 @@ class MigracionController extends Controller
      * Acción que redirige las urls del tipo <code>/miembros.php=ficha=Maria_Montes</code> en <code>/miembros/maria-montes</code>
      * 
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     *
+     * @Route("/miembros.php", name="migracion_miembro_concreto", methods={"GET"})
      */
     public function fichaMiembroAction()
     {

@@ -3,17 +3,23 @@
 namespace Amcb\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 
 /**
+ * Class ConciertoController
+ *
+ * @package Amcb\AppBundle\Controller
+ *
  * @Cache(expires="+1 days", maxage="86400", smaxage="86400", public="true")
  */
 class ConciertoController extends Controller
 {
     /**
      * Acción que muestra la página de próximos conciertos.
-     * 
+     *
+     * @Route("/conciertos/proximos", name="conciertos", methods={"GET"})
      * @Template()
      */
     public function indexAction()
@@ -27,7 +33,9 @@ class ConciertoController extends Controller
      * Acción que muestra la página del archivo de conciertos.
      * 
      * La información se mostrará paginada por años.
-     * 
+     *
+     * @Route("/conciertos/archivo", name="archivo_conciertos", methods={"GET"})
+     * @Route("/conciertos/archivo/{pag}", name="archivo_conciertos_pag", requirements={"pag"="\d+"}, methods={"GET"})
      * @Template()
      */
     public function archivoAction()
@@ -64,6 +72,7 @@ class ConciertoController extends Controller
      * @param $id
      * @return array
      *
+     * @Route("/concierto/{fecha_larga}/{slug}/{id}", name="mostrar_concierto", requirements={"id"="\d+"}, methods={"GET"})
      * @Template()
      */
     public function mostrarAction($id)

@@ -1,0 +1,13 @@
+private_login_check:
+    path:    /login_check
+    methods:  [POST]
+
+private_logout:
+    path:    /logout
+    methods:  [GET]
+
+# La última, para evitar una redirección cíclica hacia sí misma
+private_homepage:
+    path:    /
+    defaults: {_controller: FrameworkBundle:Redirect:redirect, route: private_fichero_listado, permanent: true }
+    methods:  [GET]

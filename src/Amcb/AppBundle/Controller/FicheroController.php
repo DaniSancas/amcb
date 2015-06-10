@@ -6,11 +6,19 @@ use Amcb\AppBundle\Entity\Fichero;
 use Amcb\AppBundle\Form\Type\FicheroType;
 use Amcb\AppBundle\Library\Util;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\SecurityContext;
 
+/**
+ * Class FicheroController
+ *
+ * @package Amcb\AppBundle\Controller
+ *
+ * @Route("/privado")
+ */
 class FicheroController extends Controller
 {
     /**
@@ -21,6 +29,7 @@ class FicheroController extends Controller
      * @param Request $request
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      *
+     * @Route("/login", name="private_login", methods={"GET"})
      * @Template()
      */
     public function loginAction(Request $request)
@@ -52,6 +61,7 @@ class FicheroController extends Controller
     /**
      * Ácción que muestra el listado de Ficheros.
      *
+     * @Route("/", name="private_fichero_listado", methods={"GET"})
      * @Template()
      */
     public function indexAction()
@@ -75,6 +85,7 @@ class FicheroController extends Controller
      * @param $id
      * @return array
      *
+     * @Route("/fichero/ver/{id}", name="private_fichero_ver", requirements={"id"="\d+"}, methods={"GET"})
      * @Template()
      */
     public function verAction($id)
@@ -96,6 +107,10 @@ class FicheroController extends Controller
      * @param null $id
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      *
+     *
+     * @Route("/fichero/subir", name="private_fichero_nuevo", methods={"GET"})
+     * @Route("/fichero/editar/{id}", name="private_fichero_editar", requirements={"id"="\d+"}, methods={"GET"})
+     * @Route("/fichero/guardar/{id}", name="private_fichero_guardar", requirements={"id"="\d+"}, methods={"POST"})
      * @Template()
      */
     public function formAction(Request $request, $id = null)
@@ -184,6 +199,8 @@ class FicheroController extends Controller
      *
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     *
+     * @Route("/fichero/eliminar/{id}", name="private_fichero_eliminar", requirements={"id"="\d+"}, methods={"GET"})
      */
     public function eliminarAction($id)
     {

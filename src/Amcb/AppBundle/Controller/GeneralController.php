@@ -3,6 +3,7 @@
 namespace Amcb\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 
@@ -15,7 +16,8 @@ class GeneralController extends Controller
 {
     /**
      * Acción que muestra la página de inicio.
-     * 
+     *
+     * @Route("/", name="homepage", methods={"GET"})
      * @Cache(maxage="60", smaxage="60", public="true")
      * @Template()
      */
@@ -28,7 +30,8 @@ class GeneralController extends Controller
     
     /**
      * Acción que muestra la página de la historia de la AMCB.
-     * 
+     *
+     * @Route("/historia", name="historia", methods={"GET"})
      * @Template()
      */
     public function historiaAction()
@@ -38,7 +41,8 @@ class GeneralController extends Controller
     
     /**
      * Acción que muestra la página donde incrustamos vídeos para que nos vean y oigan.
-     * 
+     *
+     * @Route("/escuchanos", name="escuchanos", methods={"GET"})
      * @Template()
      */
     public function escuchanosAction()
@@ -48,7 +52,8 @@ class GeneralController extends Controller
     
     /**
      * Acción que muestra la página donde se presenta el repertorio.
-     * 
+     *
+     * @Route("/repertorio", name="repertorio", methods={"GET"})
      * @Template()
      */
     public function repertorioAction()
@@ -58,7 +63,8 @@ class GeneralController extends Controller
     
     /**
      * Acción que muestra la página donde se muestran los documentos de interés.
-     * 
+     *
+     * @Route("/documentos-interes", name="docsInteres", methods={"GET"})
      * @Template()
      */
     public function documentosAction()
@@ -68,7 +74,8 @@ class GeneralController extends Controller
     
     /**
      * Acción que muestra la galería de fotos.
-     * 
+     *
+     * @Route("/galeria", name="galeria", methods={"GET"})
      * @Template()
      */
     public function galeriaAction()
@@ -78,7 +85,9 @@ class GeneralController extends Controller
     
     /**
      * Acción que muestra y procesa el formulario de contacto.
-     * 
+     *
+     * @Route("/contacto", name="contacto", methods={"GET"})
+     * @Route("/contacto", name="contacto_submit", methods={"POST"})
      * @Cache(expires="-1 days", maxage="0", smaxage="0", public="true")
      * @Template()
      */
