@@ -12,7 +12,7 @@ security:
         in_memory:
             memory:
                 users:
-                    admin: { password: "%admin_pass%", roles: [ 'ROLE_SUPER_ADMIN' ] }
+                    admin: { password: "%admin_pass%", roles: ROLE_SUPER_ADMIN }
         miembros:
             entity: { class: AppBundle:Usuario }
     firewalls:

@@ -23,4 +23,3 @@ parameters:
 
     # Login
     admin_pass: null
-    user_pass: null

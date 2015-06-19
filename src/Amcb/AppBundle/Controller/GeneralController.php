@@ -49,7 +49,10 @@ class GeneralController extends Controller
      */
     public function escuchanosAction()
     {
-        return array();
+        $videos = array('LDuy-CmlrIQ', 'UzY-YCPFemw', 'fQN6qq0NS4E', 'pywyQqs26rA', 'WM7Gn52NkO0', '8Wa7IGE4zwo',
+            'YvYgd5KdNTo');
+
+        return array('videos' => $videos);
     }
     
     /**
@@ -131,7 +134,10 @@ class GeneralController extends Controller
             }
         }
 
-        return array('form' => $form->createView());
+        return array('form' => $form->createView(),
+            'presidente_email' => $this->container->getParameter('presidente_email'),
+            'secretaria_email' => $this->container->getParameter('secretaria_email'),
+            'webmaster_email' => $this->container->getParameter('webmaster_email'));
 
     }
 
