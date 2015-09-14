@@ -117,9 +117,11 @@ class FicheroController extends Controller
         // Se se ha especificado una ID, recuperamos el fichero. En caso contrario creamos uno nuevo.
         $fichero = (null === $id) ? new Fichero() : $em->getRepository('AppBundle:Fichero')->find($id);
 
-        // Si no existe el registro ni (el usuario logeado es el autor o ni tiene permiso de ROLE_SUPER_ADMIN)
+        // Lanzar Exception si:
+        // - El rango es menor de 2 (menor que ROLE_ADMIN, sin permisos de escritura)
+        // - En caso de no ser un fichero nuevo, si el usuario no es el autor o no tiene rango 3: permiso de ROLE_SUPER_ADMIN
         if(($this->getUser()->getRango() < 2) ||
-            ((null !== $fichero) && ($fichero->getUsuario() != $this->getUser() && $this->getUser()->getRango() < 3))) {
+            ((null !== $fichero && $fichero->getId() != 0) && ($fichero->getUsuario() != $this->getUser() && $this->getUser()->getRango() < 3))) {
             throw $this->createNotFoundException('El fichero requerido no existe o no tiene permiso para acceder a él.');
         }
 
