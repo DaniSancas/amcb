@@ -49,7 +49,7 @@ class GeneralController extends Controller
      */
     public function escuchanosAction()
     {
-        $videos = array('LDuy-CmlrIQ', 'UzY-YCPFemw', 'fQN6qq0NS4E', 'pywyQqs26rA', 'WM7Gn52NkO0', '8Wa7IGE4zwo',
+        $videos = array('51wG0qBLBWY', 'UzY-YCPFemw', 'fQN6qq0NS4E', 'pywyQqs26rA', 'WM7Gn52NkO0', '8Wa7IGE4zwo',
             'YvYgd5KdNTo');
 
         return array('videos' => $videos);
