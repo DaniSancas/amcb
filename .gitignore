@@ -13,3 +13,10 @@
 /bin/
 /composer.phar
 *.*~
+
+# SASS
+*.css.map
+/src/Amcb/AppBundle/Resources/assets/vendor/**/*.css
+/src/Amcb/AppBundle/Resources/assets/css/*.css
+# Solo publicamos main.css
+!/src/Amcb/AppBundle/Resources/assets/css/main.css
