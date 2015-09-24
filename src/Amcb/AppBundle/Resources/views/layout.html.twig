@@ -1,7 +1,5 @@
 {% extends "::base.html.twig" %}
 
-{% set controllerName = getControllerName() %}
-
 {% block extra_metatags %}
     <meta name="description" content="{% spaceless %}
     {% if block('description_metatag') %}
@@ -9,81 +7,78 @@
     {% else %}
         El Coro y Orquesta de Cámara de Bilbao, de la AMCB, es una agrupación musical que ofrece conciertos en Bilbao y alrededores desde hace casi 40 años.
     {% endif %}
-    {% endspaceless %}" />
+    {% endspaceless %}"/>
     <meta name="keywords" content="{% spaceless %}
     {% if block('keywords_metatag') %}
         {% block keywords_metatag %}{% endblock %}
     {% else %}
         Amcb, coro, orquesta, bilbao, música, cámara, conciertos, clásica, repertorio, asociación, contratar, benéfico, director, solista, miembros, socios, bizkaia
     {% endif %}
-    {% endspaceless %}" />
-    <meta name="author" content="Dani Sancas" />
+    {% endspaceless %}"/>
+    <meta name="author" content="Dani Sancas"/>
 {% endblock %}
 
 {% block default_stylesheets %}
-  {# Cargamos automáticamente el CSS base y el de cada Controller #}
-  <link rel="stylesheet" href="{{ asset('bundles/app/css/styles.css') }}" />
-  <link rel="stylesheet" href="{{ asset('bundles/app/css/'~controllerName~'.css') }}" />
-  {% block stylesheets %}{% endblock %}
+    {% stylesheets filter='?uglifycss' output="css/main.css"
+    '@AppBundle/Resources/assets/css/main.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+    {% stylesheets output="css/main.css.map"
+    '@AppBundle/Resources/assets/css/main.css.map' %}
+    {% endstylesheets %}
+    {% block stylesheets %}{% endblock %}
 {% endblock %}
   
 {% block default_javascripts %}
-
+    {% javascripts filter='?uglifyjs2' output="js/main.js"
+    '@AppBundle/Resources/assets/vendor/jquery/jquery.min.js'
+    '@AppBundle/Resources/assets/vendor/bootstrap/js/bootstrap.min.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
     {% block javascripts %}{% endblock %}
 {% endblock %}
 
 {% block title %}{% endblock %}
 
 {% block body %}
-  {% if app.environment == 'prod' %}
-  {# Analytics #}
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-4193694-1']);
-    _gaq.push(['_trackPageview']);
+    {% if app.environment == 'prod' %}
+        {# Analytics #}
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-4193694-1']);
+            _gaq.push(['_trackPageview']);
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-  {% endif %}
-  
-  {% block pre_body %}{% endblock %} {# Para colocar fragmentos de código necesarios al inicio de la etiqueta body #}
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    {% endif %}
 
-  <div id="body-wrapper">
+    {% block pre_body %}{% endblock %} {# Para colocar fragmentos de código necesarios al inicio de la etiqueta body #}
 
     {% include 'AppBundle::header.html.twig' %}
 
-    <div id="content-wrapper">
+    <div class="container">
+        {% include 'AppBundle::flash.html.twig' %}
 
-      {% include 'AppBundle:'~(controllerName|capitalize)~':_submenu.html.twig' ignore missing %}
-
-      <div id="content-body">
-        <div id="content">
-          
-          {% include 'AppBundle::flash.html.twig' %}
-
-          {% block content %}{% endblock %}
-
-        </div>
-
-      </div>
-
+        {% block content %}{% endblock %}
     </div>
 
     {% include 'AppBundle::footer.html.twig' %}
-  </div>
 
-    
-  {% if block('documentReady') %}
-    <script type="text/javascript">
-      $(document).ready(function () {
-        {% block documentReady %}{% endblock documentReady %}
-      });
-    </script>
-  {% endif %}
-    
+
+
+    {% if block('documentReady') %}
+        <script type="text/javascript">
+            $(document).ready(function () {
+                {% block documentReady %}{% endblock documentReady %}
+            });
+        </script>
+    {% endif %}
+
 {% endblock %}
-    

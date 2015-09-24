@@ -1,0 +1,187 @@
+@import "variables";
+
+// General rules
+body {
+  padding-top: $body-padding-top;
+}
+
+a {
+  color: $link-color;
+
+  &:hover, &:active{
+    color: $link-hover-color;
+  }
+}
+
+
+// Slightly increased max-height
+.navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
+  max-height: 390px;
+}
+
+// Public Navbar Menu
+$dropDown: true;
+.navbar-maroon {
+  background-color: $maroon-navbar-bg-color;
+  border-color: $maroon-navbar-bg-active-color;
+  .navbar-brand {
+    color: $maroon-navbar-color;
+    &:hover, &:focus {
+      color: $maroon-navbar-active-color;
+    }
+  }
+  .navbar-text {
+    color: $maroon-navbar-color;
+  }
+  .navbar-nav {
+    > li {
+      > a {
+        color: $maroon-navbar-color;
+        &:hover, &:focus {
+          color: $maroon-navbar-active-color;
+          background-color: $maroon-navbar-bg-active-color;
+        }
+      }
+      @if $dropDown {
+        > .dropdown-menu {
+          background-color: $maroon-navbar-bg-color;
+          > li > a {
+            color: $maroon-navbar-color;
+            &:hover, &:focus {
+              color: $maroon-navbar-active-color;
+              background-color: $maroon-navbar-bg-active-color;
+            }
+          }
+          .divider {
+            background-color: $maroon-navbar-bg-active-color;
+          }
+        }
+      }
+    }
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $maroon-navbar-active-color;
+        background-color: $maroon-navbar-bg-active-color;
+      }
+    }
+    > .open {
+      > a, > a:hover, > a:focus {
+        color: $maroon-navbar-active-color;
+        background-color: $maroon-navbar-bg-active-color;
+      }
+    }
+  }
+  .navbar-toggle {
+    border-color: $maroon-navbar-bg-active-color;
+    &:hover, &:focus {
+      background-color: $maroon-navbar-bg-active-color;
+    }
+    .icon-bar {
+      background-color: $maroon-navbar-color;
+    }
+  }
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $maroon-navbar-color;
+  }
+  .navbar-link {
+    color: $maroon-navbar-color;
+    &:hover {
+      color: $maroon-navbar-active-color;
+    }
+  }
+
+  // Auto-dropdown in screens larger than XS
+  @media (min-width: $screen-sm-min) {
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+  }
+
+  // Rules for mobile navigation
+  @media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+    background-color: $maroon-navbar-bg-color;
+    border-color: $maroon-navbar-bg-active-color;
+    .navbar-brand {
+      color: $maroon-navbar-color;
+      &:hover, &:focus {
+        color: $maroon-navbar-active-color;
+      }
+    }
+    .navbar-text {
+      color: $maroon-navbar-color;
+    }
+    .navbar-nav {
+      > li {
+        > a {
+          color: $maroon-navbar-color;
+          &:hover, &:focus {
+            color: $maroon-navbar-active-color;
+            background-color: $maroon-navbar-bg-active-color;
+          }
+        }
+        @if $dropDown {
+          > .dropdown-menu {
+            background-color: $maroon-navbar-bg-color;
+            > li > a {
+              color: $maroon-navbar-color;
+              &:hover, &:focus {
+                color: $maroon-navbar-active-color;
+                background-color: $maroon-navbar-bg-active-color;
+              }
+            }
+            .divider {
+              background-color: $maroon-navbar-bg-active-color;
+            }
+          }
+        }
+      }
+      > .active {
+        > a, > a:hover, > a:focus {
+          color: $maroon-navbar-active-color;
+          background-color: $maroon-navbar-bg-active-color;
+        }
+      }
+      > .open {
+        > a, > a:hover, > a:focus {
+          color: $maroon-navbar-active-color;
+          background-color: $maroon-navbar-bg-active-color;
+        }
+      }
+    }
+    .navbar-toggle {
+      border-color: $maroon-navbar-bg-active-color;
+      &:hover, &:focus {
+        background-color: $maroon-navbar-bg-active-color;
+      }
+      .icon-bar {
+        background-color: $maroon-navbar-color;
+      }
+    }
+    .navbar-collapse,
+    .navbar-form {
+      border-color: $maroon-navbar-color;
+    }
+    .navbar-link {
+      color: $maroon-navbar-color;
+      &:hover {
+        color: $maroon-navbar-active-color;
+      }
+    }
+
+    & .navbar-nav .open .dropdown-menu {
+      > li > a {
+        color: $maroon-navbar-color;
+        &:hover, &:focus {
+          color: $maroon-navbar-active-color;
+        }
+      }
+      > .active {
+        > a, > a:hover, > a:focus {
+          color: $maroon-navbar-active-color;
+          background-color: $maroon-navbar-bg-active-color;
+        }
+      }
+    }
+  }
+}
