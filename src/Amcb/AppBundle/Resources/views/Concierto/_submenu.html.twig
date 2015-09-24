@@ -1,7 +1,0 @@
-{% set actionName = getActionName() %}
-<div id="submenu-wrapper">
-  <ul>
-    <li class="{% if actionName == 'index' %}activo{% endif %}" ><a href="{{ url('conciertos') }}">Próximos conciertos</a></li>
-    <li class="{% if actionName == 'archivo' %}activo{% endif %}" ><a href="{{ url('archivo_conciertos') }}">Archivo de conciertos</a></li>
-  </ul>
-</div>
