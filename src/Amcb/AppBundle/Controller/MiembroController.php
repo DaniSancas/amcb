@@ -18,17 +18,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 class MiembroController extends Controller
 {
     /**
-     * Acción que muestra la página de inicio de miembros
-     *
-     * @Route("/", name="miembros", methods={"GET"})
-     * @Template()
-     */
-    public function indexAction()
-    {
-        return array();
-    }
-    
-    /**
      * Acción que muestra la página del coro
      *
      * @Route("/coro", name="coro", methods={"GET"})
