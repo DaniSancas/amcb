@@ -42,31 +42,43 @@ class ContactoType extends AbstractType
         $builder
             ->add('destinatario', 'choice', array(
                 'required' => true,
+                'attr' => array(
+                    'class' => 'form-control'
+                ),
                 'choices' => $this->getDestinatarios()
             ))
             ->add('nombre', 'text', array(
                 'trim' => true,
                 'attr' => array(
-                    'placeholder' => 'Especifique su nombre...'
+                    'placeholder' => 'Especifique su nombre...',
+                    'class' => 'form-control'
                 )
             ))
             ->add('apellidos', 'text', array(
                 'trim' => true,
+                'attr' => array(
+                    'class' => 'form-control'
+                ),
                 'required' => false
             ))
             ->add('telefono', 'text', array(
                 'trim' => true,
+                'attr' => array(
+                    'class' => 'form-control'
+                ),
                 'required' => false
             ))
             ->add('email', 'email', array(
                 'trim' => true,
                 'attr' => array(
-                    'placeholder' => 'Especifique su email...'
+                    'placeholder' => 'Especifique su email...',
+                    'class' => 'form-control'
                 )
             ))
             ->add('consulta', 'textarea', array(
                 'attr' => array(
-                    'placeholder' => 'Por favor, escriba su consulta...'
+                    'placeholder' => 'Por favor, escriba su consulta...',
+                    'class' => 'form-control'
                 )
             ))
         ;

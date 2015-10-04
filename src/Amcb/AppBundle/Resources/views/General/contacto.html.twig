@@ -10,53 +10,36 @@
     Contacto, solicitar, información, formulario, alta socios, cantar, tocar, coro, orquesta, conciertos, eventos, presidente, secretaría, webmaster, descuentos, socios
 {% endblock %}
 
-{% block stylesheets %}
-  {{ parent() }}
-  <link rel="stylesheet" href="{{ asset('bundles/app/css/forms.css') }}" />
-{% endblock %}
-
 {% block content %}
 <h1>Contacto</h1>
 
 <p>Para solicitar cualquier información sobre nuestros eventos, conciertos de cámara, conciertos didácticos, bodas, etc. contacta con nosotros:</p>
-<p><strong>Nota:</strong> Si deseas cantar en el coro o tocar en la orquesta ¡no lo dudes más y háznoslo saber!</p>
+<p class="margin-bottom-xl"><strong>Nota:</strong> Si deseas cantar en el coro o tocar en la orquesta ¡no lo dudes más y háznoslo saber!</p>
 
-<div id="contactos">
+<div class="row text-center margin-bottom-xl">
   
-  <div class="div-contacto-wrapper">
-    <div class="div-contacto-titulo">
-      Presidente y Rel. Públicas
-    </div>
+  <div class="col-sm-4">
+      <strong>Presidente y Rel. Públicas</strong>
     <hr />
-    <div class="div-contacto-info">
       <em>Persona de contacto</em>: Txema<br />
       <em>Email</em>: <a href="mailto:{{ presidente_email }}">{{ presidente_email }}</a><br />
-      <em>Teléfono</em>: 695 782 189
-    </div>
+      <em>Teléfono</em>: <a href="tel://695782189">695 782 189</a>
   </div>
-  
-  <div class="div-contacto-wrapper">
-    <div class="div-contacto-titulo">
-      Secretaría de la Asociación
-    </div>
+
+    <div class="col-sm-4">
+        <strong>Secretaría de la Asociación</strong>
     <hr />
-    <div class="div-contacto-info">
       <em>Persona de contacto</em>: Belén<br />
       <em>Email</em>: <a href="mailto:{{ secretaria_email }}">{{ secretaria_email }}</a><br />
-      <em>Teléfono</em>: 608 611 000
-    </div>
+      <em>Teléfono</em>: <a href="tel://608611000">608 611 000</a>
   </div>
-  
-  <div class="div-contacto-wrapper">
-    <div class="div-contacto-titulo">
-      Webmaster
-    </div>
+
+    <div class="col-sm-4">
+        <strong>Webmaster</strong>
     <hr />
-    <div class="div-contacto-info">
       <em>Persona de contacto</em>: Dani<br />
       <em>Email</em>: <a href="mailto:{{ webmaster_email }}">{{ webmaster_email }}</a><br />
       <em>Teléfono</em>: -
-    </div>
   </div>
   
 </div>
@@ -69,16 +52,50 @@
 
 <hr />
 
-<h2>...o contacta con nosotros desde nuestro formulario</h2>
+<h2>Contacta con nosotros</h2>
 
 <br />
 
+{% form_theme form _self %}
+
+{% block form_errors %}
+    {% if errors is defined and errors|length > 0 %}
+        <ul class="form-errors">
+            {% for error in errors %}
+                <li class="alert alert-danger">{{ error.message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock form_errors %}
+
+{% block form_row %}
+    {% if form.vars.name not in ["contacto"] %}
+        {% spaceless %}
+            <div class="row form-group">
+                <div class="col-sm-2">
+                    {{ form_label(form) }}
+                </div>
+                <div class="col-sm-4">
+                    {{ form_widget(form) }}
+                </div>
+                <div class="col-sm-6">
+                    {{ form_errors(form) }}
+                </div>
+            </div>
+        {% endspaceless %}
+    {% endif %}
+{% endblock form_row %}
+
 <form action="{{path("contacto_submit")}}" method="post" {{ app.environment == 'dev' ? 'novalidate' : '' }}>
-	{{ form_widget(form) }}
-    <div>
-      <label></label>
-      <input type="submit" value="Enviar" />
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    {{ form_rest(form) }}
+    <div class="row form-group">
+        <div class="col-sm-4 col-sm-offset-2">
+            <input class="btn btn-success" type="submit" value="Enviar" />
+        </div>
     </div>
+    {{ form_end(form) }}
 </form>
 
 {% endblock %}
