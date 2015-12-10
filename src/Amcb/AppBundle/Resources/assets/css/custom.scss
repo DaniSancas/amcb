@@ -1,8 +1,48 @@
 @import "variables";
 
 // General rules
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   padding-top: $body-padding-top;
+  margin-bottom: $body-margin-bottom;
+}
+
+.footer {
+  padding-top: $footer-padding-top;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: $body-margin-bottom - $footer-padding-top;
+  background-color: #f5f5f5;
+}
+
+@media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+  .footer {
+    height: $body-margin-bottom-xs;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.4;
+  }
+}
+
+.caret-right {
+  border-bottom: $caret-width-base solid transparent;
+  border-top: $caret-width-base solid transparent;
+  border-left: $caret-width-base solid #000000;
+  display: inline-block !important;
+  height: 0;
+  opacity: 0.3;
+  vertical-align: baseline;
+  width: 0;
+}
+
+.color-grey{
+  color: #888;
 }
 
 a {
