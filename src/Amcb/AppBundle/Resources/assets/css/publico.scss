@@ -1,15 +1,4 @@
-@import "variables";
-
-// General rules
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  padding-top: $body-padding-top;
-  margin-bottom: $body-margin-bottom;
-}
+@import "general";
 
 .footer {
   padding-top: $footer-padding-top;
@@ -51,11 +40,11 @@ body {
 
 a {
   &, &:visited {
-    color: $link-color;
+    color: $maroon-link-color;
   }
 
   &:hover, &:active{
-    color: $link-hover-color;
+    color: $maroon-link-hover-color;
   }
 }
 
@@ -65,7 +54,7 @@ a {
   > li {
     > a,
     > span {
-      color: $link-color;
+      color: $maroon-link-color;
     }
   }
 
@@ -73,7 +62,7 @@ a {
   > li > span {
     &:hover,
     &:focus {
-      color: $link-color;
+      color: $maroon-link-color;
     }
   }
 
@@ -82,8 +71,8 @@ a {
     &,
     &:hover,
     &:focus {
-      background-color: $link-color;
-      border-color: $link-color;
+      background-color: $maroon-link-color;
+      border-color: $maroon-link-color;
     }
   }
 }
@@ -267,25 +256,6 @@ $dropDown: true;
 }
 
 
-// Vertical margins
-@each $name, $value in $margins {
-  .margin-top-#{$name} {
-    margin-top: $value;
-  }
-
-  .margin-bottom-#{$name} {
-    margin-bottom: $value;
-  }
-
-  .margin-left-#{$name} {
-    margin-left: $value;
-  }
-
-  .margin-right-#{$name} {
-    margin-right: $value;
-  }
-}
-
 // General form rules
 form {
   span.required {
@@ -318,43 +288,6 @@ form {
   }
 }
 
-// Pull left/right responsive
-
-@media (max-width: $screen-xs-min) {
-  .pull-xs-left {
-    float: left;
-  }
-  .pull-xs-right {
-    float: right;
-  }
-}
-
-@media (min-width: $screen-sm-min) {
-  .pull-sm-left {
-    float: left;
-  }
-  .pull-sm-right {
-    float: right;
-  }
-}
-
-@media (min-width: $screen-md-min) {
-  .pull-md-left {
-    float: left;
-  }
-  .pull-md-right {
-    float: right;
-  }
-}
-
-@media (min-width: $screen-lg-min) {
-  .pull-lg-left {
-    float: left;
-  }
-  .pull-lg-right {
-    float: right;
-  }
-}
 
 .galeria-th {
   text-align:center;
@@ -369,3 +302,41 @@ form {
   width: 100px;
 
 }
+
+
+// Form Signin (Login privado)
+.form-signin {
+  max-width: 330px;
+  padding: 30px 0;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
