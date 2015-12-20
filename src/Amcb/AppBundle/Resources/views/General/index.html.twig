@@ -19,12 +19,12 @@
       {% for concierto in conciertos %}
         <div class="media">
           <div class="media-left">
-            <a href="{{ path('mostrar_concierto', {'fecha_larga': concierto.fechaLarga, 'slug': concierto.slug, 'id': concierto.id}) }}">
+            <a href="{{ path('mostrar_concierto', {'fecha_larga': concierto.fecha|localizeddate('full', 'none', 'es_ES')|slugify, 'slug': concierto|slugify, 'id': concierto.id}) }}">
               <img class="media-object img-width-50" src="{{ asset('bundles/app/images/concierto.jpg') }}" alt="{{ concierto.noticia }}">
             </a>
           </div>
           <div class="media-body">
-            <h3 class="media-heading"><a href="{{ path('mostrar_concierto', {'fecha_larga': concierto.fechaLarga, 'slug': concierto.slug, 'id': concierto.id}) }}">{{ concierto.noticia }}</a></h3>
+            <h3 class="media-heading"><a href="{{ path('mostrar_concierto', {'fecha_larga': concierto.fecha|localizeddate('full', 'none', 'es_ES')|slugify, 'slug': concierto|slugify, 'id': concierto.id}) }}">{{ concierto.noticia }}</a></h3>
             <p>{{ concierto.fecha|localizeddate('full', 'short', 'es_ES')|capitalize }}</p>
           </div>
         </div>
@@ -35,8 +35,10 @@
     
     {% else %}
       {# En caso de no haber conciertos a la vista #}
-      <p><strong>Todavía no hay fechas establecidas a corto plazo para <a href="{{ path('conciertos') }}">próximos conciertos</a>.</strong></p>
+      <p class="margin-top-md">Todavía no hay fechas establecidas a corto plazo para <a href="{{ path('conciertos') }}">próximos conciertos</a>.</p>
     {% endif %}
+
+      <p>También puede ver el <a href="{{ path('archivo_conciertos') }}">archivo de conciertos</a>.</p>
     
   </div>
 

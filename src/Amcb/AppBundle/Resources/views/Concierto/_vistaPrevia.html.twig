@@ -1,11 +1,12 @@
+{% set fechaLink = concierto.fecha|localizeddate('full', 'none', 'es_ES') %}
 <div class="media">
   <div class="media-left">
-    <a href="{{ path('mostrar_concierto', {'fecha_larga': concierto.fechaLarga, 'slug': concierto.slug, 'id': concierto.id}) }}">
+    <a href="{{ path('mostrar_concierto', {'fecha_larga': fechaLink|slugify, 'slug': concierto|slugify, 'id': concierto.id}) }}">
       <img class="media-object img-width-100" src="{{ asset('bundles/app/images/concierto.jpg') }}" alt="{{ concierto.noticia }}">
     </a>
   </div>
   <div class="media-body">
-    <h2 class="media-heading"><a href="{{ path('mostrar_concierto', {'fecha_larga': concierto.fechaLarga, 'slug': concierto.slug, 'id': concierto.id}) }}">{{ concierto.noticia }}</a></h2>
+    <h2 class="media-heading"><a href="{{ path('mostrar_concierto', {'fecha_larga': fechaLink|slugify, 'slug': concierto|slugify, 'id': concierto.id}) }}">{{ concierto.noticia }}</a></h2>
     <div class="row"><div class="col-sm-12">{{ concierto.tipo }}<strong> {{ (concierto.esGratis) ? '(gratuito)' : '' }}</strong></div></div>
     <div class="row"><div class="col-sm-12">{{ concierto.lugar }}
         {% if(concierto.maps)%}
@@ -14,7 +15,7 @@
     <div class="row"><div class="col-sm-12">{{ concierto.fecha|localizeddate('full', 'short', 'es_ES')|capitalize }}</div></div>
     <div class="row"><div class="col-sm-12">
     {% if(concierto.entradas or concierto.programa )%}
-      <a href="{{ path('mostrar_concierto', {'fecha_larga': concierto.fechaLarga, 'slug': concierto.slug, 'id': concierto.id}) }}">Ver información completa</a>
+      <a href="{{ path('mostrar_concierto', {'fecha_larga': fechaLink|slugify, 'slug': concierto|slugify, 'id': concierto.id}) }}">Ver información completa</a>
     {% else %}
       <strong>Próximamente se ampliará más información</strong>
     {% endif %}
