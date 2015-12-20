@@ -1,6 +1,10 @@
 parameters:
 
 services:
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
     amcb.twig.controller_action_extension:
         class: Amcb\AppBundle\Twig\Extension\ControllerActionExtension
         arguments: ["@request_stack"]

@@ -21,9 +21,13 @@ body {
   background-color: #f5f5f5;
 }
 
-@media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+@media (max-width: $screen-xs-max) {
+  body {
+    margin-bottom: $body-margin-bottom-xs;
+  }
+
   .footer {
-    height: $body-margin-bottom-xs;
+    height: $body-margin-bottom-xs - $footer-padding-top;
     font-size: 16px;
     font-weight: 300;
     line-height: 1.4;
@@ -46,12 +50,45 @@ body {
 }
 
 a {
-  color: $link-color;
+  &, &:visited {
+    color: $link-color;
+  }
 
   &:hover, &:active{
     color: $link-hover-color;
   }
 }
+
+
+// Pagination (change color)
+.pagination {
+  > li {
+    > a,
+    > span {
+      color: $link-color;
+    }
+  }
+
+  > li > a,
+  > li > span {
+    &:hover,
+    &:focus {
+      color: $link-color;
+    }
+  }
+
+  > .active > a,
+  > .active > span {
+    &,
+    &:hover,
+    &:focus {
+      background-color: $link-color;
+      border-color: $link-color;
+    }
+  }
+}
+
+
 
 #content.container {
   font-size: 125%;
@@ -281,6 +318,54 @@ form {
   }
 }
 
+// Pull left/right responsive
+
+@media (max-width: $screen-xs-min) {
+  .pull-xs-left {
+    float: left;
+  }
+  .pull-xs-right {
+    float: right;
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .pull-sm-left {
+    float: left;
+  }
+  .pull-sm-right {
+    float: right;
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .pull-md-left {
+    float: left;
+  }
+  .pull-md-right {
+    float: right;
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  .pull-lg-left {
+    float: left;
+  }
+  .pull-lg-right {
+    float: right;
+  }
+}
+
 .galeria-th {
   text-align:center;
+}
+
+.img-width-50 {
+  width: 50px;
+
+}
+
+.img-width-100 {
+  width: 100px;
+
 }

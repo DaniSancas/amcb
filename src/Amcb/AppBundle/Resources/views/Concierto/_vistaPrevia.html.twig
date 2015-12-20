@@ -1,34 +1,24 @@
-<div class="vista-concierto">
-  
-  <h2><a href="{{ path('mostrar_concierto', {'fecha_larga': concierto.fechaLarga, 'slug': concierto.slug, 'id': concierto.id}) }}">{{ concierto.noticia }}</a></h2>
-  
-  <div class="izq">
-    <span>Tipo de evento</span>
-    <span>Fecha</span>
-    <span>Lugar</span>
-    {% if(concierto.maps)%}
-    <span>Mapa</span>    
-    {% endif %}
-    <span>Más información</span>   
-    {% if(concierto.entradas or concierto.programa )%}
-    
-    {% endif %}
-  
-  
+<div class="media">
+  <div class="media-left">
+    <a href="{{ path('mostrar_concierto', {'fecha_larga': concierto.fechaLarga, 'slug': concierto.slug, 'id': concierto.id}) }}">
+      <img class="media-object img-width-100" src="{{ asset('bundles/app/images/concierto.jpg') }}" alt="{{ concierto.noticia }}">
+    </a>
   </div>
-  
-  <div class="dcha">
-    <span>{{ concierto.tipo }}<strong> {{ (concierto.esGratis) ? '(gratuito)' : '' }}</strong></span>
-    <span>{{ concierto.fecha|fechahora_larga() }}</span>
-    <span>{{ concierto.lugar }}</span>
-    {% if(concierto.maps)%}
-    <span><a href="{{ concierto.maps }}" target="_blank" rel="nofollow">Ver en Google Maps&trade;</a></span>    
-    {% endif %}
+  <div class="media-body">
+    <h2 class="media-heading"><a href="{{ path('mostrar_concierto', {'fecha_larga': concierto.fechaLarga, 'slug': concierto.slug, 'id': concierto.id}) }}">{{ concierto.noticia }}</a></h2>
+    <div class="row"><div class="col-sm-12">{{ concierto.tipo }}<strong> {{ (concierto.esGratis) ? '(gratuito)' : '' }}</strong></div></div>
+    <div class="row"><div class="col-sm-12">{{ concierto.lugar }}
+        {% if(concierto.maps)%}
+          <span><a href="{{ concierto.maps }}" target="_blank" rel="nofollow">Ver en Google Maps&trade;</a></span>
+        {% endif %}</div></div>
+    <div class="row"><div class="col-sm-12">{{ concierto.fecha|localizeddate('full', 'short', 'es_ES')|capitalize }}</div></div>
+    <div class="row"><div class="col-sm-12">
     {% if(concierto.entradas or concierto.programa )%}
-    <span><a href="{{ path('mostrar_concierto', {'fecha_larga': concierto.fechaLarga, 'slug': concierto.slug, 'id': concierto.id}) }}">Ver información completa</a></span>
+      <a href="{{ path('mostrar_concierto', {'fecha_larga': concierto.fechaLarga, 'slug': concierto.slug, 'id': concierto.id}) }}">Ver información completa</a>
     {% else %}
-    <span><strong>Próximamente se ampliará más información</strong></span>
+      <strong>Próximamente se ampliará más información</strong>
     {% endif %}
+    </div></div>
   </div>
-
 </div>
+<hr>
