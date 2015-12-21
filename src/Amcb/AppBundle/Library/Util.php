@@ -14,7 +14,7 @@ class Util
      * @var array
      */
     static private $categorias = array(
-        0 => "--",
+        0 => "-- Filtrar categoría --",
         1 => "Partituras",
         2 => "Documentos técnicos",
         3 => "Nuestra asociación",

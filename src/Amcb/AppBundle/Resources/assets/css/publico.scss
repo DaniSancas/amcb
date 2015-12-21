@@ -256,39 +256,6 @@ $dropDown: true;
 }
 
 
-// General form rules
-form {
-  span.required {
-    color: $brand-danger;
-  }
-
-  .form-group label {
-    margin-top: 0.5em;
-  }
-
-  ul.form-errors {
-    padding-left: 0;
-    margin-bottom: 0;
-
-    li {
-      padding: 5px 15px;
-      list-style: none;
-      margin-bottom: 0;
-    }
-  }
-
-  @media (max-width: $screen-xs-max) {
-    .form-group > div {
-      margin-bottom: 0.5em;
-    }
-
-    .form-group label {
-      margin-left: 0.25em;
-    }
-  }
-}
-
-
 .galeria-th {
   text-align:center;
 }
