@@ -13,70 +13,59 @@
 {% block content %}
     <h1>Solistas</h1>
 
-    <table id="tabla-coro">
+    <table>
         <tbody>
         <tr>
-            <td><a href="{{ path('ficha_maria_montes') }}" title="Ver ficha de María Montes">María Montes</a></td>
-            <td>Soprano solista y profesora de canto</td>
+            <td class="col-sm-3 col-xs-4"><a href="{{ path('ficha_maria_montes') }}" title="Ver ficha de María Montes">María Montes</a></td>
+            <td class="col-sm-9 col-xs-8">Soprano solista y profesora de canto</td>
         </tr>
         <tr>
-            <td><a href="{{ path('ficha_elena_roldan') }}" title="Ver ficha de Elena Roldán">Elena Roldán</a></td>
-            <td>Mezzosoprano solista</td>
+            <td class="col-sm-3"><a href="{{ path('ficha_elena_roldan') }}" title="Ver ficha de Elena Roldán">Elena Roldán</a></td>
+            <td class="col-sm-9">Mezzosoprano solista</td>
         </tr>
         <tr>
-            <td>Iker Freire Vivián</td>
-            <td>Solista</td>
+            <td class="col-sm-3">Iker Freire Vivián</td>
+            <td class="col-sm-9">Solista</td>
         </tr>
         </tbody>
     </table>
 
     <h1>Miembros del coro</h1>
 
-    <div id="cuadrado-coro">
-        <div id="mujeres">
-
-            <div class="agudos">
-                <h2>Sopranos</h2>
-                <ul>
-                    <li>Belén Castelló Zamora</li>
-                    <li>Ana González Ugalde</li>
-                    <li>Arantza López Santiago</li>
-                    <li>María José Martínez</li>
-                    <li>María Montes Callejo</li>
-                </ul>
-            </div>
-
-            <h2>Mezzosopranos y contraltos</h2>
-            <ul>
-                <li>Amaia Carrasco Alonso</li>
-                <li>Verónica García</li>
-                <li>Julia Guridi Ispizua</li>
-                <li>Beatriz Gómez Fernandini</li>
-                <li>Elena Roldán Pérez</li>
-                <li>Garazi López de Aguileta</li>
-                <li>Lucía Vidal</li>
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>Sopranos</h2>
+            <ul class="list-group">
+                <li class="list-group-item">Belén Castelló Zamora</li>
+                <li class="list-group-item">Ana González Ugalde</li>
+                <li class="list-group-item">Arantza López Santiago</li>
+                <li class="list-group-item">María José Martínez</li>
+                <li class="list-group-item">María Montes Callejo</li>
             </ul>
-
-        </div>
-        <div id="hombres">
-
-            <div class="agudos">
-                <h2>Tenores</h2>
-                <ul>
-                    <li>Ignacio Abad Aldecoa</li>
-                    <li>Emilio de la Sierra Prada</li>
-                    <li>Juan Carlos Aceves Orrantia</li>
-                    <li>Iker Freire Vivián</li>
-                    <li>Pablo Palazuelos</li>
-                </ul>
-            </div>
-
+            <h2>Mezzosopranos y contraltos</h2>
+            <ul class="list-group">
+                <li class="list-group-item">Amaia Carrasco Alonso</li>
+                <li class="list-group-item">Verónica García</li>
+                <li class="list-group-item">Julia Guridi Ispizua</li>
+                <li class="list-group-item">Beatriz Gómez Fernandini</li>
+                <li class="list-group-item">Elena Roldán Pérez</li>
+                <li class="list-group-item">Garazi López de Aguileta</li>
+                <li class="list-group-item">Lucía Vidal</li>
+            </ul>
+            <h2>Tenores</h2>
+            <ul class="list-group">
+                <li class="list-group-item">Ignacio Abad Aldecoa</li>
+                <li class="list-group-item">Emilio de la Sierra Prada</li>
+                <li class="list-group-item">Juan Carlos Aceves Orrantia</li>
+                <li class="list-group-item">Iker Freire Vivián</li>
+                <li class="list-group-item">Pablo Palazuelos</li>
+            </ul>
             <h2>Barítonos y bajos</h2>
-            <ul>
-                <li>Ángel Miguel Ruiz Sáez</li>
-                <li>Miguel Beroiz Pi</li>
-                <li>Juan Manuel Mazpule Ruiz</li>
-                <li>Juan Carlos Vivián Gómez</li>
+            <ul class="list-group">
+                <li class="list-group-item">Ángel Miguel Ruiz Sáez</li>
+                <li class="list-group-item">Miguel Beroiz Pi</li>
+                <li class="list-group-item">Juan Manuel Mazpule Ruiz</li>
+                <li class="list-group-item">Juan Carlos Vivián Gómez</li>
             </ul>
         </div>
     </div>

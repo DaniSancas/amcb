@@ -1,18 +1,87 @@
-@import "variables";
+@import "general";
 
-// General rules
-body {
-  padding-top: $body-padding-top;
+.footer {
+  padding-top: $footer-padding-top;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: $body-margin-bottom - $footer-padding-top;
+  background-color: #f5f5f5;
 }
 
-a {
-  color: $link-color;
+@media (max-width: $screen-xs-max) {
+  body {
+    margin-bottom: $body-margin-bottom-xs;
+  }
 
-  &:hover, &:active{
-    color: $link-hover-color;
+  .footer {
+    height: $body-margin-bottom-xs - $footer-padding-top;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.4;
   }
 }
 
+.caret-right {
+  border-bottom: $caret-width-base solid transparent;
+  border-top: $caret-width-base solid transparent;
+  border-left: $caret-width-base solid #000000;
+  display: inline-block !important;
+  height: 0;
+  opacity: 0.3;
+  vertical-align: baseline;
+  width: 0;
+}
+
+.color-grey{
+  color: #888;
+}
+
+a {
+  &, &:visited {
+    color: $maroon-link-color;
+  }
+
+  &:hover, &:active{
+    color: $maroon-link-hover-color;
+  }
+}
+
+
+// Pagination (change color)
+.pagination {
+  > li {
+    > a,
+    > span {
+      color: $maroon-link-color;
+    }
+  }
+
+  > li > a,
+  > li > span {
+    &:hover,
+    &:focus {
+      color: $maroon-link-color;
+    }
+  }
+
+  > .active > a,
+  > .active > span {
+    &,
+    &:hover,
+    &:focus {
+      background-color: $maroon-link-color;
+      border-color: $maroon-link-color;
+    }
+  }
+}
+
+
+
+#content.container {
+  font-size: 125%;
+}
 
 // Slightly increased max-height
 .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
@@ -185,3 +254,56 @@ $dropDown: true;
     }
   }
 }
+
+
+.galeria-th {
+  text-align:center;
+}
+
+.img-width-50 {
+  width: 50px;
+
+}
+
+.img-width-100 {
+  width: 100px;
+
+}
+
+
+// Form Signin (Login privado)
+.form-signin {
+  max-width: 330px;
+  padding: 30px 0;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+

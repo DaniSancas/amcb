@@ -1,17 +1,12 @@
 parameters:
 
 services:
-    amcb.twig.controller_action_extension:
-        class: Amcb\AppBundle\Twig\Extension\ControllerActionExtension
-        arguments: ["@request_stack"]
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
         tags:
             - { name: twig.extension }
     amcb.twig.extra_filter_extension:
         class: Amcb\AppBundle\Twig\Extension\ExtraFilterExtension
-        tags:
-            - { name: twig.extension }
-    amcb.twig.spanish_datetime_extension:
-        class: Amcb\AppBundle\Twig\Extension\SpanishDateTimeExtension
         tags:
             - { name: twig.extension }
     sonata.block.service.custom_buttons:

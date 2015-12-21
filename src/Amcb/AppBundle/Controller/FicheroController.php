@@ -192,7 +192,7 @@ class FicheroController extends Controller
             return $this->redirect($this->generateUrl('private_fichero_listado'));
         }
 
-        return array('formulario' => $formulario->createView());
+        return array('form' => $formulario->createView());
     }
 
     /**

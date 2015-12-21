@@ -15,26 +15,61 @@
         Amcb, coro, orquesta, bilbao, música, cámara, conciertos, clásica, repertorio, asociación, contratar, benéfico, director, solista, miembros, socios, bizkaia
     {% endif %}
     {% endspaceless %}"/>
-    <meta name="author" content="Dani Sancas"/>
 {% endblock %}
 
 {% block default_stylesheets %}
-    {% stylesheets filter='?uglifycss' output="css/main.css"
-    '@AppBundle/Resources/assets/css/main.css' %}
+    {# Bootstrap CSS #}
+    <link href="{{ bootstrap_css_cdn }}" rel="stylesheet" media="screen">
+
+    {# Zona privada CSS #}
+    {% stylesheets filter='?uglifycss' output="css/publico.css"
+    '@AppBundle/Resources/assets/css/publico.css' %}
     <link rel="stylesheet" href="{{ asset_url }}"/>
-    {% endstylesheets %}
-    {% stylesheets output="css/main.css.map"
-    '@AppBundle/Resources/assets/css/main.css.map' %}
     {% endstylesheets %}
     {% block stylesheets %}{% endblock %}
 {% endblock %}
   
 {% block default_javascripts %}
-    {% javascripts filter='?uglifyjs2' output="js/main.js"
-    '@AppBundle/Resources/assets/vendor/jquery/jquery.min.js'
-    '@AppBundle/Resources/assets/vendor/bootstrap/js/bootstrap.min.js' %}
-    <script src="{{ asset_url }}"></script>
+    {# jQuery #}
+    <script src="{{ jquery_cdn }}"></script>
+    {# Fallback jQuery #}
+    {% javascripts output="js/jquery.min.js"
+    '@AppBundle/Resources/assets/vendor/jquery/jquery.min.js' %}
+    <script>window.jQuery || document.write('<script src="{{ asset_url }}"><\/script>')</script>
     {% endjavascripts %}
+
+    {# Bootstrap JS #}
+    <script src="{{ bootstrap_js_cdn }}"></script>
+    {# Fallback Bootstrap JS #}
+    {% javascripts output="js/bootstrap.min.js"
+    '@AppBundle/Resources/assets/vendor/bootstrap/js/bootstrap.min.js' %}
+    <script>(typeof $().emulateTransitionEnd == 'function') || document.write('<script src="{{ asset_url }}"><\/script>')</script>
+    {% endjavascripts %}
+
+    {# Fallback Bootstrap CSS #}
+    {% stylesheets output="css/bootstrap.min.css"
+    '@AppBundle/Resources/assets/css/bootstrap.min.css' %}
+    <script>
+        {# IMPORTANTE: Cuidado con el orden: .prepend() coloca al principio #}
+        $(document).ready(function() {
+
+            {# Bootstrap básico #}
+            var bodyColor = $('body').css('color');
+            if(bodyColor != 'rgb(51, 51, 51)') {
+                $("head").prepend('<link rel="stylesheet" href="{{ asset_url }}">');
+            }
+        });
+    </script>
+    {% endstylesheets %}
+    {% stylesheets output="fonts/bootstrap/glyphicons-halflings-regular.ttf"
+    '@AppBundle/Resources/assets/vendor/bootstrap/fonts/bootstrap/glyphicons-halflings-regular.ttf' %}
+    {% endstylesheets %}
+    {% stylesheets output="fonts/bootstrap/glyphicons-halflings-regular.woff"
+    '@AppBundle/Resources/assets/vendor/bootstrap/fonts/bootstrap/glyphicons-halflings-regular.woff' %}
+    {% endstylesheets %}
+    {% stylesheets output="fonts/bootstrap/glyphicons-halflings-regular.woff2"
+    '@AppBundle/Resources/assets/vendor/bootstrap/fonts/bootstrap/glyphicons-halflings-regular.woff2' %}
+    {% endstylesheets %}
     {% block javascripts %}{% endblock %}
 {% endblock %}
 
@@ -63,7 +98,7 @@
 
     {% include 'AppBundle::header.html.twig' %}
 
-    <div class="container">
+    <div class="container" id="content">
         {% include 'AppBundle::flash.html.twig' %}
 
         {% block content %}{% endblock %}

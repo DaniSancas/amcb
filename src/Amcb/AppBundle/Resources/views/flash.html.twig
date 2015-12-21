@@ -1,21 +1,21 @@
-<div id="flash-wrapper">
+<div class="margin-top-md">
 {% for flashMessage in app.session.flashbag.get('error') %}
-    <div class="flash-message error">
+    <div class="alert alert-danger">
         {{ flashMessage }}
     </div>
 {% endfor %}
 {% for flashMessage in app.session.flashbag.get('warning') %}
-    <div class="flash-message warning">
+    <div class="alert alert-warning">
         {{ flashMessage }}
     </div>
 {% endfor %}
 {% for flashMessage in app.session.flashbag.get('ok') %}
-    <div class="flash-message ok">
+    <div class="alert alert-success">
         {{ flashMessage }}
     </div>
 {% endfor %}
 {% for flashMessage in app.session.flashbag.get('info') %}
-    <div class="flash-message info">
+    <div class="alert alert-info">
         {{ flashMessage }}
     </div>
 {% endfor %}

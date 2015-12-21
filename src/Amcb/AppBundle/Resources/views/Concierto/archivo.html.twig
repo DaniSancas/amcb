@@ -13,10 +13,22 @@
 {% block content %}
 <h1>Archivo de conciertos</h1>
 
-<div class="paginacion-conciertos"> Paginación por años:
-  {% for pagina in paginas %}
-    <a href="{{ path("archivo_conciertos_pag", {'year': pagina.year}) }}" class="{{ (pagina.year == actual) ? "seleccionado" : "" }}" title="Ver conciertos del año {{ pagina.year }}">{{ pagina.year }}</a>
-  {% endfor %}
+    <div class="well">Ver los <a href="{{ path('conciertos') }}">próximos conciertos</a>.</div>
+
+<div class="row">
+    <div class="col-sm-12">Archivo de conciertos agrupados por años: </div>
+    <div class="col-sm-12">
+        <nav>
+            <ul class="pagination">
+      {% for pagina in paginas %}
+          <li class="{{ (pagina.year == actual) ? "active" : "" }}">
+        <a href="{{ path("archivo_conciertos_pag", {'year': pagina.year}) }}"  title="Ver conciertos del año {{ pagina.year }}">{{ pagina.year }}</a>
+        </li>
+      {% endfor %}
+
+            </ul>
+        </nav>
+    </div>
 </div>
 
 {% for concierto in conciertos %}

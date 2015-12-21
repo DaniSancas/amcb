@@ -16,6 +16,36 @@
 
     <p><a href="{{ path('private_fichero_listado') }}" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a></p>
 
-    {{ form(formulario, {'attr': {'onsubmit': 'return onSubmitShowSpinner(' ~ formulario.guardar.vars.id ~ ');'}}) }}
+    {% form_theme form _self %}
+
+    {% block form_errors %}
+        {% if errors is defined and errors|length > 0 %}
+            <ul class="form-errors">
+                {% for error in errors %}
+                    <li class="alert alert-danger">{{ error.message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endblock form_errors %}
+
+    {% block form_row %}
+        {% if form.vars.name not in ["fichero"] %}
+            {% spaceless %}
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        {{ form_label(form) }}
+                    </div>
+                    <div class="col-md-6 col-sm-10">
+                        {{ form_widget(form) }}
+                    </div>
+                    <div class="col-md-4">
+                        {{ form_errors(form) }}
+                    </div>
+                </div>
+            {% endspaceless %}
+        {% endif %}
+    {% endblock form_row %}
+
+    {{ form(form, {'attr': {'onsubmit': 'return onSubmitShowSpinner(' ~ form.guardar.vars.id ~ ');'}}) }}
 
 {% endblock %}

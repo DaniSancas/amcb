@@ -16,9 +16,8 @@
         {%  endif %}
 
 
-        <div class="navbar-right margin-top-peque">
-            <strong>Filtrar categoría:</strong>
-            <select onchange="filtrarFicheros(this)">
+        <div class="pull-right">
+            <select class="form-control" onchange="filtrarFicheros(this)">
                 {% for key, categoria in categorias %}
                     <option value="{{ key }}" {% if filtro == key %} selected="selected" {% endif %}>{{ categoria }}</option>
                 {% endfor %}
@@ -28,13 +27,13 @@
 
     {% if ficheros|length > 0 %}
 
-    <div class="list-group margin-top no-margin-bottom">
+    <div class="list-group margin-top-md margin-bottom-xs">
         {% for fichero in ficheros %}
         <a href="{{ path('private_fichero_ver', { 'id': fichero.id }) }}" class="list-group-item">
             <h4 class="list-group-item-heading">{{ fichero.titulo }}</h4>
-            <h5 class="list-group-item-heading"><span class="color-grey">Publicado por {{ fichero.usuario }} el {{ fichero.fechaCreacion|fechahora_larga() }}</span></h5>
+            <h5 class="list-group-item-heading"><span class="color-grey">Publicado por {{ fichero.usuario }} el {{ fichero.fechaCreacion|localizeddate('full', 'short', 'es_ES') }}</span></h5>
             {% if fichero.fechaCreacion != fichero.fechaModificacion %}
-                <h6 class="list-group-item-heading"><span class="color-grey">Última modificación el {{ fichero.fechaModificacion|fechahora_larga() }}</span></h6>
+                <h6 class="list-group-item-heading"><span class="color-grey">Última modificación el {{ fichero.fechaModificacion|localizeddate('full', 'short', 'es_ES') }}</span></h6>
             {% endif %}
             <h5 class="list-group-item-heading"><strong>Categoría:</strong> {{ fichero.categoriaElegida }}</h5>
             <p class="list-group-item-text">{{ fichero.descripcion|striptags|raw }}</p>
