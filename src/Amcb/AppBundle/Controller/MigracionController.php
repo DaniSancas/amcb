@@ -6,6 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class MigracionController
+ *
+ * @package Amcb\AppBundle\Controller
+ */
 class MigracionController extends Controller
 {
     /**

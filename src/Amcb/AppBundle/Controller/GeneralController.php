@@ -12,7 +12,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
- * @Cache(expires="+3 days", maxage="259200", smaxage="259200", public="true")
+ * Class GeneralController
+ *
+ * @package Amcb\AppBundle\Controller
+ *
+ * @Cache(expires="+30 days", maxage="2592000", smaxage="2592000", public="true")
  */
 class GeneralController extends Controller
 {
@@ -20,7 +24,7 @@ class GeneralController extends Controller
      * Acción que muestra la página de inicio.
      *
      * @Route("/", name="homepage", methods={"GET"})
-     * @Cache(maxage="60", smaxage="60", public="true")
+     * @Cache(expires="-1 days", maxage="0", smaxage="0", public="true")
      * @Template()
      */
     public function indexAction()
