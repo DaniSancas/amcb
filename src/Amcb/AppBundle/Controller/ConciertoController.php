@@ -12,8 +12,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
  * Class ConciertoController
  *
  * @package Amcb\AppBundle\Controller
- *
- * @Cache(expires="+1 days", maxage="86400", smaxage="86400", public="true")
  */
 class ConciertoController extends Controller
 {
