@@ -33,7 +33,7 @@ class ConciertoAdmin extends Admin
             ->add('es_visible', null,       array('required' => false))
             ->add('maps',       null,       array('required' => false))
             ->add('es_gratis',  null,       array('required' => false))
-            ->add('entradas',   'ckeditor', array('config_name' => 'mini', 'required' => false))
+            ->add('entradas',   'ckeditor', array('config_name' => 'mini_link', 'required' => false))
             ->add('programa',   'ckeditor', array('config_name' => 'default', 'required' => false))
             ->add('direccion')
         ;
