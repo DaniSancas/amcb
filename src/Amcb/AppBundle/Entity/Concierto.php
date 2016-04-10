@@ -112,8 +112,9 @@ class Concierto
     public function __construct()
     {
         $this->fecha = new \DateTime('next saturday 20:00');
+        $this->tipo  = "Concierto";
         $this->es_visible = true;
-        $this->es_gratis = true;
+        $this->es_gratis = false;
         $this->direccion = 'Hilario Extremiana';
     }
     
