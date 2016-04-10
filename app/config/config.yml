@@ -33,6 +33,8 @@ ivory_ck_editor:
             toolbar:  [ [ 'Format','Font','FontSize' ], [ 'RemoveFormat','-','Bold','Italic','Underline' ], [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ], [ 'NumberedList','BulletedList','-','Blockquote','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock' ], [ "Preview" ] ]
         mini:
             toolbar:  [ [ 'RemoveFormat','-','Bold','Italic','Underline' ], [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ], [ "Preview" ] ]
+        mini_link:
+            toolbar:  [ [ 'RemoveFormat','-','Bold','Italic','Underline','-','Link' ], [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ], [ "Preview" ] ]
 
 # Twig Configuration
 twig:
