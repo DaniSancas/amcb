@@ -36,6 +36,11 @@ class ConciertoAdmin extends Admin
             ->add('entradas',   'ckeditor', array('config_name' => 'mini_link', 'required' => false))
             ->add('programa',   'ckeditor', array('config_name' => 'default', 'required' => false))
             ->add('direccion')
+            ->add('file', 'file', array(
+                'required' => false,
+                'data_class' => null,
+                'label' => 'Cartel'
+            ))
         ;
     }
 
@@ -65,6 +70,23 @@ class ConciertoAdmin extends Admin
             ->add('noticia')
             ->add('es_visible')
         ;
+    }
+
+    public function prePersist($concierto)
+    {
+        $this->manageFileUpload($concierto);
+    }
+
+    public function preUpdate($concierto)
+    {
+        $this->manageFileUpload($concierto);
+    }
+
+    private function manageFileUpload($concierto)
+    {
+        if ($concierto->getFile()) {
+            $concierto->setFechaModificacion(new \DateTime());
+        }
     }
 }
 ?>
