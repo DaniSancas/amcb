@@ -73,7 +73,7 @@ class Usuario implements UserInterface
      */
     function __construct()
     {
-        $this->rango = 0;
+        $this->rango = 1;
     }
 
     /**
