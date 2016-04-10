@@ -16,6 +16,6 @@ services:
             - { name: sonata.block }
     amcb.sonata.email_usuario:
         class: Amcb\AppBundle\EventListener\SonataEmailUsuarioListener
-        arguments: [ "@mailer", "@templating" ]
+        arguments: [ "@mailer", "@templating", "%secretaria_email%" ]
         tags:
             - { name: kernel.event_listener, event: sonata.admin.event.persistence.post_persist, method: onNewUsuario }
