@@ -26,7 +26,8 @@
         "sonata-project/core-bundle": "2.3.*",
         "gedmo/doctrine-extensions": "2.3.*",
         "egeloen/ordered-form-bundle": "~1.0",
-        "cocur/slugify": "~1.0"
+        "cocur/slugify": "~1.0",
+        "endroid/qrcode-bundle": "^1.6"
     },
     "require-dev": {
         "andres-montanez/magallanes": "~1.0.3",
