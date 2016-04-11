@@ -23,7 +23,11 @@
 <div class="row">
 
   <div class="col-sm-4 pull-sm-right margin-top-lg">
-    <img class="img-responsive img-thumbnail" src="{{ asset(cartelImg) }}" alt="{{ concierto.noticia }}">
+    <img class="img-responsive img-thumbnail" src="{{ asset(cartelImg) }}" alt="{{ concierto.noticia }}"><br><br>
+      <div class="hidden-xs text-center well">
+        Enlace a esta misma página mediante código QR.
+        <img class="img-responsive img-thumbnail" src="{{ qrcode_data_uri(app.request.uri, extension='png') }}" />
+    </div>
   </div>
 
   <div class="col-sm-8 margin-top-lg">
