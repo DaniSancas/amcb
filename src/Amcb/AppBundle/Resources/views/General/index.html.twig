@@ -17,10 +17,15 @@
     {% if(conciertos) %}
 
       {% for concierto in conciertos %}
+        {% if concierto.cartel is empty %}
+          {% set cartelImg = 'bundles/app/images/concierto.jpg' %}
+        {% else %}
+          {% set cartelImg = concierto.cartelWeb %}
+        {% endif %}
         <div class="media">
           <div class="media-left">
             <a href="{{ path('mostrar_concierto', {'fecha_larga': concierto.fecha|localizeddate('full', 'none', 'es_ES')|slugify, 'slug': concierto|slugify, 'id': concierto.id}) }}">
-              <img class="media-object img-width-50" src="{{ asset('bundles/app/images/concierto.jpg') }}" alt="{{ concierto.noticia }}">
+              <img class="media-object img-width-50" src="{{ asset(cartelImg) }}" alt="{{ concierto.noticia }}">
             </a>
           </div>
           <div class="media-body">
