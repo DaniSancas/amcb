@@ -4,6 +4,7 @@
 /app/bootstrap.php.cache
 /web/bundles/
 /web/uploads/
+/web/carteles/
 /app/config/parameters.yml
 /app/cache/*
 /app/logs/*

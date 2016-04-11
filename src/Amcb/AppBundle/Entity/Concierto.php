@@ -2,7 +2,10 @@
 
 namespace Amcb\AppBundle\Entity;
 
+use Amcb\AppBundle\Library\Util;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -10,6 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="concierto")
  * @ORM\Entity(repositoryClass="Amcb\AppBundle\Entity\ConciertoRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Concierto
 {
@@ -104,6 +108,33 @@ class Concierto
      * @Assert\NotBlank()
      */
     private $direccion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cartel", type="string", length=255, nullable=true)
+     */
+    private $cartel;
+
+    /**
+     * @var string
+     */
+    private $temp;
+
+    /**
+     * @var string
+     *
+     * @Assert\File(maxSize="12582912")
+     */
+    private $file;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_modificacion", type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     */
+    private $fechaModificacion;
     
     /**
      * Object constructor
@@ -336,5 +367,203 @@ class Concierto
     public function getDireccion()
     {
         return $this->direccion;
+    }
+    
+    /**
+     * Set cartel
+     *
+     * @param string $cartel
+     */
+    public function setCartel($cartel)
+    {
+        $this->cartel = $cartel;
+    }
+
+    /**
+     * Get cartel
+     *
+     * @return string
+     */
+    public function getCartel()
+    {
+        return $this->cartel;
+    }
+
+    /**
+     * Set file
+     *
+     * Si existe ya un cartel, guardamos su nombre.
+     *
+     * Al guardar su nombre podremos eliminarlo más tarde si procede.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+
+        if(is_file($this->getAbsolutePath()))
+        {
+            // store the old name to delete after the update
+            $this->temp = $this->getAbsolutePath();
+        } else {
+            $this->cartel = 'initial';
+        }
+    }
+
+    /**
+     * Get file
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Set fechaModificacion
+     *
+     * @param \DateTime $fechaModificacion
+     * @return Fichero
+     */
+    public function setFechaModificacion($fechaModificacion)
+    {
+        $this->fechaModificacion = $fechaModificacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaModificacion
+     *
+     * @return \DateTime
+     */
+    public function getFechaModificacion()
+    {
+        return $this->fechaModificacion;
+    }
+
+    /**
+     * Devuelve la ruta absoluta del cartel.
+     *
+     * Si tenemos un cartel guardado, devolveremos su ruta absoluta junto con el nombre completo.
+     *
+     * El nombre completo será el nombre del cartel almacenado con su extensión. Si el registro no es nuevo, el cartel estará precedido por $this->id
+     *
+     * @return null|string
+     */
+    public function getAbsolutePath()
+    {
+        return null === $this->cartel
+            ? null
+            : $this->getUploadRootDir().'/'.((null === $this->id) ? : $this->id."_").$this->cartel;
+    }
+
+    /**
+     * Devuelve la ruta web del cartel.
+     *
+     * Si tenemos un cartel guardado, devolveremos su ruta relativa junto con el nombre completo.
+     *
+     * El nombre completo será el nombre del cartel almacenado con su extensión, precedido por $this->id
+     *
+     * @return null|string
+     */
+    public function getCartelWeb()
+    {
+        return null === $this->cartel
+            ? null
+            : $this->getUploadDir().'/'.$this->id."_".$this->cartel;
+    }
+
+    /**
+     * Devuelve la ruta absoluta del directorio donde se suben los cartels.
+     *
+     * @return string
+     */
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    /**
+     * Devuelve la ruta relativa del directorio web donde se encontrarán los carteles.
+     *
+     * @return string
+     */
+    protected function getUploadDir()
+    {
+        return 'carteles';
+    }
+
+    /**
+     * Asigna a $this->cartel el nombre que será guardado en la BD.
+     *
+     * El nombre será slugeado para evitar caracteres raros.
+     *
+     * Sin embargo, el cartel será subido con el nombre slugeado, precedido de $this-id."_"
+     *
+     * Por ejemplo: 1_1_2_203.jpg
+     *
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if(null !== $this->getFile())
+            $this->cartel = "cartel_".Util::getSlug(pathinfo($this->getFecha()->format("d-m-Y"), PATHINFO_FILENAME)).".".$this->getFile()->getClientOriginalExtension();
+    }
+
+    /**
+     * En caso de que se haya subido un cartel:
+     *
+     * * Comprobará si hay otro que ocupe su lugar, en caso afirmativo lo eliminará.
+     * * Moverá el cartel nuevo a la ruta correspondiente y con el nombre precedido de $this->id
+     *
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if(null === $this->getFile())
+        {
+            return;
+        }
+
+        // check if we have an old file
+        if(isset($this->temp)){
+            // delete the old file
+            unlink($this->temp);
+            // clear the temp file path
+            $this->temp = null;
+        }
+
+        // if there is an error when moving the file, an exception will
+        // be automatically thrown by move(). This will properly prevent
+        // the entity from being persisted to the database on error
+        $this->getFile()->move($this->getUploadRootDir(), $this->id.'_'.$this->cartel);
+
+        $this->file = null;
+    }
+
+    /**
+     * Guarda la ruta del cartel a eliminar.
+     *
+     * @ORM\PreRemove()
+     */
+    public function storeFilenameForRemove()
+    {
+        $this->temp = $this->getAbsolutePath();
+    }
+
+    /**
+     * Si hay una ruta de cartel almacenada, elimina el cartel.
+     *
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if(isset($this->temp))
+            unlink($this->temp);
     }
 }
