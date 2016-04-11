@@ -1,5 +1,48 @@
-<div id="footer-wrapper">
-  <div id="footer">
-    AMCB {{ "now"|date("Y") }} | Sitio web creado, diseñado, desarrollado y mantenido por Dani Sancas.
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 no-padding">
+        <div class="col-sm-3">
+          <strong>AMCB {{ "now"|date("Y") }}</strong>
+          <span class="visible-xs">
+            <hr>
+          </span>
+        </div>
+        <div class="col-sm-3 little-padding margin-bottom-sm">
+          <a href="{{ url('homepage') }}">Inicio</a>
+        </div>
+        <div class="col-sm-3 little-padding margin-bottom-sm">
+          <span class="color-grey">Conciertos</span> <br>
+          <span class="visible-xs caret-right"></span> <a href="{{ url('conciertos') }}">Próximos</a> <br>
+          <span class="visible-xs caret-right"></span> <a href="{{ url('archivo_conciertos') }}">Archivo</a>
+        </div>
+        <div class="col-sm-3 little-padding margin-bottom-sm">
+          <span class="color-grey">Miembros</span> <br>
+          <span class="visible-xs caret-right"></span> <a href="{{ url('direccion') }}">Dirección</a> <br>
+          <span class="visible-xs caret-right"></span> <a href="{{ url('coro') }}">Coro</a> <br>
+          <span class="visible-xs caret-right"></span> <a href="{{ url('orquesta') }}">Orquesta</a> <br>
+          <span class="visible-xs caret-right"></span> <a href="{{ url('juntaDirectiva') }}">Junta</a>
+        </div>
+      </div>
+      <div class="col-sm-6 no-padding">
+        <div class="col-sm-3 little-padding margin-bottom-sm">
+          <span class="color-grey">Multimedia</span> <br>
+          <span class="visible-xs caret-right"></span> <a href="{{ url('galeria') }}">Fotos</a> <br>
+          <span class="visible-xs caret-right"></span> <a href="{{ url('escuchanos') }}">Vídeos</a>
+        </div>
+        <div class="col-sm-3 little-padding margin-bottom-sm">
+          <span class="color-grey">Información</span> <br>
+          <span class="visible-xs caret-right"></span> <a href="{{ url('historia') }}">Historia</a> <br>
+          <span class="visible-xs caret-right"></span> <a href="{{ url('repertorio') }}">Repertorio</a> <br>
+          <span class="visible-xs caret-right"></span> <a href="{{ url('docsInteres') }}">Documentos</a>
+        </div>
+        <div class="col-sm-3 little-padding margin-bottom-sm">
+          <a href="{{ url('contacto') }}">Contacto</a>
+        </div>
+        <div class="col-sm-3 little-padding margin-bottom-sm">
+          <a href="{{ url('private_homepage') }}">Privado</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -18,9 +18,23 @@ class FicheroType extends AbstractType
     {
         $builder
             ->add('id', 'hidden')
-            ->add('titulo', null, array('label' => 'Título'))
-            ->add('categoria', 'choice', array('choices' => Util::getCategorias(), 'label' => 'Categoría'))
-            ->add('descripcion','ckeditor', array('label' => 'Descripción', 'config_name' => 'mini', 'required' => false))
+            ->add('titulo', null, array(
+                'label' => 'Título',
+                'attr' => array(
+                    'class' => 'form-control'
+                )))
+            ->add('categoria', 'choice', array(
+                'choices' => Util::getCategorias(),
+                'label' => 'Categoría',
+                'attr' => array(
+                    'class' => 'form-control'
+                )))
+            ->add('descripcion','ckeditor', array(
+                'label' => 'Descripción',
+                'config_name' => 'mini', 'required' => false,
+                'attr' => array(
+                    'class' => 'form-control'
+                )))
             ->add('guardar', 'submit', array('attr' => array('class' => 'btn btn btn-success')))
         ;
 
@@ -30,7 +44,13 @@ class FicheroType extends AbstractType
 
             // Si es nuevo, que el Fichero sea obligatorio.
             $required = (!$fichero || null === $fichero->getId());
-            $form->add('file', 'file', array('required' => $required, 'position' => array('before' => 'guardar'), 'label' => 'Fichero', 'attr' => array('class' => 'input-file-inline')));
+            $form->add('file', 'file', array(
+                'required' => $required,
+                'position' => array('before' => 'guardar'),
+                'label' => 'Fichero',
+                'attr' => array(
+                    'class' => 'input-file-inline'
+                )));
         });
     }
 

@@ -13,31 +13,33 @@
 {% block content %}
     <h1>Solistas</h1>
 
-    <table id="tabla-coro">
+    <table>
         <tbody>
         <tr>
-            <td>Ricardo Pocino</td>
-            <td>1º violín, concertino</td>
+            <td class="col-sm-3 col-xs-5">Ricardo Pocino</td>
+            <td class="col-sm-9 col-xs-7">1º violín, concertino</td>
         </tr>
         <tr>
-            <td>Óscar Riguera</td>
-            <td>Clarinete</td>
+            <td class="col-sm-3 col-xs-5">Óscar Riguera</td>
+            <td class="col-sm-9 col-xs-7">Clarinete</td>
         </tr>
         </tbody>
     </table>
 
     <h1>Miembros de la orquesta</h1>
 
-    <table id="tabla-orquesta">
+    <div class="col-sm-8">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Miembro</th>
+            <th>Instrumento</th>
+        </tr>
+        </thead>
         <tbody>
-
         <tr>
             <td>Ricardo Pocino Martín</td>
             <td>1º violín, concertino</td>
-        </tr>
-        <tr>
-            <td>Cristina Bizarro</td>
-            <td>1º violín</td>
         </tr>
         <tr>
             <td>Itziar Bizkarralegorra Otazua</td>
@@ -61,6 +63,14 @@
             <td>2º violín</td>
         </tr>
         <tr>
+            <td>Danylo Betsko</td>
+            <td>2º violín</td>
+        </tr>
+        <tr>
+            <td>Cristina Bizarro</td>
+            <td>2º violín</td>
+        </tr>
+        <tr>
             <td>Esther Hernández Mejías</td>
             <td>2º violín</td>
         </tr>
@@ -72,13 +82,13 @@
             <td>Olalla Niño</td>
             <td>2º violín</td>
         </tr>
-        <tr>
-            <td>Josune Sarabia Zarraga</td>
-            <td>2º violín</td>
-        </tr>
 
         <tr>
             <td>Laura Farré Jaques</td>
+            <td>Viola</td>
+        </tr>
+        <tr>
+            <td>Joseph Siegel</td>
             <td>Viola</td>
         </tr>
         <tr>
@@ -86,12 +96,17 @@
             <td>Viola</td>
         </tr>
 
+
         <tr>
             <td>Iker Aburto</td>
             <td>Violonchelo</td>
         </tr>
         <tr>
             <td>Santi Salinas</td>
+            <td>Violonchelo</td>
+        </tr>
+        <tr>
+            <td>María Torres Álava</td>
             <td>Violonchelo</td>
         </tr>
         <tr>
@@ -111,8 +126,12 @@
             <td>Oscar Riguera Sánchez</td>
             <td>Clarinete</td>
         </tr>
+        <tr>
+            <td>Emili Castelo-Branco</td>
+            <td>Trompeta</td>
+        </tr>
 
         </tbody>
     </table>
-
+    </div>
 {% endblock %}

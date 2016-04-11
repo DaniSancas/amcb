@@ -177,7 +177,8 @@ class FicheroController extends Controller
                                         'titulo' => $fichero->getTitulo(),
                                         'descripcion' => $fichero->getDescripcion(),
                                         'categoria' => $fichero->getCategoriaElegida(),
-                                        'enlace' => $url
+                                        'enlace' => $url,
+                                        'descarga' => $fichero->getFicheroWeb()
                                     )
                                 )
                             );
@@ -192,7 +193,7 @@ class FicheroController extends Controller
             return $this->redirect($this->generateUrl('private_fichero_listado'));
         }
 
-        return array('formulario' => $formulario->createView());
+        return array('form' => $formulario->createView());
     }
 
     /**

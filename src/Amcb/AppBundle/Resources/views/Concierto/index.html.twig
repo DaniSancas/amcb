@@ -11,7 +11,9 @@
 {% endblock %}
 
 {% block content %}
-<h1>Calendario de conciertos</h1>
+<h1 class="margin-bottom-lg">Calendario de próximos conciertos</h1>
+
+<div class="well">Ver el <a href="{{ path('archivo_conciertos') }}">archivo de conciertos</a>, ordenados por año.</div>
 
 {% if conciertos|length > 0 %}
 

@@ -1,7 +1,5 @@
 {% extends "::base.html.twig" %}
 
-{% set controllerName = getControllerName() %}
-
 {% block extra_metatags %}
     <meta name="description" content="{% spaceless %}
     {% if block('description_metatag') %}
@@ -9,81 +7,113 @@
     {% else %}
         El Coro y Orquesta de Cámara de Bilbao, de la AMCB, es una agrupación musical que ofrece conciertos en Bilbao y alrededores desde hace casi 40 años.
     {% endif %}
-    {% endspaceless %}" />
+    {% endspaceless %}"/>
     <meta name="keywords" content="{% spaceless %}
     {% if block('keywords_metatag') %}
         {% block keywords_metatag %}{% endblock %}
     {% else %}
         Amcb, coro, orquesta, bilbao, música, cámara, conciertos, clásica, repertorio, asociación, contratar, benéfico, director, solista, miembros, socios, bizkaia
     {% endif %}
-    {% endspaceless %}" />
-    <meta name="author" content="Dani Sancas" />
+    {% endspaceless %}"/>
 {% endblock %}
 
 {% block default_stylesheets %}
-  {# Cargamos automáticamente el CSS base y el de cada Controller #}
-  <link rel="stylesheet" href="{{ asset('bundles/app/css/styles.css') }}" />
-  <link rel="stylesheet" href="{{ asset('bundles/app/css/'~controllerName~'.css') }}" />
-  {% block stylesheets %}{% endblock %}
+    {# Bootstrap CSS #}
+    <link href="{{ bootstrap_css_cdn }}" rel="stylesheet" media="screen">
+
+    {# Zona privada CSS #}
+    {% stylesheets filter='?uglifycss' output="css/publico.css"
+    '@AppBundle/Resources/assets/css/publico.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+    {% block stylesheets %}{% endblock %}
 {% endblock %}
   
 {% block default_javascripts %}
+    {# jQuery #}
+    <script src="{{ jquery_cdn }}"></script>
+    {# Fallback jQuery #}
+    {% javascripts output="js/jquery.min.js"
+    '@AppBundle/Resources/assets/vendor/jquery/jquery.min.js' %}
+    <script>window.jQuery || document.write('<script src="{{ asset_url }}"><\/script>')</script>
+    {% endjavascripts %}
 
+    {# Bootstrap JS #}
+    <script src="{{ bootstrap_js_cdn }}"></script>
+    {# Fallback Bootstrap JS #}
+    {% javascripts output="js/bootstrap.min.js"
+    '@AppBundle/Resources/assets/vendor/bootstrap/js/bootstrap.min.js' %}
+    <script>(typeof $().emulateTransitionEnd == 'function') || document.write('<script src="{{ asset_url }}"><\/script>')</script>
+    {% endjavascripts %}
+
+    {# Fallback Bootstrap CSS #}
+    {% stylesheets output="css/bootstrap.min.css"
+    '@AppBundle/Resources/assets/css/bootstrap.min.css' %}
+    <script>
+        {# IMPORTANTE: Cuidado con el orden: .prepend() coloca al principio #}
+        $(document).ready(function() {
+
+            {# Bootstrap básico #}
+            var bodyColor = $('body').css('color');
+            if(bodyColor != 'rgb(51, 51, 51)') {
+                $("head").prepend('<link rel="stylesheet" href="{{ asset_url }}">');
+            }
+        });
+    </script>
+    {% endstylesheets %}
+    {% stylesheets output="fonts/bootstrap/glyphicons-halflings-regular.ttf"
+    '@AppBundle/Resources/assets/vendor/bootstrap/fonts/bootstrap/glyphicons-halflings-regular.ttf' %}
+    {% endstylesheets %}
+    {% stylesheets output="fonts/bootstrap/glyphicons-halflings-regular.woff"
+    '@AppBundle/Resources/assets/vendor/bootstrap/fonts/bootstrap/glyphicons-halflings-regular.woff' %}
+    {% endstylesheets %}
+    {% stylesheets output="fonts/bootstrap/glyphicons-halflings-regular.woff2"
+    '@AppBundle/Resources/assets/vendor/bootstrap/fonts/bootstrap/glyphicons-halflings-regular.woff2' %}
+    {% endstylesheets %}
     {% block javascripts %}{% endblock %}
 {% endblock %}
 
 {% block title %}{% endblock %}
 
 {% block body %}
-  {% if app.environment == 'prod' %}
-  {# Analytics #}
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-4193694-1']);
-    _gaq.push(['_trackPageview']);
+    {% if app.environment == 'prod' %}
+        {# Analytics #}
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-4193694-1']);
+            _gaq.push(['_trackPageview']);
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-  {% endif %}
-  
-  {% block pre_body %}{% endblock %} {# Para colocar fragmentos de código necesarios al inicio de la etiqueta body #}
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    {% endif %}
 
-  <div id="body-wrapper">
+    {% block pre_body %}{% endblock %} {# Para colocar fragmentos de código necesarios al inicio de la etiqueta body #}
 
     {% include 'AppBundle::header.html.twig' %}
 
-    <div id="content-wrapper">
+    <div class="container" id="content">
+        {% include 'AppBundle::flash.html.twig' %}
 
-      {% include 'AppBundle:'~(controllerName|capitalize)~':_submenu.html.twig' ignore missing %}
-
-      <div id="content-body">
-        <div id="content">
-          
-          {% include 'AppBundle::flash.html.twig' %}
-
-          {% block content %}{% endblock %}
-
-        </div>
-
-      </div>
-
+        {% block content %}{% endblock %}
     </div>
 
     {% include 'AppBundle::footer.html.twig' %}
-  </div>
 
-    
-  {% if block('documentReady') %}
-    <script type="text/javascript">
-      $(document).ready(function () {
-        {% block documentReady %}{% endblock documentReady %}
-      });
-    </script>
-  {% endif %}
-    
+
+
+    {% if block('documentReady') %}
+        <script type="text/javascript">
+            $(document).ready(function () {
+                {% block documentReady %}{% endblock documentReady %}
+            });
+        </script>
+    {% endif %}
+
 {% endblock %}
-    

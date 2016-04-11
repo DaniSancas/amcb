@@ -23,7 +23,9 @@ class AppKernel extends Kernel
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new Ivory\OrderedFormBundle\IvoryOrderedFormBundle()
+            new Ivory\OrderedFormBundle\IvoryOrderedFormBundle(),
+            new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
+            new Endroid\Bundle\QrCodeBundle\EndroidQrCodeBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

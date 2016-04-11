@@ -1,0 +1,109 @@
+@import "../vendor/bootstrap/css/bootstrap/variables";
+@import "variables";
+
+// General rules
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    padding-top: $body-padding-top;
+    margin-bottom: $body-margin-bottom;
+}
+
+
+// Vertical margins
+@each $name, $value in $margins {
+  .margin-top-#{$name} {
+    margin-top: $value;
+  }
+
+  .margin-bottom-#{$name} {
+    margin-bottom: $value;
+  }
+
+  .margin-left-#{$name} {
+    margin-left: $value;
+  }
+
+  .margin-right-#{$name} {
+    margin-right: $value;
+  }
+}
+
+
+// Pull left/right responsive
+@media (max-width: $screen-xs-min) {
+  .pull-xs-left {
+    float: left;
+  }
+  .pull-xs-right {
+    float: right;
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .pull-sm-left {
+    float: left;
+  }
+  .pull-sm-right {
+    float: right;
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .pull-md-left {
+    float: left;
+  }
+  .pull-md-right {
+    float: right;
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  .pull-lg-left {
+    float: left;
+  }
+  .pull-lg-right {
+    float: right;
+  }
+}
+
+
+// General form rules
+form {
+  span.required {
+    color: $brand-danger;
+  }
+
+  .form-group label {
+    margin-top: 0.5em;
+  }
+
+  ul.form-errors {
+    padding-left: 0;
+    margin-bottom: 0;
+
+    li {
+      padding: 5px 15px;
+      list-style: none;
+      margin-bottom: 0;
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .form-group > div {
+      margin-bottom: 0.5em;
+    }
+
+    .form-group label {
+      margin-left: 0.25em;
+    }
+  }
+}
+
+// Color rules
+.color-grey{
+  color: #888;
+}

@@ -1,17 +1,12 @@
 parameters:
 
 services:
-    amcb.twig.controller_action_extension:
-        class: Amcb\AppBundle\Twig\Extension\ControllerActionExtension
-        arguments: ["@request_stack"]
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
         tags:
             - { name: twig.extension }
     amcb.twig.extra_filter_extension:
         class: Amcb\AppBundle\Twig\Extension\ExtraFilterExtension
-        tags:
-            - { name: twig.extension }
-    amcb.twig.spanish_datetime_extension:
-        class: Amcb\AppBundle\Twig\Extension\SpanishDateTimeExtension
         tags:
             - { name: twig.extension }
     sonata.block.service.custom_buttons:
@@ -19,3 +14,8 @@ services:
         arguments: [ "sonata.block.service.custom_buttons", "@templating" ]
         tags:
             - { name: sonata.block }
+    amcb.sonata.email_usuario:
+        class: Amcb\AppBundle\EventListener\SonataEmailUsuarioListener
+        arguments: [ "@mailer", "@templating", "%secretaria_email%" ]
+        tags:
+            - { name: kernel.event_listener, event: sonata.admin.event.persistence.post_persist, method: onNewUsuario }

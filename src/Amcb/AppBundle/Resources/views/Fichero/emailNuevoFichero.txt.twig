@@ -2,6 +2,9 @@
 
 Título: {{ titulo }}
 Categoría: {{ categoria }}
+{% if descripcion|length > 0 %}
 Descripción: {{ ((descripcion|length > 200) ? ((descripcion|striptags|decode|slice(0, 200)) ~ '...') : (descripcion|striptags|decode)) }}
+{% endif %}
 
 Pincha en el siguiente enlace o cópialo y pégalo en tu navegador para acceder al contenido: {{ enlace }}
+También puedes descargar directamente el fichero sin pasar por el área privada, pinchando en el siguiente enlace: {{ app.request.getSchemeAndHttpHost() ~ "/" ~ descarga }}

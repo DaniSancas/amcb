@@ -13,11 +13,15 @@
 {% block content %}
 <h1>Escúchanos</h1>
 
-<div class="video-wrapper">
     <p>Selección de vídeos de obras interpretadas por el Coro y Orquesta de Cámara de Bilbao en conciertos y actuaciones.</p>
 
+<div class="row">
     {% for video in videos %}
-        <iframe width="420" height="315" src="//www.youtube.com/embed/{{ video }}" data-allowfullscreen="true"></iframe>
+        <div class="col-sm-6 margin-bottom-lg">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" frameborder="0" src="//www.youtube.com/embed/{{ video }}" data-allowfullscreen="true" allowfullscreen></iframe>
+            </div>
+        </div>
     {% endfor %}
 </div>
 

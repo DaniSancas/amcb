@@ -1,61 +1,64 @@
 {% extends "AppBundle::layout.html.twig" %}
 
-{% block title %}{{ concierto.tipo }}. {{ concierto.fecha|fecha_larga()|capitalize }}{% endblock %}
+{% set fechaLink = concierto.fecha|localizeddate('full', 'none', 'es_ES') %}
+{% if concierto.cartel is empty %}
+  {% set cartelImg = 'bundles/app/images/concierto.jpg' %}
+{% else %}
+  {% set cartelImg = concierto.cartelWeb %}
+{% endif %}
+
+{% block title %}{{ concierto.tipo }}. {{ fechaLink|capitalize }}{% endblock %}
 
 {% block description_metatag %}
-    {{ concierto.tipo }}. {{ concierto.fecha|fechahora_larga()|capitalize }}
+    {{ concierto.tipo }}. {{ fechaLink|capitalize }}
 {% endblock %}
 
 {% block keywords_metatag %}
-    {{ (concierto.noticia|raw ~ " " ~ ((concierto.esGratis) ? 'gratuito' : '') ~ " " ~ (concierto.fecha|fecha_larga()|raw) ~ " " ~ concierto.lugar|raw ~ ", coro, orquesta, cámara, bilbao, programa")|coma_separated_string() }}
+    {{ (concierto.noticia|raw ~ " " ~ ((concierto.esGratis) ? 'gratuito' : '') ~ " " ~ (fechaLink|raw) ~ " " ~ concierto.lugar|raw ~ ", coro, orquesta, cámara, bilbao, programa")|coma_separated_string() }}
 {% endblock %}
 
 {% block content %}
 <h1>{{ concierto.noticia }}</h1>
 
-<div class="vista-concierto">
-  
-  <div class="izq">
-    <span>Tipo de evento</span>
-    <span>Fecha</span>
-    <span>Lugar</span>
-    {% if(concierto.maps)%}
-    <span>Mapa</span>    
-    {% endif %}
-    <span>Dirección</span>
-  
-  
+<div class="row">
+
+  <div class="col-sm-4 pull-sm-right margin-top-lg">
+    <img class="img-responsive img-thumbnail" src="{{ asset(cartelImg) }}" alt="{{ concierto.noticia }}"><br><br>
+      <div class="hidden-xs text-center well">
+        Enlace a esta misma página mediante código QR.
+        <img class="img-responsive img-thumbnail" src="{{ qrcode_data_uri(app.request.uri, extension='png') }}" />
+    </div>
   </div>
-  
-  <div class="dcha">
-    <span>{{ concierto.tipo }}<strong> {{ (concierto.esGratis) ? '(gratuito)' : '' }}</strong></span>
-    <span>{{ concierto.fecha|fechahora_larga() }}</span>
-    <span>{{ concierto.lugar }}</span>
+
+  <div class="col-sm-8 margin-top-lg">
+    <div class="col-sm-4 col-md-3"><strong>Tipo de evento</strong></div>
+    <div class="col-sm-8 col-md-9">{{ concierto.tipo }} <em>{{ (concierto.esGratis) ? '(gratuito)' : '' }}</em></div>
+    <div class="col-sm-4 col-md-3"><strong>Fecha</strong></div>
+    <div class="col-sm-8 col-md-9">{{ concierto.fecha|localizeddate('full', 'short', 'es_ES')|capitalize }}</div>
+    <div class="col-sm-4 col-md-3"><strong>Lugar</strong></div>
+    <div class="col-sm-8 col-md-9">{{ concierto.lugar }}</div>
     {% if(concierto.maps)%}
-    <span><a href="{{ concierto.maps }}" target="_blank" rel="nofollow">Ver en Google Maps&trade;</a></span>    
+      <div class="col-sm-4 col-md-3"><strong>Mapa</strong></div>
+      <div class="col-sm-8 col-md-9"><a href="{{ concierto.maps }}" target="_blank" rel="nofollow">Ver en Google Maps&trade;</a></div>
     {% endif %}
-    <span>{{ concierto.direccion }}</span>
+    <div class="col-sm-4 col-md-3"><strong>Dirección</strong></div>
+    <div class="col-sm-8 col-md-9">{{ concierto.direccion }}</div>
+    {% if(concierto.entradas)%}
+      <div class="col-sm-4 col-md-3"><strong>Entradas</strong></div>
+      <div class="col-sm-8 col-md-9">{{ concierto.entradas|raw }}</div>
+    {% endif %}
+    <div class="col-xs-12 margin-top-md"><p class="lead"><strong>Programa</strong></p></div>
+    <div class="col-xs-12">
+      {% if(concierto.programa)%}
+        {{ concierto.programa|raw }}
+      {% else %}
+        <p><em>Todavía no está disponible el programa del concierto. Ampliaremos información lo antes posible. Disculpen las molestias.</em></p>
+      {% endif %}
+    </div>
   </div>
-  
 </div>
 
-{% if(concierto.entradas)%}
-  <h2>Entradas</h2> 
 
-  <div id="concierto-entradas-content">
-    {{ concierto.entradas|raw }}
-  </div>
-{% endif %}
 
-<h2>Programa</h2>
-
-<div id="concierto-programa-content">
-{% if(concierto.programa)%}
-  {{ concierto.programa|raw }}
-{% else %}
-  <p><em>Todavía no está disponible el programa del concierto. Ampliaremos información lo antes posible. Disculpen las molestias.</em></p>
-{% endif %}
-
-  </div>
 
 {% endblock %}
