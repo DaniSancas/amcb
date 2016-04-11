@@ -177,7 +177,8 @@ class FicheroController extends Controller
                                         'titulo' => $fichero->getTitulo(),
                                         'descripcion' => $fichero->getDescripcion(),
                                         'categoria' => $fichero->getCategoriaElegida(),
-                                        'enlace' => $url
+                                        'enlace' => $url,
+                                        'descarga' => $fichero->getFicheroWeb()
                                     )
                                 )
                             );
