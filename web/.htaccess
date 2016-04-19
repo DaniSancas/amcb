@@ -20,6 +20,7 @@ SetEnvIfNoCase ^Authorization$ "(.+)" HTTP_AUTHORIZATION=$1
 
     # Redireccionamos a www.amcb.es
     RewriteCond %{HTTP_HOST} !^www\.
+    RewriteCond	%{HTTP_HOST} !^staging
     RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 
     # Determine the RewriteBase automatically and set it as environment variable.
