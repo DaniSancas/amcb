@@ -22,7 +22,7 @@
     <link href="{{ bootstrap_css_cdn }}" rel="stylesheet" media="screen">
 
     {# Zona privada CSS #}
-    {% stylesheets filter='?uglifycss' output="css/publico.css"
+    {% stylesheets filter="?scssphp" output="css/publico.css"
     '@AppBundle/Resources/assets/css/publico.css' %}
     <link rel="stylesheet" href="{{ asset_url }}"/>
     {% endstylesheets %}
@@ -33,7 +33,7 @@
     {# jQuery #}
     <script src="{{ jquery_cdn }}"></script>
     {# Fallback jQuery #}
-    {% javascripts output="js/jquery.min.js"
+    {% javascripts filter="?jsqueeze" output="js/jquery.min.js"
     '@AppBundle/Resources/assets/vendor/jquery/jquery.min.js' %}
     <script>window.jQuery || document.write('<script src="{{ asset_url }}"><\/script>')</script>
     {% endjavascripts %}
@@ -41,13 +41,13 @@
     {# Bootstrap JS #}
     <script src="{{ bootstrap_js_cdn }}"></script>
     {# Fallback Bootstrap JS #}
-    {% javascripts output="js/bootstrap.min.js"
+    {% javascripts filter="?jsqueeze" output="js/bootstrap.min.js"
     '@AppBundle/Resources/assets/vendor/bootstrap/js/bootstrap.min.js' %}
     <script>(typeof $().emulateTransitionEnd == 'function') || document.write('<script src="{{ asset_url }}"><\/script>')</script>
     {% endjavascripts %}
 
     {# Fallback Bootstrap CSS #}
-    {% stylesheets output="css/bootstrap.min.css"
+    {% stylesheets filter="?scssphp" output="css/bootstrap.min.css"
     '@AppBundle/Resources/assets/css/bootstrap.min.css' %}
     <script>
         {# IMPORTANTE: Cuidado con el orden: .prepend() coloca al principio #}
