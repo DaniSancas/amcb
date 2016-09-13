@@ -4,7 +4,7 @@
 
 {% block panel_content %}
 
-    <a href="{{ path('private_fichero_listado') }}" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+    <a href="javascript:window.history.back();" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
     {# Solo los Super Administradores o el autor del post pueden editarlo y eliminarlo #}
     {% if app.user and (is_granted('ROLE_SUPER_ADMIN') or (app.user.id == fichero.usuario.id)) %}
         <a href="{{ path('private_fichero_editar', { 'id': fichero.id }) }}" class="btn btn-primary">Editar</a>
