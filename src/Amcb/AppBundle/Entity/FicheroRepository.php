@@ -12,4 +12,73 @@ use Doctrine\ORM\EntityRepository;
  */
 class FicheroRepository extends EntityRepository
 {
+    /**
+     * Query for all Fichero records, limited by Paginator.
+     *
+     * @param int $first
+     * @param int $max
+     * @return \Doctrine\ORM\Query
+     */
+    public function findNotFiltered($first=0, $max=20)
+    {
+        $q = $this
+            ->createQueryBuilder('f')
+            ->orderBy('f.fechaCreacion', 'DESC')->setFirstResult($first)->setMaxResults($max);
+
+        return $q->getQuery();
+    }
+
+    /**
+     * Query for filtered Fichero records, limited by Paginator.
+     *
+     * @param $categoria
+     * @param $busqueda
+     * @param int $first
+     * @param int $max
+     * @return \Doctrine\ORM\Query
+     */
+    public function findFiltered($categoria, $busqueda, $first=0, $max=20)
+    {
+        $busqueda = htmlentities(trim($busqueda));
+
+        $q = $this->createQueryBuilder('f');
+
+
+        if (empty($busqueda)) {
+            if ($categoria != 0) {
+                $q->where('f.categoria = :categoria')
+                    ->setParameter('categoria', $categoria);
+            }
+        } else {
+            $terminos = explode(" ", $busqueda);
+            $condiciones = array();
+
+            foreach ($terminos as $key => $termino) {
+                array_push($condiciones, "f.titulo LIKE :t$key", "f.descripcion LIKE :d$key");
+            }
+
+            if ($categoria != 0) {
+                $q->where(
+                    $q->expr()->andX(
+                        $q->expr()->eq('f.categoria', $categoria),
+                        $q->expr()->orX()->addMultiple($condiciones)
+                    )
+                );
+
+            } else {
+                $q->where(
+                    $q->expr()->orX()->addMultiple($condiciones)
+                );
+            }
+
+            foreach ($terminos as $key => $termino) {
+                $q->setParameter("t$key", "%$termino%");
+                $q->setParameter("d$key", "%$termino%");
+            }
+        }
+
+        $q->orderBy('f.fechaCreacion', 'DESC')->setFirstResult($first)->setMaxResults($max);
+
+        return $q->getQuery();
+    }
 }

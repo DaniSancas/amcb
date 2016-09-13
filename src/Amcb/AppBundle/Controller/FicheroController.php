@@ -5,6 +5,7 @@ namespace Amcb\AppBundle\Controller;
 use Amcb\AppBundle\Entity\Fichero;
 use Amcb\AppBundle\Form\Type\FicheroType;
 use Amcb\AppBundle\Library\Util;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -62,7 +63,7 @@ class FicheroController extends Controller
     }
 
     /**
-     * Ácción que muestra el listado de Ficheros.
+     * Ácción que muestra el listado de Ficheros paginado y con opción de filtrado y búsqueda.
      *
      * @param Request $request
      * @return array
@@ -72,13 +73,28 @@ class FicheroController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $filtro = $request->get("filtro");
+        $maxResults = 20;
+        $categoria = $request->get("categoria");
+        $busqueda = $request->get("busqueda");
+        $pagina = $request->get("pagina");
+        if (null == $pagina || $pagina < 1) {
+            $pagina = 1;
+        }
+        $offset = ($pagina-1) * $maxResults;
 
-        $findBy = (null !== $filtro) ? array("categoria" => $filtro) : array();
 
-        $ficheros = $this->getDoctrine()->getRepository('AppBundle:Fichero')->findBy($findBy, array('fechaCreacion' => 'DESC'));
+        if (null !== $categoria || null !== $busqueda) {
+            // Filtrado
+            $ficheros = $this->getDoctrine()->getRepository('AppBundle:Fichero')->findFiltered($categoria, $busqueda, $offset, $maxResults);
+        } else {
+            // Sin filtro
+            $ficheros = $this->getDoctrine()->getRepository('AppBundle:Fichero')->findNotFiltered($offset, $maxResults);
+        }
 
-        return array('ficheros' => $ficheros, 'categorias' => Util::getCategorias(true), 'filtro' => $filtro);
+        $paginator = new Paginator($ficheros, $fetchJoinCollection = false);
+
+        return array('ficheros' => $paginator, 'categorias' => Util::getCategorias(true), 'categoria' => $categoria,
+            'busqueda' => $busqueda, 'pagina' => $pagina, 'maxResults' => $maxResults);
     }
 
     /**
