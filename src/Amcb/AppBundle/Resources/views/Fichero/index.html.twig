@@ -4,26 +4,64 @@
 
 {% block panel_title %}Depósito de ficheros{% endblock %}
 
-{% block javascripts %}
-    <script src="{{ asset('bundles/app/js/library.js') }}"></script>
-{% endblock %}
-
 {% block panel_content %}
 
-    <div class="overflow">
-        {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('private_fichero_nuevo') }}" class="btn btn-success">Subir fichero</a>
-        {%  endif %}
 
+    <form method="get" action="{{ path("private_fichero_listado") }}">
 
-        <div class="pull-right">
-            <select class="form-control" onchange="filtrarFicheros(this)">
-                {% for key, categoria in categorias %}
-                    <option value="{{ key }}" {% if filtro == key %} selected="selected" {% endif %}>{{ categoria }}</option>
-                {% endfor %}
-            </select>
+        <div class="row">
+
+            <div class="col-sm-3 margin-bottom-sm">
+
+                <select class="form-control" name="categoria">
+                    {% for key, cat in categorias %}
+                        <option value="{{ key }}" {% if key == categoria %} selected="selected" {% endif %}>{{ cat }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-sm-4 {{ is_granted('ROLE_ADMIN') ? "col-md-3" : "col-md-4" }} margin-bottom-sm">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-search" id="search-addon"></span>
+                    </span>
+                    <input type="search" class="form-control" placeholder="Términos de búsqueda" name="busqueda" aria-describedby="search-addon" value="{{ busqueda }}">
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 {{ is_granted('ROLE_ADMIN') ? "col-sm-3" : "col-sm-5" }} margin-bottom-sm">
+                <button type="submit" class="btn btn-primary">
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <span class="visible-md visible-lg visible-xs hidden-sm">Filtrar resultados</span><span class="visible-sm hidden-md hidden-lg hidden-xs">Filtrar</span>
+                    {% else %}
+                        Filtrar resultados
+                     {%  endif %}
+                </button>
+                <a href="{{ path("private_fichero_listado") }}" class="btn btn-default">
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <span class="visible-md visible-lg visible-xs hidden-sm">Limpiar filtros</span><span class="visible-sm hidden-md hidden-lg hidden-xs">Limpiar</span>
+                    {% else %}
+                        Limpiar filtros
+                     {%  endif %}
+                </a>
+            </div>
+
+            {% if is_granted('ROLE_ADMIN') %}
+            <div class="col-lg-2 col-lg-offset-1 col-md-2 col-sm-2 text-right">
+
+                    <a href="{{ path('private_fichero_nuevo') }}" class="btn btn-success">
+                    <span class="visible-md visible-lg visible-xs hidden-sm">Subir fichero</span><span class="visible-sm hidden-md hidden-lg hidden-xs">Subir</span>
+                    </a>
+
+            </div>
+            {%  endif %}
         </div>
-    </div>
+    </form>
+
+
+    <div>Resultados de búsqueda: <span class="badge">{{ ficheros|length() }}</span> ficheros.</div>
+
+
 
     {% if ficheros|length > 0 %}
 
@@ -40,6 +78,34 @@
         </a>
         {% endfor %}
     </div>
+    <nav aria-label="Navegación paginada" class="text-center">
+  <ul class="pagination">
+    <li class="{{ pagina == 1 ? "disabled" : "" }}">
+      <a href="{{ path("private_fichero_listado", { 'categoria': categoria, 'busqueda': busqueda}) }}" aria-label="Primero">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+      <li class="{{ pagina == 1 ? "disabled" : "" }}">
+          <a href="{{ path("private_fichero_listado", { 'categoria': categoria, 'busqueda': busqueda, 'pagina': pagina-1}) }}" aria-label="Anterior" class="{{ pagina == 0 ? "disabled" : "" }}">
+              <span aria-hidden="true">&lsaquo;</span>
+          </a>
+      </li>
+      {% set totalPags = (ficheros|length() / maxResults )|round(0, 'ceil') %}
+      {% for i in 0..totalPags-1 %}
+          <li class="{{ i+1 == pagina ? "active" : "" }}"><a href="{{ path("private_fichero_listado", { 'categoria': categoria, 'busqueda': busqueda, 'pagina': i+1}) }}">{{ i+1 }}</a></li>
+      {% endfor %}
+      <li class="{{ pagina == totalPags ? "disabled" : "" }}">
+      <a href="{{ path("private_fichero_listado", { 'categoria': categoria, 'busqueda': busqueda, 'pagina': pagina+1}) }}" aria-label="Siguiente">
+        <span aria-hidden="true">&rsaquo;</span>
+      </a>
+    </li>
+      <li class="{{ pagina == totalPags ? "disabled" : "" }}">
+          <a href="{{ path("private_fichero_listado", { 'categoria': categoria, 'busqueda': busqueda, 'pagina': totalPags}) }}" aria-label="Último">
+              <span aria-hidden="true">&raquo;</span>
+          </a>
+      </li>
+  </ul>
+</nav>
     {% endif %}
 
 
