@@ -20,7 +20,7 @@ class ContactoType extends AbstractType
     private $destinatarios = array(
         ''        => '-- Elija el destinatario --',
         'txema'   => 'Txema - Presidente y Rel. Públicas',
-        'belen'   => 'Belén - Secretaría de la Asociación',
+        'lucia'   => 'Lucía - Secretaría de la Asociación',
         'dani'    => 'Dani - Webmaster'
     );
 
