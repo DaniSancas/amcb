@@ -115,5 +115,16 @@ class MiembroController extends Controller
     {
         return array();
     }
+
+    /**
+     * Ficha de Daniel garay
+     *
+     * @Route("/daniel-garay", name="ficha_daniel_garay", methods={"GET"})     *
+     * @Template()
+     */
+    public function danielGarayAction()
+    {
+        return array();
+    }
 }
 ?>

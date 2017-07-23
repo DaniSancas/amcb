@@ -146,7 +146,7 @@ class Concierto
         $this->tipo  = "Concierto";
         $this->es_visible = true;
         $this->es_gratis = false;
-        $this->direccion = 'Hilario Extremiana';
+        $this->direccion = 'Daniel Garay';
     }
     
     /**

@@ -5,7 +5,7 @@ app:
 # Ruta dinámica que apuntará al director en activo
 direccion:
     path:  /miembros/direccion
-    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: ficha_hilario_extremiana }
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: ficha_daniel_garay }
     methods:  [GET]
 
 common_admin:
