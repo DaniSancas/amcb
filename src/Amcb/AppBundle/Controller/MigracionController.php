@@ -2,6 +2,7 @@
 
 namespace Amcb\AppBundle\Controller;
 
+use Amcb\AppBundle\Library\Util;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,8 +34,10 @@ class MigracionController extends Controller
         
         if($concierto) {
             return $this->redirect($this->generateUrl('mostrar_concierto',
-                array('id' => $concierto->getId(), 'fecha_larga' => $concierto->getFechaLarga(),
-                    'slug' => $concierto->getSlug()
+
+                array('id' => $concierto->getId(),
+                    'fecha_larga' => Util::getSlug($concierto->getFecha()->format("l d \\d\\e F \\d\\e Y")),
+                    'slug' => Util::getSlug($concierto->getNoticia())
                 )), 301);
         } else {
             return $this->redirect($this->generateUrl('archivo_conciertos'));
