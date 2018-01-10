@@ -10,7 +10,7 @@
 
 <div class="row">
   <div class="col-md-8 col-sm-7">
-    <img class="img-responsive" src="{{ asset('bundles/app/images/portada.jpg') }}" alt="Asociación de Música de Cámara de Bilbao">
+    <img class="img-responsive" src="{{ asset('bundles/app/images/portada2.jpg') }}" alt="Asociación de Música de Cámara de Bilbao">
 
     <h2>Próximos conciertos</h2>
     
@@ -18,7 +18,7 @@
 
       {% for concierto in conciertos %}
         {% if concierto.cartel is empty %}
-          {% set cartelImg = 'bundles/app/images/concierto.jpg' %}
+          {% set cartelImg = 'bundles/app/images/concierto2.jpg' %}
         {% else %}
           {% set cartelImg = concierto.cartelWeb %}
         {% endif %}
