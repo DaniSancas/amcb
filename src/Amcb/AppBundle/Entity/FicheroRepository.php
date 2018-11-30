@@ -51,23 +51,34 @@ class FicheroRepository extends EntityRepository
             }
         } else {
             $terminos = explode(" ", $busqueda);
-            $condiciones = array();
+            $condicionesTitulo = array();
+            $condicionesDescripcion = array();
 
             foreach ($terminos as $key => $termino) {
-                array_push($condiciones, "f.titulo LIKE :t$key", "f.descripcion LIKE :d$key");
+                array_push($condicionesTitulo, "f.titulo LIKE :t$key");
+            }
+
+            foreach ($terminos as $key => $termino) {
+                array_push($condicionesDescripcion, "f.descripcion LIKE :d$key");
             }
 
             if ($categoria != 0) {
                 $q->where(
                     $q->expr()->andX(
                         $q->expr()->eq('f.categoria', $categoria),
-                        $q->expr()->orX()->addMultiple($condiciones)
+                        $q->expr()->orX(
+                            $q->expr()->andX()->addMultiple($condicionesTitulo),
+                            $q->expr()->andX()->addMultiple($condicionesDescripcion)
+                        )
                     )
                 );
 
             } else {
                 $q->where(
-                    $q->expr()->orX()->addMultiple($condiciones)
+                    $q->expr()->orX(
+                        $q->expr()->andX()->addMultiple($condicionesTitulo),
+                        $q->expr()->andX()->addMultiple($condicionesDescripcion)
+                    )
                 );
             }
 
